@@ -1,5 +1,5 @@
-import login_window
+from login_window import LoginWindow
 from pracownik import nowy_pracownik
 
-login_page = login_window.Window('Zaloguj się', '200x140')
+login = LoginWindow('GOLDWIN', '300x200')
 print(nowy_pracownik.login)
