@@ -1,3 +1,8 @@
+'''Główna klasa window, z której inne inheritują.
+Tutaj ustawia się: tytuł, rozmiar, umieszczenie na środku ekranu.
+Funkcja create frames jest pusta, klasa która inherituje musi nadpisać
+funkcję createframes, tam ustawia się widgety.'''
+
 import tkinter as tk
 import sys
 
@@ -11,8 +16,8 @@ class Window():
         self.root.title(self.title)
         self.root.geometry(self.size)
 
-        """Ustawienie na środku ekranu oraz ikonka."""
-        self.root.protocol("WM_DELETE_WINDOW", lambda: sys.exit())
+        '''Ustawienie na środku ekranu oraz ikonka.'''
+        self.root.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
         self.root.tk.call('wm', 'iconphoto', self.root._w,
                           tk.PhotoImage(file='pliki/ikona.gif'))
         self.root.update_idletasks()
@@ -22,9 +27,9 @@ class Window():
         y = (self.root.winfo_screenheight() // 2) - (height // 2)
         self.root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
-        self.create_frames()
+        self.widgets()
 
         self.root.mainloop()  # główny loop
 
-    def create_frames(self):
+    def widgets(self):
         pass

@@ -1,22 +1,34 @@
 from window import Window
 import tkinter as tk
+from tkinter import messagebox
 from server import Server
-from pracownik import nowy_pracownik
+from pracownik import konsultant
 
 
 class LoginWindow(Window):
+    '''Klasa inherituje z Window.
+    Tworzy okienko logowania.'''
 
     def press_login(self, login_entry, password_entry):
+        '''Funkcja przycisku /Zaloguj/'''
         login = login_entry.get()
         password = password_entry.get()
-        polacz = Server()
+        polacz = Server()  # Tworzy połączenie smtp
         if polacz.sprawdz_haslo(login, password):
-            nowy_pracownik.login = login
-            nowy_pracownik.password = password
-            self.root.destroy()
+            #  Jeżeli dane są prawidłowe to
+            konsultant.login = login
+            konsultant.password = password
+            konsultant.dane(login, password)
+            messagebox.showinfo(
+                'Ok', 'Zalogowano jako {}'.format(konsultant.kto))
+            self.root.destroy()  # Usuwa okienko logowania
             return
+        else:
+            messagebox.showinfo('Error', 'Błędny login.')
+            login_entry.delete(0, tk.END)
+            password_entry.delete(0, tk.END)
 
-    def create_frames(self):
+    def widgets(self):
         page_frame = tk.Frame(self.root)
         login_label = tk.Label(page_frame, text='Login:')
         login_label.pack()
@@ -29,8 +41,9 @@ class LoginWindow(Window):
         password_entry.pack()
         page_frame.pack()
 
-        submit = tk.Button(page_frame, text="Zaloguj",
+        submit = tk.Button(page_frame, text='Zaloguj',
                            command=lambda: self.press_login(
                                login_entry,
                                password_entry))
         submit.pack()
+        return

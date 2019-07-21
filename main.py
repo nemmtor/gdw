@@ -1,5 +1,9 @@
-from login_window import LoginWindow
-from pracownik import nowy_pracownik
+'''Główny moduł. '''
+
+from login_window import LoginWindow  # okno logowania
+from pracownik import konsultant  # dane konsultanta
 
 login = LoginWindow('GOLDWIN', '300x200')
-print(nowy_pracownik.login)
+# nie przejdzie dalej dopóki nie wpiszemy prawidłowego loginu/hasła
+print(konsultant.login)
+print(konsultant.kto)
