@@ -1,7 +1,7 @@
 import tkinter as tk
 import sys
 from server import Server
-import dane
+from pracownik import nowy_pracownik
 
 
 class Window():
@@ -33,7 +33,10 @@ class Window():
         password = password_entry.get()
         polacz = Server()
         if polacz.sprawdz_haslo(login, password):
-            dane.pracownik(login, password, self.root)
+            nowy_pracownik.login = login
+            nowy_pracownik.password = password
+            self.root.destroy()
+            return
 
     def create_frames(self):
         page_frame = tk.Frame(self.root)
@@ -44,7 +47,7 @@ class Window():
 
         password_label = tk.Label(page_frame, text='Hasło:')
         password_label.pack()
-        password_entry = tk.Entry(page_frame)
+        password_entry = tk.Entry(page_frame, show='*')
         password_entry.pack()
         page_frame.pack()
 
