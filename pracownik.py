@@ -19,5 +19,10 @@ class Pracownik():
         self.kto = list(map(str.capitalize, self.kto))
         self.kto = ' '.join(self.kto)
 
+    def menu(self, wybor):
+        self.wybor = wybor
+
+
+
 
 konsultant = Pracownik('', '')
