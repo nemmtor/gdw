@@ -1,5 +1,5 @@
 '''Główna klasa window, z której inne inheritują.
-Tutaj ustawia się: tytuł, rozmiar, umieszczenie na środku ekranu.
+Tutaj ustawia się: tytuł, rozmiar, umieszczenie okna na środku ekranu.
 Funkcja create frames jest pusta, klasa która inherituje musi nadpisać
 funkcję createframes, tam ustawia się widgety.'''
 

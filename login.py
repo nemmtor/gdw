@@ -5,9 +5,8 @@ from server import Server
 from pracownik import konsultant
 
 
-class LoginWindow(Window):
-    '''Klasa inherituje z Window.
-    Tworzy okienko logowania.'''
+class Login(Window):
+    '''Tworzy okienko logowania.'''
 
     def press_login(self, login_entry, password_entry):
         '''Funkcja przycisku /Zaloguj/'''
@@ -22,7 +21,6 @@ class LoginWindow(Window):
             messagebox.showinfo(
                 'Ok', 'Zalogowano jako {}'.format(konsultant.kto))
             self.root.destroy()  # Usuwa okienko logowania
-            return
         else:
             messagebox.showinfo('Error', 'Błędny login.')
             login_entry.delete(0, tk.END)
@@ -46,4 +44,3 @@ class LoginWindow(Window):
                                login_entry,
                                password_entry))
         submit.pack()
-        return
