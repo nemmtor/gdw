@@ -56,22 +56,26 @@ class Window():
         adresy_frame = tk.Frame(top)
         adresy_frame.pack()
 
-        adres1 = tk.Entry(adresy_frame, width=entry_width)
-        adres1.pack(pady=5)
-        adres1.insert(tk.END, dodatkowi_odbiorcy[0])
+        self.adres1 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres1.pack(pady=5)
+        self.adres1.insert(tk.END, dodatkowi_odbiorcy[0])
 
-        adres2 = tk.Entry(adresy_frame, width=entry_width)
-        adres2.pack(pady=5)
-        adres2.insert(tk.END, dodatkowi_odbiorcy[1])
+        self.adres2 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres2.pack(pady=5)
+        self.adres2.insert(tk.END, dodatkowi_odbiorcy[1])
 
-        adres3 = tk.Entry(adresy_frame, width=entry_width)
-        adres3.pack(pady=5)
-        adres3.insert(tk.END, dodatkowi_odbiorcy[2])
+        self.adres3 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres3.pack(pady=5)
+        self.adres3.insert(tk.END, dodatkowi_odbiorcy[2])
 
         ok_butt = tk.Button(top, text="Zapisz",
                             font=font10, width=10,
-                            command=lambda: wez_adresy())
+                            command=lambda: self.wez_adresy())
         ok_butt.pack()
+
+    def wez_adresy(self):
+        dodatkowi_odbiorcy = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
+        print(dodatkowi_odbiorcy)
 
 
     def menu_butt(self):
