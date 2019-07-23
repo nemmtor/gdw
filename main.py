@@ -12,7 +12,8 @@ print(konsultant.kto)
 while True:
     menu = Menu('GOLDWIN', '300x300')
     if konsultant.wybor == 1:
-        # umowa = Umowa('Umowa', '800x300')
+        umowa = Umowa('Umowa', '800x300')
+        # pass
     elif konsultant.wybor == 2:
         print('Aneks')
     elif konsultant.wybor == 3:

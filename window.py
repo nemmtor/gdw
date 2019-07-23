@@ -74,9 +74,9 @@ class Window():
         ok_butt.pack()
 
     def wez_adresy(self):
-        dodatkowi_odbiorcy = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
+        dodatkowi_odbiorcy = [
+            self.adres1.get(), self.adres2.get(), self.adres3.get()]
         print(dodatkowi_odbiorcy)
-
 
     def menu_butt(self):
         self.root.destroy()

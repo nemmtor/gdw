@@ -6,47 +6,44 @@ from config import konsultant, font10, font10b, entry_width
 class Umowa(Window):
     '''frame = entry frame'''
 
-
-
-
     def widgets(self):
         page_frame = tk.Frame(self.root)
 
         left_frame = tk.Frame(page_frame)
-        #mid_frame = tk.Frame(page_frame, bg='green')
+        # mid_frame = tk.Frame(page_frame, bg='green')
         right_frame = tk.Frame(page_frame)
         menu_frame = tk.Frame(page_frame)
         left_frame.pack(fill=tk.BOTH, expand=False, side=tk.LEFT)
-        #mid_frame.pack(fill=tk.BOTH, expan=True, side=tk.LEFT)
+        # mid_frame.pack(fill=tk.BOTH, expan=True, side=tk.LEFT)
         right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         menu_frame.pack(fill=tk.BOTH, expand=True)
 
-        ##### MENU FRAME (po prawej stronie)
+        # MENU FRAME (po prawej stronie)
         zalog_label = tk.Label(menu_frame, text='Zalogowany jako:')
         zalog_label.pack(pady=10)
         # kons_label = tk.Label(page_frame, text=konsultant.kto,
         #                         font=('Arial 800', 10), fg='green')
         kons_label = tk.Label(menu_frame, text='Kacper Witas',
-                                font=font10, fg='green')
+                              font=font10, fg='green')
         kons_label.pack()
 
         menu_button = tk.Button(menu_frame, text="MENU",
-                            font=font10, width=10,
-                            command=lambda: self.menu_butt())
+                                font=font10, width=10,
+                                command=lambda: self.menu_butt())
         menu_button.pack(pady=20)
 
         dod_adresy_button = tk.Button(menu_frame, text="Dodaj odbiorce",
-                                  font=font10, width=10,
-                                  command=lambda: self.dod_butt())
+                                      font=font10, width=10,
+                                      command=lambda: self.dod_butt())
         dod_adresy_button.pack()
 
-        ##### MID FRAME
+        # MID FRAME
         img = tk.PhotoImage(file="pliki/goldwin.png")
         img_Label = tk.Label(right_frame, image=img)
         img_Label.image = img
         img_Label.place(relx=.5, rely=.5, anchor="c")
 
-        ##### LEFT FRAME
+        # LEFT FRAME
 
         # Imie i nazwisko
         imie = tk.Label(left_frame, text="Imię i nazwisko:", font=font10b)
@@ -73,7 +70,8 @@ class Umowa(Window):
         dost_entry.grid(row=30, column=1)
 
         # Cena
-        cena = tk.Label(left_frame, text="Cena/długość zobowiązania:", font=font10b)
+        cena = tk.Label(
+            left_frame, text="Cena/długość zobowiązania:", font=font10b)
         cena.grid(row=40, column=0)
         cena_entry = tk.Entry(left_frame, width=entry_width)
         cena_entry.grid(row=40, column=1)
@@ -96,31 +94,33 @@ class Umowa(Window):
         # Checkbox
         adr_rej_var = tk.IntVar(value=1)
         adr_rej_cb = tk.Checkbutton(left_frame, variable=adr_rej_var,
-                                command=lambda: ukryj(adr_rej_entry, adr_rej_var))
+                                    command=lambda: print('ukryj'))
         adr_rej_cb.select()
         adr_rej_cb.grid(row=70, column=2)
 
         # Adres adr_korespondencyjny
-        adr_kor = tk.Label(left_frame, text="Adres korespondencyjny", font=font10b)
+        adr_kor = tk.Label(
+            left_frame, text="Adres korespondencyjny", font=font10b)
         adr_kor.grid(row=80, column=0)
         adr_kor_entry = tk.Entry(left_frame, width=entry_width)
         adr_kor_entry.grid(row=80, column=1)
         # Checkbox
         adr_kor_var = tk.IntVar(value=1)
         adr_kor_cb = tk.Checkbutton(left_frame, variable=adr_kor_var,
-                                command=lambda: ukryj(adr_kor_entry, adr_kor_var))
+                                    command=lambda: print('Ukryj'))
         adr_kor_cb.select()
         adr_kor_cb.grid(row=80, column=2)
 
         # Adres dostarczenia
-        adr_dost = tk.Label(left_frame, text="Adres dostarczenia", font=font10b)
+        adr_dost = tk.Label(
+            left_frame, text="Adres dostarczenia", font=font10b)
         adr_dost.grid(row=90, column=0)
         adr_dost_entry = tk.Entry(left_frame, width=entry_width)
         adr_dost_entry.grid(row=90, column=1)
         # Checkbox
         adr_dost_var = tk.IntVar(value=1)
         adr_dost_cb = tk.Checkbutton(left_frame, variable=adr_dost_var,
-                                command=lambda: ukryj(adr_dost_entry, adr_dost_var))
+                                     command=lambda: print('OK'))
         adr_dost_cb.select()
         adr_dost_cb.grid(row=90, column=2)
 
@@ -136,13 +136,15 @@ class Umowa(Window):
         branza_entry.grid(row=110, column=1)
 
         # Pytania do prawnika
-        pytania = tk.Label(left_frame, text="Pytania do prawnika:", font=font10b)
+        pytania = tk.Label(
+            left_frame, text="Pytania do prawnika:", font=font10b)
         pytania.grid(row=110, column=0)
         pytania_entry = tk.Entry(left_frame, width=entry_width)
         pytania_entry.grid(row=110, column=1)
 
         # Dodatkowe informacje
-        dodatkowe = tk.Label(left_frame, text="Dodatkowe informacje:", font=font10b)
+        dodatkowe = tk.Label(
+            left_frame, text="Dodatkowe informacje:", font=font10b)
         dodatkowe.grid(row=120, column=0)
         dodatkowe_entry = tk.Entry(left_frame, width=entry_width)
         dodatkowe_entry.grid(row=120, column=1)
@@ -160,5 +162,6 @@ class Umowa(Window):
         wyslij.grid(row=140, column=1)
 
         page_frame.pack(fill=tk.BOTH, expand=True)
+
 
 new = Umowa('Umowa', '800x300')

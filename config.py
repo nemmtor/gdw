@@ -30,6 +30,4 @@ class Pracownik():
         self.wybor = wybor
 
 
-
-
 konsultant = Pracownik('', '')
