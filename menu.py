@@ -1,6 +1,6 @@
 from window import Window
 import tkinter as tk
-from pracownik import konsultant  # dane konsultanta
+from config import konsultant  # dane konsultanta
 
 
 def umowa_button(root):

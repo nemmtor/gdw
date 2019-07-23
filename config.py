@@ -4,6 +4,13 @@ konsultant.kto = Imie Nazwisko
 
 import re
 
+font10 = ('Arial 800', 10)
+font10b = ('Arial 800', 10, "bold")
+
+entry_width = 27
+
+dodatkowi_odbiorcy = list()
+
 expr = re.compile(r'^(.*?)@')
 
 

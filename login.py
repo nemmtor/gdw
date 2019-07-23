@@ -2,7 +2,7 @@ from window import Window
 import tkinter as tk
 from tkinter import messagebox
 from server import Server
-from pracownik import konsultant
+from config import konsultant, entry_width
 
 
 class Login(Window):
@@ -30,12 +30,12 @@ class Login(Window):
         page_frame = tk.Frame(self.root)
         login_label = tk.Label(page_frame, text='Login:')
         login_label.pack()
-        login_entry = tk.Entry(page_frame)
+        login_entry = tk.Entry(page_frame, width=entry_width)
         login_entry.pack()
 
         password_label = tk.Label(page_frame, text='Hasło:')
         password_label.pack()
-        password_entry = tk.Entry(page_frame, show='*')
+        password_entry = tk.Entry(page_frame, width=entry_width, show='*')
         password_entry.pack()
         page_frame.pack()
 

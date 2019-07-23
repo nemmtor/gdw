@@ -33,3 +33,24 @@ class Window():
 
     def widgets(self):
         pass
+
+    def dod_butt(self):
+        top = tk.Toplevel()
+        top.title("Dodaj odbiorców")
+        top.geometry('550x150')
+        top.tk.call('wm', 'iconphoto',
+                    top._w, tk.PhotoImage(file='pliki/ikona.gif'))
+        '''Ustawienie na środku ekranu oraz ikonka.'''
+        # top.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
+        top.tk.call('wm', 'iconphoto', top._w,
+                          tk.PhotoImage(file='pliki/ikona.gif'))
+        top.update_idletasks()
+        width = top.winfo_width()
+        height = top.winfo_height()
+        x = (top.winfo_screenwidth() // 2) - (width // 2)
+        y = (top.winfo_screenheight() // 2) - (height // 2)
+        top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
+
+    def menu_butt(self):
+        self.root.destroy()
