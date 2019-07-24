@@ -9,7 +9,7 @@ font10b = ('Arial 800', 10, "bold")
 
 entry_width = 27
 
-dodatkowi_odbiorcy = ['', '', '']
+
 
 expr = re.compile(r'^(.*?)@')
 
@@ -28,6 +28,9 @@ class Pracownik():
 
     def menu(self, wybor):
         self.wybor = wybor
+
+    def dodatkowi(self, odbiorcy):
+        self.dod_odbiorcy = odbiorcy
 
 
 konsultant = Pracownik('', '')

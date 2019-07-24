@@ -5,7 +5,7 @@ funkcję createframes, tam ustawia się widgety.'''
 
 import tkinter as tk
 import sys
-from config import dodatkowi_odbiorcy, entry_width, font10
+from config import entry_width, font10, konsultant
 
 
 class Window():
@@ -53,20 +53,21 @@ class Window():
         y = (top.winfo_screenheight() // 2) - (height // 2)
         top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
+        # Dodatkowe adresy
         adresy_frame = tk.Frame(top)
         adresy_frame.pack()
 
         self.adres1 = tk.Entry(adresy_frame, width=entry_width)
         self.adres1.pack(pady=5)
-        self.adres1.insert(tk.END, dodatkowi_odbiorcy[0])
+        self.adres1.insert(tk.END, konsultant.dod_odbiorcy[0])
 
         self.adres2 = tk.Entry(adresy_frame, width=entry_width)
         self.adres2.pack(pady=5)
-        self.adres2.insert(tk.END, dodatkowi_odbiorcy[1])
+        self.adres2.insert(tk.END, konsultant.dod_odbiorcy[1])
 
         self.adres3 = tk.Entry(adresy_frame, width=entry_width)
         self.adres3.pack(pady=5)
-        self.adres3.insert(tk.END, dodatkowi_odbiorcy[2])
+        self.adres3.insert(tk.END, konsultant.dod_odbiorcy[2])
 
         ok_butt = tk.Button(top, text="Zapisz",
                             font=font10, width=10,
@@ -74,9 +75,9 @@ class Window():
         ok_butt.pack()
 
     def wez_adresy(self):
-        dodatkowi_odbiorcy = [
-            self.adres1.get(), self.adres2.get(), self.adres3.get()]
-        print(dodatkowi_odbiorcy)
+        dodatkowi = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
+        konsultant.dodatkowi(dodatkowi)
+        print(konsultant.dod_odbiorcy)
 
     def menu_butt(self):
         self.root.destroy()

@@ -164,4 +164,4 @@ class Umowa(Window):
         page_frame.pack(fill=tk.BOTH, expand=True)
 
 
-new = Umowa('Umowa', '800x300')
+# new = Umowa('Umowa', '800x300')

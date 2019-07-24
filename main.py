@@ -5,6 +5,8 @@ from menu import Menu  # okno menu
 from umowa import Umowa  # okno umowa
 from config import konsultant  # dane konsultanta
 login = Login('GOLDWIN', '300x200')
+dodatkowi = ['', '', '']
+konsultant.dodatkowi(dodatkowi)
 # nie przejdzie dalej dopóki nie wpiszemy prawidłowego loginu/hasła
 print(konsultant.login)
 print(konsultant.password)
@@ -13,7 +15,6 @@ while True:
     menu = Menu('GOLDWIN', '300x300')
     if konsultant.wybor == 1:
         umowa = Umowa('Umowa', '800x300')
-        # pass
     elif konsultant.wybor == 2:
         print('Aneks')
     elif konsultant.wybor == 3:

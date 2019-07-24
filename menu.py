@@ -32,23 +32,23 @@ class Menu(Window):
         zalog_label = tk.Label(page_frame, text='Zalogowany jako:')
         zalog_label.pack()
         kons_label = tk.Label(page_frame, text=konsultant.kto,
-                              font=('Arial 800', 10), fg='green')
+                              font=font10, fg='green')
         kons_label.pack()
 
         # Przycisk umowa
-        umowa = tk.Button(page_frame, text='Umowa', font=('Arial Bold', 12),
+        umowa = tk.Button(page_frame, text='Umowa', font=font10,
                           height=2, width=18,
                           command=lambda: umowa_button(self.root))
         umowa.pack()
 
         # Przycisk sprawy nierozwiązane
         sprawy = tk.Button(page_frame, text='Sprawy nierozwiązane',
-                           font=('Arial Bold', 12), height=2, width=18,
+                           font=font10, height=2, width=18,
                            command=lambda: sprawy_button(self.root))
         sprawy.pack()
 
         # Przycisk aneks
-        aneks = tk.Button(page_frame, text='Aneks', font=('Arial Bold', 12),
+        aneks = tk.Button(page_frame, text='Aneks', font=font10,
                           height=2, width=18,
                           command=lambda: aneks_button(self.root))
         aneks.pack()
