@@ -4,16 +4,16 @@ from login import Login  # okno logowania
 from menu import Menu  # okno menu
 from umowa import Umowa  # okno umowa
 from config import konsultant  # dane konsultanta
-login = Login('GOLDWIN', '300x200')
-dodatkowi = ['', '', '']
-konsultant.dodatkowi(dodatkowi)
+
+login = Login('GOLDWIN', '300x200')  # tworzy okno logowania
+dodatkowi = ['', '', '']  # resetuje dodatkowych odbiorców
+konsultant.dodatkowi(dodatkowi)  # resetuje dodatkowych odbiorców
+
 # nie przejdzie dalej dopóki nie wpiszemy prawidłowego loginu/hasła
-print(konsultant.login)
-print(konsultant.password)
-print(konsultant.kto)
 while True:
     menu = Menu('GOLDWIN', '300x300')
     if konsultant.wybor == 1:
+        print('Umowa')
         umowa = Umowa('Umowa', '800x300')
     elif konsultant.wybor == 2:
         print('Aneks')

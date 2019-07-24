@@ -10,6 +10,7 @@ from config import entry_width, font10, konsultant
 
 class Window():
     def __init__(self, title, size):
+        '''Ustawienie tytułu, rozmiaru'''
         self.title = title
         self.size = size
 
@@ -28,7 +29,7 @@ class Window():
         y = (self.root.winfo_screenheight() // 2) - (height // 2)
         self.root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
-        self.widgets()
+        self.widgets()  # widgety
 
         self.root.mainloop()  # główny loop
 
@@ -36,25 +37,25 @@ class Window():
         pass
 
     def dod_butt(self):
-        top = tk.Toplevel()
-        top.title("Dodaj odbiorców")
-        top.geometry('250x150')
-        top.tk.call('wm', 'iconphoto',
-                    top._w, tk.PhotoImage(file='pliki/ikona.gif'))
+        self.top = tk.Toplevel()
+        self.top.title("Dodaj odbiorców")
+        self.top.geometry('250x150')
+        self.top.tk.call('wm', 'iconphoto',
+                    self.top._w, tk.PhotoImage(file='pliki/ikona.gif'))
 
         '''Ustawienie na środku ekranu oraz ikonka.'''
-        # top.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
-        top.tk.call('wm', 'iconphoto', top._w,
+        self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
+        self.top.tk.call('wm', 'iconphoto', self.top._w,
                           tk.PhotoImage(file='pliki/ikona.gif'))
-        top.update_idletasks()
-        width = top.winfo_width()
-        height = top.winfo_height()
-        x = (top.winfo_screenwidth() // 2) - (width // 2)
-        y = (top.winfo_screenheight() // 2) - (height // 2)
-        top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+        self.top.update_idletasks()
+        width = self.top.winfo_width()
+        height = self.top.winfo_height()
+        x = (self.top.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.top.winfo_screenheight() // 2) - (height // 2)
+        self.top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
         # Dodatkowe adresy
-        adresy_frame = tk.Frame(top)
+        adresy_frame = tk.Frame(self.top)
         adresy_frame.pack()
 
         self.adres1 = tk.Entry(adresy_frame, width=entry_width)
@@ -69,15 +70,17 @@ class Window():
         self.adres3.pack(pady=5)
         self.adres3.insert(tk.END, konsultant.dod_odbiorcy[2])
 
-        ok_butt = tk.Button(top, text="Zapisz",
+        ok_butt = tk.Button(self.top, text="Zapisz",
                             font=font10, width=10,
                             command=lambda: self.wez_adresy())
         ok_butt.pack()
 
     def wez_adresy(self):
+        '''Pobiera adresy z entry'''
         dodatkowi = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
         konsultant.dodatkowi(dodatkowi)
         print(konsultant.dod_odbiorcy)
+        self.top.destroy()
 
     def menu_butt(self):
         self.root.destroy()

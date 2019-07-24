@@ -1,31 +1,19 @@
-from window import Window
+'''Okno menu.'''
+from window import Window  # klasa okna
 import tkinter as tk
 from config import konsultant, font10
 
 
-def umowa_button(root):
-    konsultant.menu(1)
-    root.destroy()
-
-
-def aneks_button(root):
-    konsultant.menu(2)
-    root.destroy()
-
-
-def sprawy_button(root):
-    konsultant.menu(3)
-    root.destroy()
-
-
-def wypo_button(root):
-    konsultant.menu(4)
-    root.destroy()
 
 
 class Menu(Window):
 
+    def menu_button(self, wybor):
+        konsultant.menu(wybor)
+        self.root.destroy()
+
     def widgets(self):
+        '''Widgety, zmienić na self?'''
         page_frame = tk.Frame(self.root)
 
         #  Informacja kto zalogowany
@@ -38,25 +26,25 @@ class Menu(Window):
         # Przycisk umowa
         umowa = tk.Button(page_frame, text='Umowa', font=font10,
                           height=2, width=18,
-                          command=lambda: umowa_button(self.root))
+                          command=lambda: self.menu_button(1))
         umowa.pack()
 
         # Przycisk sprawy nierozwiązane
         sprawy = tk.Button(page_frame, text='Sprawy nierozwiązane',
                            font=font10, height=2, width=18,
-                           command=lambda: sprawy_button(self.root))
+                           command=lambda: self.menu_button(2))
         sprawy.pack()
 
         # Przycisk aneks
         aneks = tk.Button(page_frame, text='Aneks', font=font10,
                           height=2, width=18,
-                          command=lambda: aneks_button(self.root))
+                          command=lambda: self.menu_button(3))
         aneks.pack()
 
         # Przycisk wypowiedzenie
         wypo = tk.Button(page_frame, text='Wypowiedzenie', font=font10,
                          height=2, width=18,
-                         command=lambda: wypo_button(self.root))
+                         command=lambda: self.menu_button(4))
         wypo.pack()
 
         page_frame.pack()

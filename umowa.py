@@ -1,3 +1,4 @@
+'''Okno umowy.'''
 from window import Window
 import tkinter as tk
 from config import konsultant, font10, font10b, entry_width

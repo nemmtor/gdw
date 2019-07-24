@@ -1,3 +1,5 @@
+'''Sprawdzenie czy login/hasło są prawidłowe.
+Połączenie smtp z szyfrowaniem tls.'''
 import smtplib
 
 
@@ -19,4 +21,5 @@ class Server():
             return False
 
     def quit(self):
+        '''Kończy sesje.'''
         self.smtp.quit()
