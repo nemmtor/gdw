@@ -4,8 +4,9 @@ Funkcja create frames jest pusta, klasa która inherituje musi nadpisać
 funkcję createframes, tam ustawia się widgety.'''
 
 import tkinter as tk
+from tkinter.filedialog import askopenfilename
 import sys
-from config import entry_width, font10, konsultant
+from config import entry_width, font10, konsultant, mailsender
 
 
 class Window():
@@ -84,3 +85,8 @@ class Window():
 
     def menu_butt(self):
         self.root.destroy()
+
+    def zal_butt(self):
+        filename = askopenfilename()
+        mailsender.plik(filename)
+        print(mailsender.zalacznik)

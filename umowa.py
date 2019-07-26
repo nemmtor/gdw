@@ -121,7 +121,7 @@ class Umowa(Window):
         # Checkbox
         adr_dost_var = tk.IntVar(value=1)
         adr_dost_cb = tk.Checkbutton(left_frame, variable=adr_dost_var,
-                                     command=lambda: print('OK'))
+                                     command=lambda: print('Ukryj'))
         adr_dost_cb.select()
         adr_dost_cb.grid(row=90, column=2)
 
@@ -155,7 +155,8 @@ class Umowa(Window):
         spacer.grid(row=130, column=0)
 
         # Załącznik
-        zalacznik = tk.Button(left_frame, text="Załącznik", font=font10b)
+        zalacznik = tk.Button(left_frame, text="Załącznik", font=font10b,
+                              command=lambda: self.zal_butt())
         zalacznik.grid(row=140, column=0)
 
         # Wyślij

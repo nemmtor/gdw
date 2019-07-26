@@ -32,14 +32,18 @@ class Pracownik():
         '''Sprawdza co zostało wybrane (1 z 4 opcji w menu)'''
         self.wybor = wybor
 
-    def dodatkowi(self, odbiorcy):
-        '''Przenieść do klasy Mail.'''
-        self.dod_odbiorcy = odbiorcy
+    # def dodatkowi(self, odbiorcy):
+    #     '''Przenieść do klasy Mail.'''
+    #     self.dod_odbiorcy = odbiorcy
 
-# class Mail():
-#     def __init__(self):
-#         pass
-#     def dodatkowi(self, odbiorcy):
-#         self.odbiorcy = odbiorcy
+class Mail():
+    def __init__(self):
+        pass
+    def dodatkowi(self, odbiorcy):
+        self.odbiorcy = odbiorcy
+    def plik(self, zalacznik):
+        '''Załącznik wybrany przez konsultanta!'''
+        self.zalacznik = zalacznik
 
 konsultant = Pracownik('', '')  # Tworzy konsultanta
+mailsender = Mail()  # Tworzy maila
