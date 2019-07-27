@@ -23,7 +23,7 @@ class Login(Window):
             konsultant.dane(login, password)
             # popup
             messagebox.showinfo(
-                'Ok', 'Zalogowano jako {}'.format(konsultant.kto))
+                'Zalogowano', 'Zalogowano jako {}'.format(konsultant.kto))
             self.root.destroy()  # Usuwa okienko logowania
         else:
             # popup

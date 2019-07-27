@@ -6,15 +6,15 @@ from menu import Menu  # okno menu
 from umowa import Umowa  # okno umowa
 from config import konsultant, mailsender  # dane konsultanta
 
-login = Login('GOLDWIN', '300x130')  # tworzy okno logowania
+login = Login('Goldwin - login', '300x130')  # tworzy okno logowania
 dodatkowi = ['', '', '']  # resetuje dodatkowych odbiorców
 mailsender.dodatkowi(dodatkowi)  # resetuje dodatkowych odbiorców
 
 # nie przejdzie dalej dopóki nie wpiszemy prawidłowego loginu/hasła
 while True:
-    menu = Menu('GOLDWIN', '300x230')
+    menu = Menu('Goldwin - menu', '300x230')
     if konsultant.wybor == 1:
-        umowa = Umowa('Umowa', '800x400')
+        umowa = Umowa('Goldwin - umowa', '800x400')
     elif konsultant.wybor == 2:
         pass
     elif konsultant.wybor == 3:

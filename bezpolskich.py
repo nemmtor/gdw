@@ -13,7 +13,6 @@ def removeAccents(input_text):
 
 
 def zmien_znaki(file):
-    print(file)
     file_end = file.split('/')[-1]
     bezpolskich = removeAccents(file_end)
     f = open(file, "rb")
@@ -21,4 +20,6 @@ def zmien_znaki(file):
 
     for line in f:
         g.write(line)
+    f.close()
+    g.close()
     return(bezpolskich)

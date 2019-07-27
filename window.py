@@ -6,6 +6,7 @@ funkcję createframes, tam ustawia się widgety.'''
 
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
+from tkinter import messagebox  # popup message
 import sys
 from config import entry_width, font10, mailsender, klient
 from server import server
@@ -91,7 +92,6 @@ class Window():
         '''Pobiera adresy z entry'''
         dodatkowi = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
         mailsender.dodatkowi(dodatkowi)
-        print(mailsender.dod_odbiorcy)
         self.top.destroy()
 
     def menu_butt(self):
@@ -101,7 +101,6 @@ class Window():
         '''Dodawanie załącznika.'''
         mailsender.plik(askopenfilename())
         mailsender.zalacznik = zmien_znaki(mailsender.zalacznik)
-        print(mailsender.zalacznik)
         self.zal_label.configure(text=mailsender.zalacznik, fg='green')
 
     def wyslij_butt(self):
@@ -121,9 +120,9 @@ class Window():
                               self.adr_kor_entry.get(),
                               self.adr_dost_entry.get()
                               )
-        for k, v in klient.__dict__.items():
-            print(k, v)
         server.wyslij_maila()
         klient.rej = ''
         klient.kor = ''
         klient.dost = ''
+        messagebox.showinfo('Wysłano', 'Wysłano maila sprzedażowego.')
+        self.root.destroy()

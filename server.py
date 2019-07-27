@@ -12,6 +12,7 @@ from email.utils import formatdate
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
+from email.mime.image import MIMEImage
 
 
 class Server():
@@ -35,7 +36,7 @@ class Server():
             return False
 
     def wyslij_maila(self):
-        msg = MIMEMultipart()
+        msg = MIMEMultipart('mixed')
         msg['From'] = konsultant.login
         for adres in mailsender.dod_odbiorcy:
             if adres != '':
@@ -44,6 +45,13 @@ class Server():
 
         msg['Subject'] = stworz_subject()
         msg["Date"] = formatdate(localtime=True)
+
+        # logo = "pliki/goldwinmail.jpg"
+        # fp = open(logo, 'rb')
+        # img = MIMEImage(fp.read())
+        # fp.close()
+        # img.add_header('Content-ID', 'image')
+        # msg.attach(img)
 
         msg.attach(MIMEText(stworz_body(), 'html'))
 
