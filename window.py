@@ -120,9 +120,39 @@ class Window():
                               self.adr_kor_entry.get(),
                               self.adr_dost_entry.get()
                               )
-        server.wyslij_maila()
-        klient.rej = ''
-        klient.kor = ''
-        klient.dost = ''
-        messagebox.showinfo('Wysłano', 'Wysłano maila sprzedażowego.')
-        self.root.destroy()
+        error = False
+        if klient.imnaz == '':
+            messagebox.showinfo('Error', 'Brak imienia i nazwiska')
+            error = True
+        if klient.tel == '':
+            messagebox.showinfo('Error', 'Brak numeru telefonu')
+            error = True
+        if klient.datasprz == '':
+            messagebox.showinfo('Error', 'Brak daty sprzedaży')
+            error = True
+        if klient.datawys == '':
+            messagebox.showinfo('Error', 'Brak daty doręczenia')
+            error = True
+        if klient.cena_dl == '':
+            messagebox.showinfo('Error', 'Brak ceny/dł. zobowiązania')
+            error = True
+        if klient.mail == '':
+            messagebox.showinfo('Error', 'Brak adresu mailowego')
+            error = True
+        if klient.branza == '':
+            messagebox.showinfo('Error', 'Brak branży')
+            error = True
+        if klient.pytania == '':
+            messagebox.showinfo('Error', 'Brak pytań do prawnika')
+            error = True
+        if klient.dodatkowe == '':
+            messagebox.showinfo('Error', 'Brak dodatkowych informacji')
+            error = True
+        if not error:
+            if server.wyslij_maila():
+                klient.rej = ''
+                klient.kor = ''
+                klient.dost = ''
+                messagebox.showinfo('Wysłano', 'Wysłano maila sprzedażowego.')
+                server.quit()
+                self.root.destroy()

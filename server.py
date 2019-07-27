@@ -13,6 +13,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
+from tkinter import messagebox  # popup message
 
 
 class Server():
@@ -30,6 +31,7 @@ class Server():
         try:
             self.smtp.login(self.login, self.password)
             self.imap.login(self.login, self.password)
+            self.quit()
             return True
         except (smtplib.SMTPAuthenticationError,
                 TypeError):
@@ -46,30 +48,31 @@ class Server():
         msg['Subject'] = stworz_subject()
         msg["Date"] = formatdate(localtime=True)
 
-        # logo = "pliki/goldwinmail.jpg"
-        # fp = open(logo, 'rb')
-        # img = MIMEImage(fp.read())
-        # fp.close()
-        # img.add_header('Content-ID', 'image')
-        # msg.attach(img)
-
         msg.attach(MIMEText(stworz_body(), 'html'))
+        try:
+            attachment = open(mailsender.zalacznik, 'rb')
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload((attachment).read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition',
+                            "attachment; filename= " +
+                            os.path.basename(mailsender.zalacznik))
 
-        attachment = open(mailsender.zalacznik, 'rb')
-
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload((attachment).read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition',
-                        "attachment; filename= " +
-                        os.path.basename(mailsender.zalacznik))
-
-        msg.attach(part)
-        self.smtp.send_message(msg)
-        self.imap.append('SENT', '\\Seen',
-                         imaplib.Time2Internaldate(time.time()),
-                         msg.as_string().encode('utf8'))
-        os.remove(mailsender.zalacznik)
+            msg.attach(part)
+            self.smtp = smtplib.SMTP('smtp.gpgoldwin.pl:587')
+            self.smtp.starttls()
+            self.smtp.login(self.login, self.password)
+            self.imap = imaplib.IMAP4('imap.gpgoldwin.pl')
+            self.imap.starttls()
+            self.imap.login(self.login, self.password)
+            self.smtp.send_message(msg)
+            self.imap.append('SENT', '\\Seen',
+                             imaplib.Time2Internaldate(time.time()),
+                             msg.as_string().encode('utf8'))
+            os.remove(mailsender.zalacznik)
+            return True
+        except AttributeError:
+            messagebox.showinfo('Error', 'Nie dodałeś załącznika.')
 
     def dodaj_maila():
         pass

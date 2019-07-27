@@ -21,7 +21,7 @@ def stworz_body():
         if not klient.kor_var:
             body += '<p>Adres korespondencyjny: {} </p>'.format(klient.kor)
         if not klient.dost_var:
-            body += '<p>Adres rejestrowy: {} </p>'.format(klient.dost)
+            body += '<p>Adres dostarczenia: {} </p>'.format(klient.dost)
         body += '<p>Branża: {} </p>'.format(klient.branza)
         body += '<p>Pytania do prawnika: {} </p>'.format(klient.pytania)
         body += '<p>Dodatkowe informacje: {} </p>'.format(klient.dodatkowe)
