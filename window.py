@@ -9,6 +9,7 @@ from tkinter.filedialog import askopenfilename
 import sys
 from config import entry_width, font10, mailsender, klient
 from server import server
+from bezpolskich import zmien_znaki
 
 
 class Window():
@@ -99,8 +100,9 @@ class Window():
     def zal_butt(self):
         '''Dodawanie załącznika.'''
         mailsender.plik(askopenfilename())
-        filename = mailsender.zalacznik.split('/')[-1]
-        self.zal_label.configure(text=filename, fg='green')
+        mailsender.zalacznik = zmien_znaki(mailsender.zalacznik)
+        print(mailsender.zalacznik)
+        self.zal_label.configure(text=mailsender.zalacznik, fg='green')
 
     def wyslij_butt(self):
         klient.stworz_klienta(self.imie_entry.get(),

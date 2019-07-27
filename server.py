@@ -35,7 +35,6 @@ class Server():
             return False
 
     def wyslij_maila(self):
-        print(konsultant.login)
         msg = MIMEMultipart()
         msg['From'] = konsultant.login
         for adres in mailsender.dod_odbiorcy:
