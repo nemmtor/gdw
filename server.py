@@ -1,6 +1,13 @@
 '''Sprawdzenie czy login/hasło są prawidłowe.
 Połączenie smtp z szyfrowaniem tls.'''
 import smtplib
+import os
+from config import klient, konsultant, mailsender
+from email import encoders
+from email.utils import formatdate
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
 
 
 class Server():
@@ -20,6 +27,34 @@ class Server():
                 TypeError):
             return False
 
+    def wyslij_maila(self):
+        msg = MIMEMultipart()
+        msg['From'] = konsultant.login
+        for adres in mailsender.dod_odbiorcy:
+            if adres != '':
+                mailsender.odbiorcy.append(adres)
+        msg['To'] = ', '.join(mailsender.odbiorcy)
+
+        msg['Subject'] = 'Test'
+        msg["Date"] = formatdate(localtime=True)
+
+        msg.attach(MIMEText(r'<p>Treść maila</p>', 'html'))
+
+        attachment = open(mailsender.zalacznik, 'rb')
+
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload((attachment).read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition',
+                        "attachment; filename= " +
+                        os.path.basename(mailsender.zalacznik))
+
+        msg.attach(part)
+        self.smtp.send_message(msg)
+
     def quit(self):
         '''Kończy sesje.'''
         self.smtp.quit()
+
+
+server = Server()

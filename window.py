@@ -6,7 +6,8 @@ funkcję createframes, tam ustawia się widgety.'''
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
 import sys
-from config import entry_width, font10, mailsender
+from config import entry_width, font10, mailsender, klient
+from server import server
 
 
 class Window():
@@ -101,4 +102,22 @@ class Window():
         self.zal_label.configure(text=filename, fg='green')
 
     def wyslij_butt(self):
-        pass
+        klient.stworz_klienta(self.imie_entry.get(),
+                              self.tel_entry.get(),
+                              self.sprz_entry.get(),
+                              self.dost_entry.get(),
+                              self.cena_entry.get(),
+                              self.mail_entry.get(),
+                              self.branza_entry.get(),
+                              self.pytania_entry.get(),
+                              self.dodatkowe_entry.get(),
+                              self.adr_rej_var.get(),
+                              self.adr_kor_var.get(),
+                              self.adr_dost_var.get(),
+                              self.adr_rej_entry.get(),
+                              self.adr_kor_entry.get(),
+                              self.adr_dost_entry.get()
+                              )
+        for k, v in klient.__dict__.items():
+            print(k, v)
+        server.wyslij_maila()

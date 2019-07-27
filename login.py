@@ -3,7 +3,7 @@ Jeżeli tak to przepuszcza dalej.'''
 from config import konsultant, entry_width  # konfiguracja
 from window import Window  # klasa okna
 from tkinter import messagebox  # popup message
-from server import Server  # sprawdzenie czy jest połączenie (login/pw)
+from server import server  # sprawdzenie czy jest połączenie (login/pw)
 import tkinter as tk
 
 
@@ -14,8 +14,7 @@ class Login(Window):
         '''Funkcja przycisku /Zaloguj/'''
         login = self.login_entry.get()  # pobiera login z entry
         password = self.password_entry.get()  # pobiera haslo z entry
-        polacz = Server()  # Tworzy połączenie smtp + tls
-        if polacz.sprawdz_haslo(login, password):
+        if server.sprawdz_haslo(login, password):
             #  Jeżeli dane są prawidłowe to
             #  zapisuje maila i hasło w obiekcie konsultant
             konsultant.login = login
