@@ -4,8 +4,6 @@ import tkinter as tk
 from config import konsultant, font10
 
 
-
-
 class Menu(Window):
 
     def menu_button(self, wybor):

@@ -1,7 +1,7 @@
 '''Okno umowy.'''
 from window import Window
 import tkinter as tk
-from config import konsultant, font10, font10b, entry_width
+from config import font10, font10b, entry_width
 
 
 class Umowa(Window):
@@ -90,12 +90,14 @@ class Umowa(Window):
         # Adres rejestrowy
         adr_rej = tk.Label(left_frame, text="Adres rejestrowy", font=font10b)
         adr_rej.grid(row=70, column=0)
-        adr_rej_entry = tk.Entry(left_frame, width=entry_width)
+        adr_rej_entry = tk.Entry(
+            left_frame, width=entry_width, state='disabled')
         adr_rej_entry.grid(row=70, column=1)
         # Checkbox
         adr_rej_var = tk.IntVar(value=1)
         adr_rej_cb = tk.Checkbutton(left_frame, variable=adr_rej_var,
-                                    command=lambda: print('ukryj'))
+                                    command=lambda: self.ukryj(adr_rej_entry,
+                                                               adr_rej_var))
         adr_rej_cb.select()
         adr_rej_cb.grid(row=70, column=2)
 
@@ -103,12 +105,14 @@ class Umowa(Window):
         adr_kor = tk.Label(
             left_frame, text="Adres korespondencyjny", font=font10b)
         adr_kor.grid(row=80, column=0)
-        adr_kor_entry = tk.Entry(left_frame, width=entry_width)
+        adr_kor_entry = tk.Entry(
+            left_frame, width=entry_width, state='disabled')
         adr_kor_entry.grid(row=80, column=1)
         # Checkbox
         adr_kor_var = tk.IntVar(value=1)
         adr_kor_cb = tk.Checkbutton(left_frame, variable=adr_kor_var,
-                                    command=lambda: print('Ukryj'))
+                                    command=lambda: self.ukryj(adr_kor_entry,
+                                                               adr_kor_var))
         adr_kor_cb.select()
         adr_kor_cb.grid(row=80, column=2)
 
@@ -116,12 +120,14 @@ class Umowa(Window):
         adr_dost = tk.Label(
             left_frame, text="Adres dostarczenia", font=font10b)
         adr_dost.grid(row=90, column=0)
-        adr_dost_entry = tk.Entry(left_frame, width=entry_width)
+        adr_dost_entry = tk.Entry(
+            left_frame, width=entry_width, state='disabled')
         adr_dost_entry.grid(row=90, column=1)
         # Checkbox
         adr_dost_var = tk.IntVar(value=1)
         adr_dost_cb = tk.Checkbutton(left_frame, variable=adr_dost_var,
-                                     command=lambda: print('Ukryj'))
+                                     command=lambda: self.ukryj(adr_dost_entry,
+                                                                adr_dost_var))
         adr_dost_cb.select()
         adr_dost_cb.grid(row=90, column=2)
 
@@ -158,12 +164,12 @@ class Umowa(Window):
         zalacznik = tk.Button(left_frame, text="Załącznik", font=font10b,
                               command=lambda: self.zal_butt())
         zalacznik.grid(row=140, column=0)
+        self.zal_label = tk.Label(left_frame, text='', font=font10b)
+        self.zal_label.grid(row=141, column=0, columnspan=1)
 
         # Wyślij
-        wyslij = tk.Button(left_frame, text="Wyślij", font=font10b)
+        wyslij = tk.Button(left_frame, text="Wyślij", font=font10b,
+                           command=lambda: self.wyslij_butt())
         wyslij.grid(row=140, column=1)
 
         page_frame.pack(fill=tk.BOTH, expand=True)
-
-
-# new = Umowa('Umowa', '800x300')

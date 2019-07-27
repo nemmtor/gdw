@@ -6,7 +6,7 @@ funkcję createframes, tam ustawia się widgety.'''
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
 import sys
-from config import entry_width, font10, konsultant, mailsender
+from config import entry_width, font10, mailsender
 
 
 class Window():
@@ -14,6 +14,7 @@ class Window():
         '''Ustawienie tytułu, rozmiaru'''
         self.title = title
         self.size = size
+        self.filename = ''
 
         self.root = tk.Tk()
         self.root.title(self.title)
@@ -42,12 +43,12 @@ class Window():
         self.top.title("Dodaj odbiorców")
         self.top.geometry('250x150')
         self.top.tk.call('wm', 'iconphoto',
-                    self.top._w, tk.PhotoImage(file='pliki/ikona.gif'))
+                         self.top._w, tk.PhotoImage(file='pliki/ikona.gif'))
 
         '''Ustawienie na środku ekranu oraz ikonka.'''
         self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
         self.top.tk.call('wm', 'iconphoto', self.top._w,
-                          tk.PhotoImage(file='pliki/ikona.gif'))
+                         tk.PhotoImage(file='pliki/ikona.gif'))
         self.top.update_idletasks()
         width = self.top.winfo_width()
         height = self.top.winfo_height()
@@ -61,32 +62,43 @@ class Window():
 
         self.adres1 = tk.Entry(adresy_frame, width=entry_width)
         self.adres1.pack(pady=5)
-        self.adres1.insert(tk.END, konsultant.dod_odbiorcy[0])
+        self.adres1.insert(tk.END, mailsender.dod_odbiorcy[0])
 
         self.adres2 = tk.Entry(adresy_frame, width=entry_width)
         self.adres2.pack(pady=5)
-        self.adres2.insert(tk.END, konsultant.dod_odbiorcy[1])
+        self.adres2.insert(tk.END, mailsender.dod_odbiorcy[1])
 
         self.adres3 = tk.Entry(adresy_frame, width=entry_width)
         self.adres3.pack(pady=5)
-        self.adres3.insert(tk.END, konsultant.dod_odbiorcy[2])
+        self.adres3.insert(tk.END, mailsender.dod_odbiorcy[2])
 
         ok_butt = tk.Button(self.top, text="Zapisz",
                             font=font10, width=10,
                             command=lambda: self.wez_adresy())
         ok_butt.pack()
 
+    def ukryj(self, entry, var):
+        '''Funkcja blokowania entry adresów.'''
+        if var.get():
+            entry.config(state='disabled')
+        else:
+            entry.config(state='normal')
+
     def wez_adresy(self):
         '''Pobiera adresy z entry'''
         dodatkowi = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
-        konsultant.dodatkowi(dodatkowi)
-        print(konsultant.dod_odbiorcy)
+        mailsender.dodatkowi(dodatkowi)
+        print(mailsender.dod_odbiorcy)
         self.top.destroy()
 
     def menu_butt(self):
         self.root.destroy()
 
     def zal_butt(self):
-        filename = askopenfilename()
-        mailsender.plik(filename)
-        print(mailsender.zalacznik)
+        '''Dodawanie załącznika.'''
+        mailsender.plik(askopenfilename())
+        filename = mailsender.zalacznik.split('/')[-1]
+        self.zal_label.configure(text=filename, fg='green')
+
+    def wyslij_butt(self):
+        pass

@@ -6,13 +6,14 @@ from tkinter import messagebox  # popup message
 from server import Server  # sprawdzenie czy jest połączenie (login/pw)
 import tkinter as tk
 
+
 class Login(Window):
     '''Tworzy okienko logowania.'''
 
-    def press_login(self, login_entry, password_entry):
+    def press_login(self):
         '''Funkcja przycisku /Zaloguj/'''
-        login = login_entry.get()  # pobiera login z entry
-        password = password_entry.get()  # pobiera haslo z entry
+        login = self.login_entry.get()  # pobiera login z entry
+        password = self.password_entry.get()  # pobiera haslo z entry
         polacz = Server()  # Tworzy połączenie smtp + tls
         if polacz.sprawdz_haslo(login, password):
             #  Jeżeli dane są prawidłowe to
@@ -25,28 +26,26 @@ class Login(Window):
                 'Ok', 'Zalogowano jako {}'.format(konsultant.kto))
             self.root.destroy()  # Usuwa okienko logowania
         else:
-            #popup
+            # popup
             messagebox.showinfo('Error', 'Błędny login.')
-            login_entry.delete(0, tk.END)  # czyści entry
-            password_entry.delete(0, tk.END)  # czyści entry
+            self.login_entry.delete(0, tk.END)  # czyści entry
+            self.password_entry.delete(0, tk.END)  # czyści entry
 
     def widgets(self):
         '''Widgety, zmienić na self?'''
         page_frame = tk.Frame(self.root)  # główny frame
         login_label = tk.Label(page_frame, text='Login:')
         login_label.pack()
-        login_entry = tk.Entry(page_frame, width=entry_width)
-        login_entry.pack()
+        self.login_entry = tk.Entry(page_frame, width=entry_width)
+        self.login_entry.pack()
 
         password_label = tk.Label(page_frame, text='Hasło:')
         password_label.pack()
-        password_entry = tk.Entry(page_frame, width=entry_width, show='*')
-        password_entry.pack()
+        self.password_entry = tk.Entry(page_frame, width=entry_width, show='*')
+        self.password_entry.pack()
         page_frame.pack()
 
         # Submit wysyła dane z entry do funkcji press login
         submit = tk.Button(page_frame, text='Zaloguj',
-                           command=lambda: self.press_login(
-                               login_entry,
-                               password_entry))
+                           command=lambda: self.press_login())
         submit.pack()
