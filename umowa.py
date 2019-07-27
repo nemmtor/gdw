@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''Okno umowy.'''
 from window import Window
 import tkinter as tk

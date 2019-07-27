@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''Główny moduł. '''
 
 from login import Login  # okno logowania
@@ -13,11 +14,10 @@ mailsender.dodatkowi(dodatkowi)  # resetuje dodatkowych odbiorców
 while True:
     menu = Menu('GOLDWIN', '300x230')
     if konsultant.wybor == 1:
-        print('Umowa')
-        umowa = Umowa('Umowa', '800x370')
+        umowa = Umowa('Umowa', '800x400')
     elif konsultant.wybor == 2:
-        print('Sprawy nierozwiązane')
+        pass
     elif konsultant.wybor == 3:
-        print('Aneks')
+        pass
     elif konsultant.wybor == 4:
-        print('Wypowiedzenie')
+        pass

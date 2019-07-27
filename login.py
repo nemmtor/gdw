@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''Okno logowania, sprawdza czy login/hasło są prawidłowe.
 Jeżeli tak to przepuszcza dalej.'''
 from config import konsultant, entry_width  # konfiguracja

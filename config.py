@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''Dane dostępne we wszystkich modułach.'''
 
 import re
@@ -64,11 +65,14 @@ class Klient():
         self.branza = branza
         self.pytania = pytania
         self.dodatkowe = dodatkowe
-        if not rej_var:
+        self.rej_var = rej_var
+        self.kor_var = kor_var
+        self.dost_var = dost_var
+        if not self.rej_var:
             self.rej = rej
-        if not kor_var:
+        if not self.kor_var:
             self.kor = kor
-        if not dost_var:
+        if not self.dost_var:
             self.dost = dost
 
 

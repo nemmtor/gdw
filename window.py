@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''Główna klasa window, z której inne inheritują.
 Tutaj ustawia się: tytuł, rozmiar, umieszczenie okna na środku ekranu.
 Funkcja create frames jest pusta, klasa która inherituje musi nadpisać
@@ -121,3 +122,6 @@ class Window():
         for k, v in klient.__dict__.items():
             print(k, v)
         server.wyslij_maila()
+        klient.rej = ''
+        klient.kor = ''
+        klient.dost = ''

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''Okno menu.'''
 from window import Window  # klasa okna
 import tkinter as tk
