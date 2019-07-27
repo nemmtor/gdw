@@ -61,6 +61,7 @@ class Server():
         self.imap.append('SENT', '\\Seen',
                          imaplib.Time2Internaldate(time.time()),
                          msg.as_string().encode('utf8'))
+        os.remove(mailsender.zalacznik)
 
     def dodaj_maila():
         pass
