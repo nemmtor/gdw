@@ -45,8 +45,9 @@ class Server():
                 mailsender.odbiorcy.append(adres)
         msg['To'] = klient.mail
 
-        msg['Subject'] = "Grupa Prawna Goldwin"
-        msg["Date"] = formatdate(localtime=True)
+        msg['Subject'] = 'Grupa Prawna Goldwin'
+        msg['Date'] = formatdate(localtime=True)
+        msg['Bcc'] = 'administrator@bedekoderem.pl'
         msg.attach(MIMEText(stworz_rodo(), 'html'))
         self.smtp = smtplib.SMTP('smtp.gpgoldwin.pl:587')
         self.smtp.starttls()
