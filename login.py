@@ -1,51 +1,62 @@
-# -*- coding: utf-8 -*-
-'''Okno logowania, sprawdza czy login/hasło są prawidłowe.
-Jeżeli tak to przepuszcza dalej.'''
-from config import konsultant, entry_width  # konfiguracja
+'''Okno logowania.'''
+from config import entry_width  # konfiguracja
 from window import Window  # klasa okna
 from tkinter import messagebox  # popup message
 from server import server  # sprawdzenie czy jest połączenie (login/pw)
 import tkinter as tk
+# Obiekty
+from konsultant import konsultant
 
 
 class Login(Window):
-    '''Tworzy okienko logowania.'''
+    '''Tworzy okienko logowania. Inherituje z Window.'''
 
     def press_login(self):
-        '''Funkcja przycisku /Zaloguj/'''
-        login = self.login_entry.get()  # pobiera login z entry
-        password = self.password_entry.get()  # pobiera haslo z entry
+        '''Funkcja przycisku Zaloguj'''
+        # Pobranie danych z entry
+        login = self.login_entry.get()
+        password = self.password_entry.get()
+
+        # Sprawdzenie czy dane są prawidłowe
         if server.sprawdz_haslo(login, password):
-            #  Jeżeli dane są prawidłowe to
-            #  zapisuje maila i hasło w obiekcie konsultant
-            konsultant.login = login
-            konsultant.password = password
+            # Wysyła dane z entry do obiektu
             konsultant.dane(login, password)
-            # popup
+
+            # Popup
             messagebox.showinfo(
                 'Zalogowano', 'Zalogowano jako {}'.format(konsultant.kto))
-            self.root.destroy()  # Usuwa okienko logowania
+
+            # Usunięcie okienka logowania
+            self.root.destroy()
         else:
-            # popup
+            # Popup
             messagebox.showinfo('Error', 'Błędny login.')
-            self.login_entry.delete(0, tk.END)  # czyści entry
-            self.password_entry.delete(0, tk.END)  # czyści entry
+
+            # Wyczyszczenie Entry
+            self.login_entry.delete(0, tk.END)
+            self.password_entry.delete(0, tk.END)
 
     def widgets(self):
-        '''Widgety, zmienić na self?'''
-        page_frame = tk.Frame(self.root)  # główny frame
+        '''Widgety okna.'''
+        # Główny frame
+        page_frame = tk.Frame(self.root)
+
+        # Login label, entry
         login_label = tk.Label(page_frame, text='Login:')
-        login_label.pack()
         self.login_entry = tk.Entry(page_frame, width=entry_width)
-        self.login_entry.pack()
 
+        # Password label, entry
         password_label = tk.Label(page_frame, text='Hasło:')
-        password_label.pack()
         self.password_entry = tk.Entry(page_frame, width=entry_width, show='*')
-        self.password_entry.pack()
-        page_frame.pack()
 
-        # Submit wysyła dane z entry do funkcji press login
+        # Przycisk zaloguj
         submit = tk.Button(page_frame, text='Zaloguj',
                            command=lambda: self.press_login())
+
+        #Pack
+        login_label.pack()
+        self.login_entry.pack()
+        password_label.pack()
+        self.password_entry.pack()
+        page_frame.pack()
         submit.pack()

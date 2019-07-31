@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
 '''Sprawdzenie czy login/hasło są prawidłowe.
 Połączenie smtp z szyfrowaniem tls.'''
-import smtplib
-import imaplib
+
 import os
 import time
-from config import konsultant, mailsender, klient
+from tkinter import messagebox  # popup message
 from tresc_maila import stworz_body, stworz_subject, stworz_rodo
+
+# Dla wysyłki maila
+import smtplib
+import imaplib
 from email import encoders
 from email.utils import formatdate
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
-from tkinter import messagebox  # popup message
 
+# Obiekty
+from klient import klient
+from mailsender import mailsender
+from konsultant import konsultant
 
 class Server():
     def __init__(self):
@@ -40,9 +46,6 @@ class Server():
     def wyslij_rodo(self):
         msg = MIMEMultipart('mixed')
         msg['From'] = konsultant.login
-        for adres in mailsender.dod_odbiorcy:
-            if adres != '':
-                mailsender.odbiorcy.append(adres)
         msg['To'] = klient.mail
 
         msg['Subject'] = 'Grupa Prawna Goldwin'
@@ -66,7 +69,8 @@ class Server():
         msg['From'] = konsultant.login
         for adres in mailsender.dod_odbiorcy:
             if adres != '':
-                mailsender.odbiorcy.append(adres)
+                if adres not in mailsender.odbiorcy:
+                    mailsender.odbiorcy.append(adres)
         msg['To'] = ', '.join(mailsender.odbiorcy)
 
         msg['Subject'] = stworz_subject(konsultant.wybor)

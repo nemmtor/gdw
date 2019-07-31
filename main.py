@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
 '''Główny moduł. '''
 
 from login import Login  # okno logowania
 from menu import Menu  # okno menu
 from umowa import Umowa  # okno umowa
-from config import konsultant, mailsender  # dane konsultanta
+# Obiekty
+from konsultant import konsultant  # dane konsultanta
+from mailsender import mailsender
 
 login = Login('Goldwin - login', '300x130')  # tworzy okno logowania
 dodatkowi = ['', '', '']  # resetuje dodatkowych odbiorców
