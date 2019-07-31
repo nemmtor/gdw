@@ -2,7 +2,10 @@
 '''Okno menu.'''
 from window import Window  # klasa okna
 import tkinter as tk
-from config import konsultant, font10
+from config import font10
+
+# Obiekty
+from konsultant import konsultant
 
 
 class Menu(Window):

@@ -9,7 +9,9 @@ from tkinter.filedialog import askopenfilename
 from tkinter import messagebox  # popup message
 import sys
 import os
-from config import entry_width, font10, mailsender, klient
+from config import entry_width, font10
+from klient import klient
+from mailsender import mailsender
 from server import server
 from bezpolskich import zmien_znaki
 import smtplib

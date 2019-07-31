@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 '''Okno umowy.'''
 from window import Window
 import tkinter as tk
 from config import font10, font10b, entry_width
+from konsultant import konsultant
 
 
 class Umowa(Window):
@@ -23,10 +23,8 @@ class Umowa(Window):
         # MENU FRAME (po prawej stronie)
         zalog_label = tk.Label(menu_frame, text='Zalogowany jako:')
         zalog_label.pack(pady=10)
-        # kons_label = tk.Label(page_frame, text=konsultant.kto,
-        #                         font=('Arial 800', 10), fg='green')
-        kons_label = tk.Label(menu_frame, text='Kacper Witas',
-                              font=font10, fg='green')
+        kons_label = tk.Label(page_frame, text=konsultant.kto,
+                                font=('Arial 800', 10), fg='green')
         kons_label.pack()
 
         menu_button = tk.Button(menu_frame, text="MENU",

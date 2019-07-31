@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from config import klient, konsultant
+from klient import klient
+from konsultant import konsultant
 
 
 def stworz_subject(subject_type):
