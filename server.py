@@ -5,8 +5,8 @@ import smtplib
 import imaplib
 import os
 import time
-from config import konsultant, mailsender
-from tresc_maila import stworz_body, stworz_subject
+from config import konsultant, mailsender, klient
+from tresc_maila import stworz_body, stworz_subject, stworz_rodo
 from email import encoders
 from email.utils import formatdate
 from email.mime.multipart import MIMEMultipart
@@ -37,6 +37,29 @@ class Server():
                 TypeError):
             return False
 
+    def wyslij_rodo(self):
+        msg = MIMEMultipart('mixed')
+        msg['From'] = konsultant.login
+        for adres in mailsender.dod_odbiorcy:
+            if adres != '':
+                mailsender.odbiorcy.append(adres)
+        msg['To'] = klient.mail
+
+        msg['Subject'] = "Grupa Prawna Goldwin"
+        msg["Date"] = formatdate(localtime=True)
+        msg.attach(MIMEText(stworz_rodo(), 'html'))
+        self.smtp = smtplib.SMTP('smtp.gpgoldwin.pl:587')
+        self.smtp.starttls()
+        self.smtp.login(self.login, self.password)
+        self.imap = imaplib.IMAP4('imap.gpgoldwin.pl')
+        self.imap.starttls()
+        self.imap.login(self.login, self.password)
+        self.smtp.send_message(msg)
+        self.imap.append('SENT', '\\Seen',
+                         imaplib.Time2Internaldate(time.time()),
+                         msg.as_string().encode('utf8'))
+
+
     def wyslij_maila(self):
         msg = MIMEMultipart('mixed')
         msg['From'] = konsultant.login
@@ -45,7 +68,7 @@ class Server():
                 mailsender.odbiorcy.append(adres)
         msg['To'] = ', '.join(mailsender.odbiorcy)
 
-        msg['Subject'] = stworz_subject()
+        msg['Subject'] = stworz_subject(konsultant.wybor)
         msg["Date"] = formatdate(localtime=True)
 
         msg.attach(MIMEText(stworz_body(), 'html'))
@@ -69,7 +92,6 @@ class Server():
             self.imap.append('SENT', '\\Seen',
                              imaplib.Time2Internaldate(time.time()),
                              msg.as_string().encode('utf8'))
-            os.remove(mailsender.zalacznik)
             return True
         except AttributeError:
             messagebox.showinfo('Error', 'Nie dodałeś załącznika.')

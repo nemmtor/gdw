@@ -1,0 +1,26 @@
+<html>
+<body>
+<i>
+<p>Szanowni Państwo,</p>
+<p>W związku z postanowieniami RODO (rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE) chcemy zapewnić, iż my jako Grupa Prawna Goldwin® dążymy do zapewnienia maksymalnego bezpieczeństwa Państwa danych i pełnego respektowania Państwa prywatności. W związku z powyższym przekazujemy Państwu wymagane prawem informacje o przetwarzaniu przez nas Państwa danych osobowych oraz uprawnieniach, jakie w związku z tym Państwu przysługują.</p>
+
+<p>Administratorem Państwa danych osobowych jest Grupa Prawna Goldwin S.A., ul. Kościuszki 71/304, 87-100 Toruń. W sprawach dotyczących bezpieczeństwa Państwa danych osobowych mogą Państwo kontaktować się z nami pod adresem e-mail: daneosobowe@gpgoldwin.pl</p>
+
+<p>Państwa dane osobowe przetwarzane będą w następujących celach:</p>
+  <ul>
+    <li>w celu realizacji umowy o świadczenie usług prawnych i świadczenia pomocy prawnej, w tym dokonywania przewidzianych prawem czynności we wszelkiego rodzaju procedurach (w szczególności cywilnej, karnej, administracyjnej oraz sądowoadministracyjnej) – na podstawie art. 6 ust. 1 lit. b, c i e oraz art. 9 ust. 1 lit f i g RODO,</li>
+    <li>w celu realizacji naszych uzasadnionych prawnie interesów w postaci: dochodzenia i obrony przed ewentualnymi wzajemnymi roszczeniami (w tym dokonywania przelewu wierzytelności), marketingu bezpośredniego usług naszych oraz naszych partnerów (chyba, że wyrażą bądź wyrazili Państwo sprzeciw wobec takich działań), rozwijania oraz ulepszania naszych usług, rozliczania osób u nas zatrudnionych z realizacji powierzonych im zadań – na podstawie art. 6 ust. 1 lit. f RODO,</li>
+    <li>w celu spełnienia przewidzianych prawem obowiązków – w szczególności w zakresie prawa podatkowego i prowadzenia dokumentacji rachunkowej oraz udzielania informacji uprawnionym organom wysuwającym takie żądanie – na podstawie art. 6 ust. 1 lit. d RODO.</li>
+  </ul>
+</p>
+
+<p> Państwa dane mogą być przekazywane następującym podmiotom: osobom u nas zatrudnionym, biurom informacji gospodarczej, podmiotom prowadzącym giełdy wierzytelności, nabywcom wierzytelności, dostawcom usług hostingowych, dostawcom usług księgowych, dostawcom oprogramowania (w szczególności typu CRM oraz ERP), dostawcom usług telekomunikacyjnych, naszym podwykonawcom oraz podmiotom prowadzącym na naszą rzecz obsługę prawną lub windykacyjną.</p>
+<p>Państwa dane osobowe będą przetwarzane przez czas potrzebny do wykonani usług, później zaś - do czasu upływu terminu przedawnienia ewentualnych wzajemnych roszczeń pomiędzy Państwem a nami z tytułu wykonania łączącej nas umowy lub do czasu upływu terminu przedawnienia zobowiązań podatkowych związanych z łączącą nas umową, w zależności od tego, który z terminów w odniesieniu do konkretnych danych będzie dłuższy.</p>
+<p>Mają Państwo prawo dostępu do swoich danych i ich poprawiania.</p>
+<p>Mają Państwo prawo do żądania usunięcia lub ograniczenia przetwarzania swoich danych osobowych w przypadkach, o których mowa w art. 17 i 18 RODO (w szczególności, gdy uważają Państwo, że dane przetwarzane są niezgodnie z prawem).</p>
+<p>W przypadkach, w których Państwa dane przetwarzane są w celu realizacji naszego uzasadnionego interesu lub w interesie publicznym, mają Państwo prawo wniesienia sprzeciwu wobec ich przetwarzania: w każdym przypadku, gdy przetwarzanie odbywa się dla celów marketingu bezpośredniego a w pozostałych przypadkach ze względu na Państwa szczególną sytuację.</p>
+<p>W przypadku przetwarzania Państwa danych w systemie informatycznym w celu realizacji umowy, mają Państwo prawo do otrzymania kopii swoich danych w powszechnie używanym formacie, a także przekazania ich do innego wskazanego administratora.</p>
+<p>Jeżeli uważają Państwo, że Państwa dane przetwarzane są niezgodnie z prawem mają Państwo prawo do skontaktowania się z nami pod adresem e-mail: daneosobowe@gpgoldwin.pl lub wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych.</p>
+<p>Podanie przez Państwa danych osobowych zasadniczo jest dobrowolne, jednak jest niezbędne do celów świadczenia usług na Państwa rzecz. Mogą jednak wystąpić sytuacje, w których odmowa podania przez Państwa danych osobowych uniemożliwi dokonanie czynności podejmowanej w Państwa interesie (np. wniesienie na Państwa rzecz powództwa) co może doprowadzić do negatywnych dla Państwa skutków (np. przedawnienie roszczenia lub upływ terminów procesowych).</p>
+<p>W przeważającej mierze przetwarzamy takie Państwa dane, które sami Państwo nam podali. W toku współpracy może jednak dochodzić do sytuacji, w których wchodzimy w posiadanie danych podanych przez inne osoby (np. świadków w procesie, strony przeciwnej). Ze względu na bogactwo możliwych sytuacji faktycznych mają one formę nieustrukturyzowaną i nie jest możliwe szczegółowe wskazanie kategorii takich danych (mogą to być np. informacje służące do obrony przed Państwa roszczeniami lub służące do wykazania zasadności roszczeń wobec Państwa). </p>
+</i>

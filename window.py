@@ -8,9 +8,11 @@ import tkinter as tk
 from tkinter.filedialog import askopenfilename
 from tkinter import messagebox  # popup message
 import sys
+import os
 from config import entry_width, font10, mailsender, klient
 from server import server
 from bezpolskich import zmien_znaki
+import smtplib
 
 
 class Window():
@@ -149,10 +151,17 @@ class Window():
             messagebox.showinfo('Error', 'Brak dodatkowych informacji')
             error = True
         if not error:
-            if server.wyslij_maila():
-                klient.rej = ''
-                klient.kor = ''
-                klient.dost = ''
-                messagebox.showinfo('Wysłano', 'Wysłano maila sprzedażowego.')
-                server.quit()
-                self.root.destroy()
+            try:
+                server.wyslij_rodo()
+                if server.wyslij_maila():
+                    klient.rej = ''
+                    klient.kor = ''
+                    klient.dost = ''
+                    messagebox.showinfo('Wysłano',
+                    'Wysłano maila sprzedażowego oraz maila z RODO.')
+                    os.remove(mailsender.zalacznik)
+                    server.quit()
+                    self.root.destroy()
+            except smtplib.SMTPRecipientsRefused:
+                messagebox.showinfo('Error',
+                'Niepoprawny adres mailowy.')
