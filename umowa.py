@@ -8,6 +8,12 @@ from konsultant import konsultant
 class Umowa(Window):
     '''frame = entry frame'''
 
+    def zmienvar(self):
+        if self.spr_nierozw_var == 0:
+            self.spr_nierozw_var == 1
+        else:
+            self.spr_nierozw_var == 0
+
     def widgets(self):
         page_frame = tk.Frame(self.root)
 
@@ -23,7 +29,7 @@ class Umowa(Window):
         # MENU FRAME (po prawej stronie)
         zalog_label = tk.Label(menu_frame, text='Zalogowany jako:')
         zalog_label.pack(pady=10)
-        kons_label = tk.Label(page_frame, text=konsultant.kto,
+        kons_label = tk.Label(menu_frame, text=konsultant.kto,
                                 font=('Arial 800', 10), fg='green')
         kons_label.pack()
 
@@ -36,6 +42,17 @@ class Umowa(Window):
                                       font=font10, width=10,
                                       command=lambda: self.dod_butt())
         dod_adresy_button.pack()
+
+        sprawy_frame = tk.Frame(menu_frame)
+
+        spr_nierozw_label = tk.Label(sprawy_frame, text='Sprawy nierozwiązane')
+        self.spr_nierozw_var = tk.IntVar(value=0)
+        self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame,
+                                        variable=self.spr_nierozw_var,
+                                        command=lambda:self.zmienvar())
+        self.spr_nierozw_cb.pack(side=tk.LEFT)
+        spr_nierozw_label.pack()
+        sprawy_frame.pack(pady=20)
 
         # MID FRAME
         img = tk.PhotoImage(file="pliki/goldwin.png")

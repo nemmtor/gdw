@@ -1,4 +1,4 @@
-'''Zmienia nazwę załącznika na nazwę bez polskich znaków.'''
+'''Zmienia polskie znaki na znaki ASCII, tworzy nowy plik bez pl znaków.'''
 
 from mailsender import mailsender  # dla nazwy załącznika
 
@@ -19,7 +19,7 @@ def removeAccents(input_text):
     return input_text.translate(translator)
 
 
-def zmien_znaki(file):
+def stworz_plik_ascii(file):
     '''Tworzy nowy plik o nazwie bez PL znaków.'''
 
     #  Pobiera ze ścieżki tylko nazwę pliku

@@ -1,24 +1,32 @@
 '''Główny moduł. '''
-
-from login import Login  # okno logowania
-from menu import Menu  # okno menu
-from umowa import Umowa  # okno umowa
+# Okna
+from login import Login
+from menu import Menu
+from umowa import Umowa
 # Obiekty
 from konsultant import konsultant  # dane konsultanta
 from mailsender import mailsender
 
-login = Login('Goldwin - login', '300x130')  # tworzy okno logowania
-dodatkowi = ['', '', '']  # resetuje dodatkowych odbiorców
-mailsender.dodatkowi(dodatkowi)  # resetuje dodatkowych odbiorców
+# Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
+login = Login('Goldwin - login', '300x130')
 
-# nie przejdzie dalej dopóki nie wpiszemy prawidłowego loginu/hasła
+# Zresetuj dodatkowych odbiorców
+dodatkowi = ['', '', '']
+mailsender.dodatkowi(dodatkowi)
+
+# Nieskończona pętla służąca do obsługi menu
 while True:
+    # Stwórz okno menu
     menu = Menu('Goldwin - menu', '300x230')
+    # Umowa
     if konsultant.wybor == 1:
         umowa = Umowa('Goldwin - umowa', '800x400')
+    # Aneks
     elif konsultant.wybor == 2:
         pass
+    # Wypowiedzenie
     elif konsultant.wybor == 3:
         pass
+    # Mail z ofertą
     elif konsultant.wybor == 4:
         pass

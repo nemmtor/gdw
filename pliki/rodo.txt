@@ -1,5 +1,5 @@
 <html>
-<body>
+<body style="font-family:Calibri;font-size:11pt;">
 <i>
 <p>Szanowni Państwo,</p>
 <p>W związku z postanowieniami RODO (rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE) chcemy zapewnić, iż my jako Grupa Prawna Goldwin® dążymy do zapewnienia maksymalnego bezpieczeństwa Państwa danych i pełnego respektowania Państwa prywatności. W związku z powyższym przekazujemy Państwu wymagane prawem informacje o przetwarzaniu przez nas Państwa danych osobowych oraz uprawnieniach, jakie w związku z tym Państwu przysługują.</p>

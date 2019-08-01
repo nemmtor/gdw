@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 '''Główna klasa window, z której inne inheritują.
 Tutaj ustawia się: tytuł, rozmiar, umieszczenie okna na środku ekranu.
 Funkcja create frames jest pusta, klasa która inherituje musi nadpisać
@@ -11,9 +10,10 @@ import sys
 import os
 from config import entry_width, font10
 from klient import klient
+from konsultant import konsultant
 from mailsender import mailsender
 from server import server
-from bezpolskich import zmien_znaki
+from bezpolskich import stworz_plik_ascii
 import smtplib
 
 
@@ -92,6 +92,7 @@ class Window():
         else:
             entry.config(state='normal')
 
+
     def wez_adresy(self):
         '''Pobiera adresy z entry'''
         dodatkowi = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
@@ -104,8 +105,9 @@ class Window():
     def zal_butt(self):
         '''Dodawanie załącznika.'''
         mailsender.plik(askopenfilename())
-        mailsender.zalacznik = zmien_znaki(mailsender.zalacznik)
-        self.zal_label.configure(text=mailsender.zalacznik, fg='green')
+        if mailsender.zalacznik != '':
+            mailsender.zalacznik = stworz_plik_ascii(mailsender.zalacznik)
+            self.zal_label.configure(text=mailsender.zalacznik, fg='green')
 
     def wyslij_butt(self):
         klient.stworz_klienta(self.imie_entry.get(),
@@ -122,7 +124,8 @@ class Window():
                               self.adr_dost_var.get(),
                               self.adr_rej_entry.get(),
                               self.adr_kor_entry.get(),
-                              self.adr_dost_entry.get()
+                              self.adr_dost_entry.get(),
+                              self.spr_nierozw_var.get()
                               )
         error = False
         if klient.imnaz == '':
@@ -154,15 +157,16 @@ class Window():
             error = True
         if not error:
             try:
-                server.wyslij_rodo()
-                if server.wyslij_maila():
+                if konsultant.wybor == 1:
+                    mailsender.wyslij_rodo()
+                if mailsender.wyslij_sprzedazowy():
+                    print(klient.nierozw)
                     klient.rej = ''
                     klient.kor = ''
                     klient.dost = ''
                     messagebox.showinfo('Wysłano',
                     'Wysłano maila sprzedażowego oraz maila z RODO.')
                     os.remove(mailsender.zalacznik)
-                    server.quit()
                     self.root.destroy()
             except smtplib.SMTPRecipientsRefused:
                 messagebox.showinfo('Error',

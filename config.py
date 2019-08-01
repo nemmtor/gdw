@@ -4,6 +4,7 @@ import re  # dla regex
 
 # RegEx
 mail_expr = re.compile(r'^(.*?)@')
+mail_expr_goldwin = re.compile(r'^(.+?)@gpgoldwin.pl')
 
 # Czcionki
 font10 = ('Arial 800', 10)
