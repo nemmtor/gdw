@@ -1,16 +1,18 @@
-# -*- coding: utf-8 -*-
 from klient import klient
 from konsultant import konsultant
 
 
 def stworz_subject(subject_type):
+    subject = ''
     if subject_type == 1:
-        subject = "Umowa_" + klient.imnaz + "_" +\
-            klient.datasprz + "_" + klient.cena_dl
+        if klient.nierozw == 1:
+            subject += 'Sprawy nierozwiązane_'
+        subject += 'Umowa_' + klient.imnaz + '_' +\
+            klient.datasprz + '_' + klient.cena_dl
     return(subject)
 
 def stworz_rodo():
-    with open("pliki/rodo.txt", "rb") as f:
+    with open('pliki/rodo.txt', 'rb') as f:
         tresc_rodo = f.read().decode("UTF-8")
     body = tresc_rodo
     f.close()

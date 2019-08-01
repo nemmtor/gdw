@@ -9,7 +9,7 @@ class Klient():
     def stworz_klienta(self, imnaz, tel, datasprz, datawys,
                        cena_dl, mail, branza, pytania, dodatkowe,
                        rej_var, kor_var, dost_var,
-                       rej, kor, dost):
+                       rej, kor, dost, nierozw):
         '''Tworzy atrybuty - dane klienta, w oparciu o dane z entry.'''
         self.imnaz = imnaz
         self.tel = tel
@@ -23,6 +23,7 @@ class Klient():
         self.rej_var = rej_var
         self.kor_var = kor_var
         self.dost_var = dost_var
+        self.nierozw = nierozw
 
         # Jeżeli checkboxy odznaczone to pobierz adresy z entry
         if not self.rej_var:

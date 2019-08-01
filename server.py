@@ -17,17 +17,16 @@ class Server():
 
     def zaloguj(self):
         '''Loguje do serverów smtp oraz imap.'''
+        # Robi to tylko raz przy logowaniu i zostawia zalogowanym
         try:
+            self.smtp.starttls()
+            self.imap.starttls()
             self.smtp.login(konsultant.login, konsultant.password)
             self.imap.login(konsultant.login, konsultant.password)
             return True
         except (smtplib.SMTPAuthenticationError,
                 TypeError):
             return False
-
-    def rozlacz(self):
-        self.smtp.logout()
-        self.imap.logout()
 
 
 server = Server()

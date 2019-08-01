@@ -10,6 +10,7 @@ import sys
 import os
 from config import entry_width, font10
 from klient import klient
+from konsultant import konsultant
 from mailsender import mailsender
 from server import server
 from bezpolskich import stworz_plik_ascii
@@ -91,6 +92,7 @@ class Window():
         else:
             entry.config(state='normal')
 
+
     def wez_adresy(self):
         '''Pobiera adresy z entry'''
         dodatkowi = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
@@ -122,7 +124,8 @@ class Window():
                               self.adr_dost_var.get(),
                               self.adr_rej_entry.get(),
                               self.adr_kor_entry.get(),
-                              self.adr_dost_entry.get()
+                              self.adr_dost_entry.get(),
+                              self.spr_nierozw_var.get()
                               )
         error = False
         if klient.imnaz == '':
@@ -154,8 +157,10 @@ class Window():
             error = True
         if not error:
             try:
-                mailsender.wyslij_rodo()
+                if konsultant.wybor == 1:
+                    mailsender.wyslij_rodo()
                 if mailsender.wyslij_sprzedazowy():
+                    print(klient.nierozw)
                     klient.rej = ''
                     klient.kor = ''
                     klient.dost = ''

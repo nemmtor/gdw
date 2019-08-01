@@ -1,5 +1,4 @@
 '''Główny moduł. '''
-# TODO - jak długo połączenie smtp/imap?
 # Okna
 from login import Login
 from menu import Menu
@@ -22,13 +21,12 @@ while True:
     # Umowa
     if konsultant.wybor == 1:
         umowa = Umowa('Goldwin - umowa', '800x400')
-    # Sprawy nierozwiązane
-    # TODO - sprawy nierozwiązane - checkbox w umowie
+    # Aneks
     elif konsultant.wybor == 2:
         pass
-    # Aneks
+    # Wypowiedzenie
     elif konsultant.wybor == 3:
         pass
-    # Wypowiedzenie
+    # Mail z ofertą
     elif konsultant.wybor == 4:
         pass

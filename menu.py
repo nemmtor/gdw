@@ -33,18 +33,23 @@ class Menu(Window):
                           height=2, width=18,
                           command=lambda: self.menu_button(1))
 
-        # Przycisk sprawy nierozwiązane
-        sprawy = tk.Button(page_frame, text='Sprawy nierozwiązane',
-                           font=font10, height=2, width=18,
-                           command=lambda: self.menu_button(2))
+        # # Przycisk sprawy nierozwiązane
+        # sprawy = tk.Button(page_frame, text='Sprawy nierozwiązane',
+        #                    font=font10, height=2, width=18,
+        #                    command=lambda: self.menu_button(2))
 
         # Przycisk aneks
         aneks = tk.Button(page_frame, text='Aneks', font=font10,
                           height=2, width=18,
-                          command=lambda: self.menu_button(3))
+                          command=lambda: self.menu_button(2))
 
         # Przycisk wypowiedzenie
         wypo = tk.Button(page_frame, text='Wypowiedzenie', font=font10,
+                         height=2, width=18,
+                         command=lambda: self.menu_button(3))
+
+        # Przycisk Mail z ofertą
+        oferta = tk.Button(page_frame, text='Mail z ofertą', font=font10,
                          height=2, width=18,
                          command=lambda: self.menu_button(4))
 
@@ -53,7 +58,7 @@ class Menu(Window):
         zalog_label.pack()
         kons_label.pack()
         umowa.pack()
-        sprawy.pack()
         aneks.pack()
         wypo.pack()
+        oferta.pack()
         page_frame.pack()
