@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 '''Główna klasa window, z której inne inheritują.
 Tutaj ustawia się: tytuł, rozmiar, umieszczenie okna na środku ekranu.
 Funkcja create frames jest pusta, klasa która inherituje musi nadpisać
@@ -13,7 +12,7 @@ from config import entry_width, font10
 from klient import klient
 from mailsender import mailsender
 from server import server
-from bezpolskich import zmien_znaki
+from bezpolskich import stworz_plik_ascii
 import smtplib
 
 
@@ -104,8 +103,9 @@ class Window():
     def zal_butt(self):
         '''Dodawanie załącznika.'''
         mailsender.plik(askopenfilename())
-        mailsender.zalacznik = zmien_znaki(mailsender.zalacznik)
-        self.zal_label.configure(text=mailsender.zalacznik, fg='green')
+        if mailsender.zalacznik != '':
+            mailsender.zalacznik = stworz_plik_ascii(mailsender.zalacznik)
+            self.zal_label.configure(text=mailsender.zalacznik, fg='green')
 
     def wyslij_butt(self):
         klient.stworz_klienta(self.imie_entry.get(),
@@ -154,15 +154,15 @@ class Window():
             error = True
         if not error:
             try:
-                server.wyslij_rodo()
-                if server.wyslij_maila():
+                mailsender.wyslij_rodo()
+                if mailsender.wyslij_sprzedazowy():
                     klient.rej = ''
                     klient.kor = ''
                     klient.dost = ''
                     messagebox.showinfo('Wysłano',
                     'Wysłano maila sprzedażowego oraz maila z RODO.')
                     os.remove(mailsender.zalacznik)
-                    server.quit()
+                    server.smtp.quit()
                     self.root.destroy()
             except smtplib.SMTPRecipientsRefused:
                 messagebox.showinfo('Error',

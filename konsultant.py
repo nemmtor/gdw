@@ -1,4 +1,4 @@
-'''Moduł zawierający klasę i obiekt Konsultant'''
+'''Moduł zawierający klasę i obiekt Konsultant(dane konsultanta)'''
 import re
 from config import mail_expr
 
@@ -26,9 +26,12 @@ class Konsultant():
 
         # Złączenie imienia i nazwiska
         self.kto = ' '.join(self.kto)
+        return True
 
     def menu(self, wybor):
+        # TODO - przenieść do innej klasy!!
         '''Sprawdza co zostało wybrane (1 z 4 opcji w menu)'''
         self.wybor = wybor
 
-konsultant = Konsultant()  # Tworzy konsultanta
+# Nowy obiekt
+konsultant = Konsultant()

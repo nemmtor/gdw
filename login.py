@@ -1,5 +1,6 @@
 '''Okno logowania.'''
-from config import entry_width  # konfiguracja
+from config import entry_width, mail_expr_goldwin  # konfiguracja
+import re # regex
 from window import Window  # klasa okna
 from tkinter import messagebox  # popup message
 from server import server  # sprawdzenie czy jest połączenie (login/pw)
@@ -13,25 +14,26 @@ class Login(Window):
 
     def press_login(self):
         '''Funkcja przycisku Zaloguj'''
-        # Pobranie danych z entry
-        login = self.login_entry.get()
-        password = self.password_entry.get()
-
-        # Sprawdzenie czy dane są prawidłowe
-        if server.sprawdz_haslo(login, password):
-            # Wysyła dane z entry do obiektu
-            konsultant.dane(login, password)
-
-            # Popup
-            messagebox.showinfo(
-                'Zalogowano', 'Zalogowano jako {}'.format(konsultant.kto))
-
-            # Usunięcie okienka logowania
-            self.root.destroy()
+        # Sprawdź czy mail ma poprawną formułę(domena gpgoldwin.pl)
+        if re.search(mail_expr_goldwin, self.login_entry.get()):
+            konsultant.dane(self.login_entry.get(), self.password_entry.get())
+            # Sprawdzenie czy login/pw są prawidłowe
+            if server.zaloguj():
+                # Pokaż popup, że zalogowano
+                messagebox.showinfo(
+                    'Zalogowano', 'Zalogowano jako {}'.format(konsultant.kto))
+                # Usunięcie okienka logowania
+                # server.smtp.quit()
+                self.root.destroy()
+            else:
+                # Popup
+                messagebox.showinfo('Error', 'Błędny login.')
+                # Wyczyszczenie Entry
+                self.login_entry.delete(0, tk.END)
+                self.password_entry.delete(0, tk.END)
         else:
             # Popup
             messagebox.showinfo('Error', 'Błędny login.')
-
             # Wyczyszczenie Entry
             self.login_entry.delete(0, tk.END)
             self.password_entry.delete(0, tk.END)
