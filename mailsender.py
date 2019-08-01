@@ -57,9 +57,7 @@ class Mailsender():
             msg.attach(part)
 
             # Do servera
-            # server.zaloguj()
             server.smtp.send_message(msg)
-            server.smtp.quit()
 
             # Dodaj wiadomosc do folderu SENT
             self.dodaj_do_sent(msg)
@@ -78,9 +76,7 @@ class Mailsender():
         msg.attach(MIMEText(stworz_rodo(), 'html'))
 
         # Do servera
-        # server.zaloguj()
         server.smtp.send_message(msg)
-        # server.smtp.quit()
 
         # Dodaj wiadomosc do folderu SENT
         self.dodaj_do_sent(msg)

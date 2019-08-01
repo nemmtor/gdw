@@ -15,24 +15,19 @@ class Server():
         self.smtp = smtplib.SMTP('smtp.gpgoldwin.pl:587')
         self.imap = imaplib.IMAP4('imap.gpgoldwin.pl')
 
-
-    # def zaloguj(self):
-    #     '''Loguje do serverów smtp oraz imap.'''
-    #     try:
-    #         self.smtp.starttls()
-    #         self.smtp.login(konsultant.login, konsultant.password)
-    #         # self.imap.starttls()
-    #         # self.imap.login(konsultant.login, konsultant.password)
-    #         return True
-    #     except (smtplib.SMTPAuthenticationError,
-    #             TypeError):
-    #         return False
-
     def zaloguj(self):
-        # self.smtp.starttls()
-        self.smtp.login(konsultant.login, konsultant.password)
-        self.imap.login(konsultant.login, konsultant.password)
-        return True
+        '''Loguje do serverów smtp oraz imap.'''
+        try:
+            self.smtp.login(konsultant.login, konsultant.password)
+            self.imap.login(konsultant.login, konsultant.password)
+            return True
+        except (smtplib.SMTPAuthenticationError,
+                TypeError):
+            return False
+
+    def rozlacz(self):
+        self.smtp.logout()
+        self.imap.logout()
 
 
 server = Server()

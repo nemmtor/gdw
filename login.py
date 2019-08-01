@@ -23,7 +23,6 @@ class Login(Window):
                 messagebox.showinfo(
                     'Zalogowano', 'Zalogowano jako {}'.format(konsultant.kto))
                 # Usunięcie okienka logowania
-                # server.smtp.quit()
                 self.root.destroy()
             else:
                 # Popup

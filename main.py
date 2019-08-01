@@ -1,5 +1,5 @@
 '''Główny moduł. '''
-
+# TODO - jak długo połączenie smtp/imap?
 # Okna
 from login import Login
 from menu import Menu
