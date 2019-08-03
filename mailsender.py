@@ -12,48 +12,46 @@ from email.utils import formatdate
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
-from email.mime.image import MIMEImage
 from tresc_maila import stworz_body, stworz_subject, stworz_rodo
 from server import server
 import imaplib
+from tkinter import messagebox  # popup message
+
+# Odbiorcy
+from config import bcc_rodo, odbiorcy_sprzedazowy
+
 
 class Mailsender():
     '''Klasa Mail dla obiektu mailsender.
     Odpowiada za przechowywanie odbiorców, dodatkowych odbiorców,
     nazwy załącznika.'''
+
     def __init__(self):
-        '''Tworzy listę odbiorców'''
-        self.odbiorcy = ['kacper0witas@gmail.com']
-
-    def dodatkowi(self, odbiorcy):
-        '''Tworzy listę dodatkowych odbiorców.'''
-        self.dod_odbiorcy = odbiorcy
-
-    def plik(self, zalacznik):
-        '''Nazwa załącznika.'''
-        self.zalacznik = zalacznik
+        '''Tworzy listę odbiorców i dodatkowych odbiorców(sprzedażowy)'''
+        self.odbiorcy = odbiorcy_sprzedazowy
+        self.dod_odbiorcy = ['', '', '']
+        self.zalacznik = ''
 
     def wyslij_sprzedazowy(self):
         msg = MIMEMultipart('mixed')
         msg['From'] = konsultant.login
-        for adres in mailsender.dod_odbiorcy:
+        for adres in self.dod_odbiorcy:
             if adres != '':
-                if adres not in mailsender.odbiorcy:
-                    mailsender.odbiorcy.append(adres)
-        msg['To'] = ', '.join(mailsender.odbiorcy)
-
+                if adres not in self.odbiorcy:
+                    self.odbiorcy.append(adres)
+        msg['To'] = ', '.join(self.odbiorcy)
         msg['Subject'] = stworz_subject(konsultant.wybor)
         msg["Date"] = formatdate(localtime=True)
 
         msg.attach(MIMEText(stworz_body(), 'html'))
         try:
-            attachment = open(mailsender.zalacznik, 'rb')
+            attachment = open(self.zalacznik, 'rb')
             part = MIMEBase('application', 'octet-stream')
             part.set_payload((attachment).read())
             encoders.encode_base64(part)
             part.add_header('Content-Disposition',
                             "attachment; filename= " +
-                            os.path.basename(mailsender.zalacznik))
+                            os.path.basename(self.zalacznik))
             msg.attach(part)
 
             # Do servera
@@ -72,7 +70,7 @@ class Mailsender():
 
         msg['Subject'] = 'Grupa Prawna Goldwin'
         msg['Date'] = formatdate(localtime=True)
-        msg['Bcc'] = 'administrator@bedekoderem.pl'
+        msg['Bcc'] = ', '.join(bcc_rodo)
         msg.attach(MIMEText(stworz_rodo(), 'html'))
 
         # Do servera
@@ -82,10 +80,10 @@ class Mailsender():
         self.dodaj_do_sent(msg)
 
     def dodaj_do_sent(self, msg):
-        # server.imap.starttls()
         server.imap.append('SENT', '\\Seen',
-                         imaplib.Time2Internaldate(time.time()),
-                         msg.as_string().encode('utf8'))
+                           imaplib.Time2Internaldate(time.time()),
+                           msg.as_string().encode('utf8'))
+
 
 # Nowy obiekt
 mailsender = Mailsender()

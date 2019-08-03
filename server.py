@@ -1,6 +1,5 @@
 '''Przechowuje dane servera smtp/imap, sprawdza połaczenie.'''
 
-from tkinter import messagebox  # popup message
 
 # Dla servera
 import smtplib
@@ -8,6 +7,7 @@ import imaplib
 
 # Obiekty
 from konsultant import konsultant
+
 
 class Server():
     def __init__(self):

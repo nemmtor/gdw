@@ -11,6 +11,7 @@ def stworz_subject(subject_type):
             klient.datasprz + '_' + klient.cena_dl
     return(subject)
 
+
 def stworz_rodo():
     with open('pliki/rodo.txt', 'rb') as f:
         tresc_rodo = f.read().decode("UTF-8")
@@ -76,8 +77,6 @@ def stworz_rodo():
     Nadawcę i usunąć z komputera wiadomość wraz z załącznikami.</p></body></html>'''
 
     return(body)
-
-
 
 
 def stworz_body():

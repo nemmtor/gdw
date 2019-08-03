@@ -1,12 +1,16 @@
 '''Okno logowania.'''
-from config import entry_width, mail_expr_goldwin  # konfiguracja
-import re # regex
+from config import entry_width  # konfiguracja
+import re  # regex dla sprawdzenia maila
 from window import Window  # klasa okna
 from tkinter import messagebox  # popup message
 from server import server  # sprawdzenie czy jest połączenie (login/pw)
 import tkinter as tk
 # Obiekty
 from konsultant import konsultant
+
+# Regex
+# Sprawdza czy mail ma domene gpgoldwin.pl
+mail_expr_goldwin = re.compile(r'^(.+?)@gpgoldwin.pl')
 
 
 class Login(Window):
@@ -54,7 +58,7 @@ class Login(Window):
         submit = tk.Button(page_frame, text='Zaloguj',
                            command=lambda: self.press_login())
 
-        #Pack
+        # Pack
         login_label.pack()
         self.login_entry.pack()
         password_label.pack()

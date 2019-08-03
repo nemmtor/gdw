@@ -4,16 +4,13 @@ Funkcja create frames jest pusta, klasa która inherituje musi nadpisać
 funkcję createframes, tam ustawia się widgety.'''
 
 import tkinter as tk
-from tkinter.filedialog import askopenfilename
 from tkinter import messagebox  # popup message
 import sys
 import os
-from config import entry_width, font10
+# from config import entry_width, font10
 from klient import klient
 from konsultant import konsultant
 from mailsender import mailsender
-from server import server
-from bezpolskich import stworz_plik_ascii
 import smtplib
 
 
@@ -43,48 +40,6 @@ class Window():
 
         self.root.mainloop()  # główny loop
 
-    def widgets(self):
-        pass
-
-    def dod_butt(self):
-        self.top = tk.Toplevel()
-        self.top.title("Dodaj odbiorców")
-        self.top.geometry('250x150')
-        self.top.tk.call('wm', 'iconphoto',
-                         self.top._w, tk.PhotoImage(file='pliki/ikona.gif'))
-
-        '''Ustawienie na środku ekranu oraz ikonka.'''
-        self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
-        self.top.tk.call('wm', 'iconphoto', self.top._w,
-                         tk.PhotoImage(file='pliki/ikona.gif'))
-        self.top.update_idletasks()
-        width = self.top.winfo_width()
-        height = self.top.winfo_height()
-        x = (self.top.winfo_screenwidth() // 2) - (width // 2)
-        y = (self.top.winfo_screenheight() // 2) - (height // 2)
-        self.top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-
-        # Dodatkowe adresy
-        adresy_frame = tk.Frame(self.top)
-        adresy_frame.pack()
-
-        self.adres1 = tk.Entry(adresy_frame, width=entry_width)
-        self.adres1.pack(pady=5)
-        self.adres1.insert(tk.END, mailsender.dod_odbiorcy[0])
-
-        self.adres2 = tk.Entry(adresy_frame, width=entry_width)
-        self.adres2.pack(pady=5)
-        self.adres2.insert(tk.END, mailsender.dod_odbiorcy[1])
-
-        self.adres3 = tk.Entry(adresy_frame, width=entry_width)
-        self.adres3.pack(pady=5)
-        self.adres3.insert(tk.END, mailsender.dod_odbiorcy[2])
-
-        ok_butt = tk.Button(self.top, text="Zapisz",
-                            font=font10, width=10,
-                            command=lambda: self.wez_adresy())
-        ok_butt.pack()
-
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''
         if var.get():
@@ -92,22 +47,8 @@ class Window():
         else:
             entry.config(state='normal')
 
-
-    def wez_adresy(self):
-        '''Pobiera adresy z entry'''
-        dodatkowi = [self.adres1.get(), self.adres2.get(), self.adres3.get()]
-        mailsender.dodatkowi(dodatkowi)
-        self.top.destroy()
-
     def menu_butt(self):
         self.root.destroy()
-
-    def zal_butt(self):
-        '''Dodawanie załącznika.'''
-        mailsender.plik(askopenfilename())
-        if mailsender.zalacznik != '':
-            mailsender.zalacznik = stworz_plik_ascii(mailsender.zalacznik)
-            self.zal_label.configure(text=mailsender.zalacznik, fg='green')
 
     def wyslij_butt(self):
         klient.stworz_klienta(self.imie_entry.get(),
@@ -160,14 +101,13 @@ class Window():
                 if konsultant.wybor == 1:
                     mailsender.wyslij_rodo()
                 if mailsender.wyslij_sprzedazowy():
-                    print(klient.nierozw)
                     klient.rej = ''
                     klient.kor = ''
                     klient.dost = ''
                     messagebox.showinfo('Wysłano',
-                    'Wysłano maila sprzedażowego oraz maila z RODO.')
+                                        'Wysłano maila sprzedażowego oraz maila z RODO.')
                     os.remove(mailsender.zalacznik)
                     self.root.destroy()
             except smtplib.SMTPRecipientsRefused:
                 messagebox.showinfo('Error',
-                'Niepoprawny adres mailowy.')
+                                    'Niepoprawny adres mailowy.')

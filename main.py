@@ -5,14 +5,10 @@ from menu import Menu
 from umowa import Umowa
 # Obiekty
 from konsultant import konsultant  # dane konsultanta
-from mailsender import mailsender
 
 # Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
 login = Login('Goldwin - login', '300x130')
 
-# Zresetuj dodatkowych odbiorców
-dodatkowi = ['', '', '']
-mailsender.dodatkowi(dodatkowi)
 
 # Nieskończona pętla służąca do obsługi menu
 while True:

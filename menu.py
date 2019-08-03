@@ -1,4 +1,4 @@
-'''Okno menu.'''
+'''Okno menu. Aneks i wypowiedzenie do zrobienia później.'''
 from window import Window  # klasa okna
 import tkinter as tk
 from config import font10
@@ -39,26 +39,25 @@ class Menu(Window):
         #                    command=lambda: self.menu_button(2))
 
         # Przycisk aneks
-        aneks = tk.Button(page_frame, text='Aneks', font=font10,
-                          height=2, width=18,
-                          command=lambda: self.menu_button(2))
-
-        # Przycisk wypowiedzenie
-        wypo = tk.Button(page_frame, text='Wypowiedzenie', font=font10,
-                         height=2, width=18,
-                         command=lambda: self.menu_button(3))
+        # aneks = tk.Button(page_frame, text='Aneks', font=font10,
+        #                   height=2, width=18,
+        #                   command=lambda: self.menu_button(2))
+        #
+        # # Przycisk wypowiedzenie
+        # wypo = tk.Button(page_frame, text='Wypowiedzenie', font=font10,
+        #                  height=2, width=18,
+        #                  command=lambda: self.menu_button(3))
 
         # Przycisk Mail z ofertą
         oferta = tk.Button(page_frame, text='Mail z ofertą', font=font10,
-                         height=2, width=18,
-                         command=lambda: self.menu_button(4))
-
+                           height=2, width=18,
+                           command=lambda: self.menu_button(4))
 
         # Pack
         zalog_label.pack()
         kons_label.pack()
         umowa.pack()
-        aneks.pack()
-        wypo.pack()
+        # aneks.pack()
+        # wypo.pack()
         oferta.pack()
         page_frame.pack()

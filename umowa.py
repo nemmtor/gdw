@@ -1,12 +1,60 @@
 '''Okno umowy.'''
 from window import Window
 import tkinter as tk
+from tkinter.filedialog import askopenfilename
+from bezpolskich import stworz_plik_ascii
 from config import font10, font10b, entry_width
 from konsultant import konsultant
+from mailsender import mailsender
 
 
 class Umowa(Window):
     '''frame = entry frame'''
+
+    def dod_butt(self):
+        self.top = tk.Toplevel()
+        self.top.title("Dodaj odbiorców")
+        self.top.geometry('250x150')
+        self.top.tk.call('wm', 'iconphoto',
+                         self.top._w, tk.PhotoImage(file='pliki/ikona.gif'))
+
+        '''Ustawienie na środku ekranu oraz ikonka.'''
+        self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
+        self.top.tk.call('wm', 'iconphoto', self.top._w,
+                         tk.PhotoImage(file='pliki/ikona.gif'))
+        self.top.update_idletasks()
+        width = self.top.winfo_width()
+        height = self.top.winfo_height()
+        x = (self.top.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.top.winfo_screenheight() // 2) - (height // 2)
+        self.top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
+        # Dodatkowe adresy
+        adresy_frame = tk.Frame(self.top)
+        adresy_frame.pack()
+
+        self.adres1 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres1.pack(pady=5)
+        self.adres1.insert(tk.END, mailsender.dod_odbiorcy[0])
+
+        self.adres2 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres2.pack(pady=5)
+        self.adres2.insert(tk.END, mailsender.dod_odbiorcy[1])
+
+        self.adres3 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres3.pack(pady=5)
+        self.adres3.insert(tk.END, mailsender.dod_odbiorcy[2])
+
+        ok_butt = tk.Button(self.top, text="Zapisz",
+                            font=font10, width=10,
+                            command=lambda: self.wez_adresy())
+        ok_butt.pack()
+
+    def wez_adresy(self):
+        '''Pobiera adresy z entry'''
+        mailsender.dod_odbiorcy = [
+            self.adres1.get(), self.adres2.get(), self.adres3.get()]
+        self.top.destroy()
 
     def zmienvar(self):
         if self.spr_nierozw_var == 0:
@@ -14,7 +62,25 @@ class Umowa(Window):
         else:
             self.spr_nierozw_var == 0
 
+    def zal_butt(self):
+        '''Dodawanie załącznika.'''
+        #  Musi być osobna zmienna, problem z cancel przy wybieraniu zalacznika
+        zalacznik = askopenfilename()
+        if zalacznik != '':
+            mailsender.zalacznik = zalacznik
+        print(mailsender.zalacznik)
+        mailsender.zalacznik = stworz_plik_ascii(mailsender.zalacznik)
+        self.zal_label.configure(text=mailsender.zalacznik, fg='green')
+
+    def ukryj(self, entry, var):
+        '''Funkcja blokowania entry adresów.'''
+        if var.get():
+            entry.config(state='disabled')
+        else:
+            entry.config(state='normal')
+
     def widgets(self):
+        '''Widgety.'''
         page_frame = tk.Frame(self.root)
 
         left_frame = tk.Frame(page_frame)
@@ -30,7 +96,7 @@ class Umowa(Window):
         zalog_label = tk.Label(menu_frame, text='Zalogowany jako:')
         zalog_label.pack(pady=10)
         kons_label = tk.Label(menu_frame, text=konsultant.kto,
-                                font=('Arial 800', 10), fg='green')
+                              font=('Arial 800', 10), fg='green')
         kons_label.pack()
 
         menu_button = tk.Button(menu_frame, text="MENU",
@@ -48,8 +114,8 @@ class Umowa(Window):
         spr_nierozw_label = tk.Label(sprawy_frame, text='Sprawy nierozwiązane')
         self.spr_nierozw_var = tk.IntVar(value=0)
         self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame,
-                                        variable=self.spr_nierozw_var,
-                                        command=lambda:self.zmienvar())
+                                             variable=self.spr_nierozw_var,
+                                             command=lambda: self.zmienvar())
         self.spr_nierozw_cb.pack(side=tk.LEFT)
         spr_nierozw_label.pack()
         sprawy_frame.pack(pady=20)

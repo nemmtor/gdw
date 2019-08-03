@@ -1,8 +1,10 @@
 '''Moduł zawierający klasę i obiekt Klient(dane klienta).'''
 
+
 class Klient():
     '''Klasa Klient dla obiektu klient,
     przechowuje jego wszystkie dane.'''
+
     def __init__(self):
         pass
 

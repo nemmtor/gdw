@@ -1,7 +1,5 @@
 '''Zmienia polskie znaki na znaki ASCII, tworzy nowy plik bez pl znaków.'''
 
-from mailsender import mailsender  # dla nazwy załącznika
-
 
 def removeAccents(input_text):
     '''Zmienia polskie znaki na znaki ASCII.'''
