@@ -12,7 +12,7 @@ from email.utils import formatdate
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
-from tresc_maila import stworz_body, stworz_subject, stworz_rodo
+from tresc_maila import stworz_body, stworz_subject, stworz_rodo, stworz_oferte
 from server import server
 import imaplib
 from tkinter import messagebox  # popup message
@@ -31,6 +31,45 @@ class Mailsender():
         self.odbiorcy = odbiorcy_sprzedazowy
         self.dod_odbiorcy = ['', '', '']
         self.zalacznik = ''
+        print('typ to {}'.format(type(self.zalacznik)))
+
+    def oferta(self):
+        # Dane do maila
+        msg = MIMEMultipart('mixed')
+        msg['From'] = konsultant.login
+        msg['To'] = 'kacper0witas@gmail.com'
+        msg['Subject'] = 'Grupa Prawna Goldwin'
+        msg["Date"] = formatdate(localtime=True)
+
+        # Body
+        msg.attach(MIMEText(stworz_oferte(), 'html'))
+
+        # Załącznik
+        attachment = open('pliki/Goldwin.pdf', 'rb')
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload((attachment).read())
+        encoders.encode_base64(part)
+        # TODO - basename = zmiennazwe()
+        part.add_header('Content-Disposition',
+                        "attachment; filename= " +
+                        os.path.basename('Goldwin.pdf'))
+        msg.attach(part)
+
+        # Załącznik 2
+        attachment = open('pliki/129.png', 'rb')
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload((attachment).read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition',
+                        "attachment; filename= " +
+                        os.path.basename('Oferta.png'))
+        msg.attach(part)
+
+        # Do servera
+        server.smtp.send_message(msg)
+        # Dodaj wiadomosc do folderu SENT
+        self.dodaj_do_sent(msg)
+        return True
 
     def wyslij_sprzedazowy(self):
         msg = MIMEMultipart('mixed')

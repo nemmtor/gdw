@@ -59,7 +59,7 @@ class Window():
                               self.mail_entry.get(),
                               self.branza_entry.get(),
                               self.pytania_entry.get(),
-                              self.dodatkowe_entry.get(),
+                              self.dodatkowe_entry.get("1.0", tk.END),
                               self.adr_rej_var.get(),
                               self.adr_kor_var.get(),
                               self.adr_dost_var.get(),

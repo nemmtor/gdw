@@ -36,7 +36,6 @@ class Konsultant():
         return True
 
     def menu(self, wybor):
-        # TODO - przenieść do innej klasy!!
         '''Sprawdza co zostało wybrane (1 z 4 opcji w menu)'''
         self.wybor = wybor
 

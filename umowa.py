@@ -1,6 +1,7 @@
 '''Okno umowy.'''
 from window import Window
 import tkinter as tk
+from tkinter.scrolledtext import ScrolledText
 from tkinter.filedialog import askopenfilename
 from bezpolskich import stworz_plik_ascii
 from config import font10, font10b, entry_width
@@ -66,11 +67,13 @@ class Umowa(Window):
         '''Dodawanie załącznika.'''
         #  Musi być osobna zmienna, problem z cancel przy wybieraniu zalacznika
         zalacznik = askopenfilename()
-        if zalacznik != '':
+        print(type(zalacznik))
+        if zalacznik != '' and zalacznik != ():
             mailsender.zalacznik = zalacznik
-        print(mailsender.zalacznik)
-        mailsender.zalacznik = stworz_plik_ascii(mailsender.zalacznik)
-        self.zal_label.configure(text=mailsender.zalacznik, fg='green')
+            print(mailsender.zalacznik)
+            print(type(mailsender.zalacznik))
+            mailsender.zalacznik = stworz_plik_ascii(mailsender.zalacznik)
+            self.zal_label.configure(text=mailsender.zalacznik, fg='green')
 
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''
@@ -238,7 +241,8 @@ class Umowa(Window):
         dodatkowe = tk.Label(
             left_frame, text="Dodatkowe informacje:", font=font10b)
         dodatkowe.grid(row=130, column=0)
-        self.dodatkowe_entry = tk.Entry(left_frame, width=entry_width)
+        self.dodatkowe_entry = ScrolledText(
+            left_frame, width=entry_width - 2, height=2)
         self.dodatkowe_entry.grid(row=130, column=1)
 
         # Spacer

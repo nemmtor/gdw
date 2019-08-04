@@ -5,6 +5,7 @@ from menu import Menu
 from umowa import Umowa
 # Obiekty
 from konsultant import konsultant  # dane konsultanta
+from mailsender import mailsender
 
 # Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
 login = Login('Goldwin - login', '300x130')
@@ -17,12 +18,12 @@ while True:
     # Umowa
     if konsultant.wybor == 1:
         umowa = Umowa('Goldwin - umowa', '800x400')
-    # Aneks
-    elif konsultant.wybor == 2:
-        pass
-    # Wypowiedzenie
-    elif konsultant.wybor == 3:
-        pass
+    # # Aneks
+    # elif konsultant.wybor == 2:
+    #     pass
+    # # Wypowiedzenie
+    # elif konsultant.wybor == 3:
+    #     pass
     # Mail z ofertą
     elif konsultant.wybor == 4:
-        pass
+        mailsender.oferta()
