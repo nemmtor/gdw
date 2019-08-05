@@ -18,7 +18,7 @@ import imaplib
 from tkinter import messagebox  # popup message
 
 # Odbiorcy
-from config import bcc_rodo, odbiorcy_sprzedazowy
+from config import bcc_rodo, odbiorcy_sprzedazowy, klient_oferta
 
 
 class Mailsender():
@@ -31,13 +31,12 @@ class Mailsender():
         self.odbiorcy = odbiorcy_sprzedazowy
         self.dod_odbiorcy = ['', '', '']
         self.zalacznik = ''
-        print('typ to {}'.format(type(self.zalacznik)))
 
     def oferta(self):
         # Dane do maila
         msg = MIMEMultipart('mixed')
         msg['From'] = konsultant.login
-        msg['To'] = 'kacper0witas@gmail.com'
+        msg['To'] = ', '.join(klient_oferta)
         msg['Subject'] = 'Grupa Prawna Goldwin'
         msg["Date"] = formatdate(localtime=True)
 

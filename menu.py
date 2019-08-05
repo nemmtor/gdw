@@ -9,6 +9,7 @@ from konsultant import konsultant
 
 class Menu(Window):
 
+
     # Funkcje przycisków:
     def menu_button(self, wybor):
         '''Wybór menu, następnie usunięcie okna menu.'''

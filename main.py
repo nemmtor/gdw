@@ -2,6 +2,7 @@
 # Okna
 from login import Login
 from menu import Menu
+from menu_oferta import Menu_Oferta
 from umowa import Umowa
 # Obiekty
 from konsultant import konsultant  # dane konsultanta
@@ -26,4 +27,9 @@ while True:
     #     pass
     # Mail z ofertą
     elif konsultant.wybor == 4:
-        mailsender.oferta()
+        menu_oferta = Menu_Oferta('Oferta', '300x230')
+        if menu_oferta.wybor == 1:
+            print("Pan")
+        elif menu_oferta.wybor == 2:
+            print("Pani")
+        # mailsender.oferta()
