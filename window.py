@@ -13,6 +13,7 @@ from konsultant import konsultant
 from mailsender import mailsender
 import smtplib
 from server import server
+from config import ikona
 
 
 class Window():
@@ -29,7 +30,7 @@ class Window():
         '''Ustawienie na środku ekranu oraz ikonka.'''
         self.root.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
         self.root.tk.call('wm', 'iconphoto', self.root._w,
-                          tk.PhotoImage(file='pliki/ikona.gif'))
+                          tk.PhotoImage(file=ikona))
         self.root.update_idletasks()
         width = self.root.winfo_width()
         height = self.root.winfo_height()

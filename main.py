@@ -8,6 +8,7 @@ from umowa import Umowa
 from konsultant import konsultant  # dane konsultanta
 # from mailsender import mailsender
 
+
 # Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
 login = Login('Goldwin - login', '200x100')
 

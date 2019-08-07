@@ -19,6 +19,7 @@ from tkinter import messagebox  # popup message
 
 # Odbiorcy
 from config import bcc_rodo, odbiorcy_sprzedazowy
+from config import pdf129, pdf159, pdf199, pdfgoldwin
 
 
 class Mailsender():
@@ -46,7 +47,7 @@ class Mailsender():
         msg.attach(MIMEText(stworz_oferte(self.plec, self.cena), 'html'))
 
         # Załącznik
-        attachment = open('pliki/oferta/Goldwin.pdf', 'rb')
+        attachment = open(pdfgoldwin, 'rb')
         part = MIMEBase('application', 'octet-stream')
         part.set_payload((attachment).read())
         encoders.encode_base64(part)
@@ -58,11 +59,11 @@ class Mailsender():
 
         # Załącznik - oferta
         if self.cena == 129:
-            attachment = open('pliki/oferta/129.pdf', 'rb')
+            attachment = open(pdf129, 'rb')
         elif self.cena == 159:
-            attachment = open('pliki/oferta/159.pdf', 'rb')
+            attachment = open(pdf159, 'rb')
         elif self.cena == 199:
-            attachment = open('pliki/oferta/199.pdf', 'rb')
+            attachment = open(pdf199, 'rb')
 
         part = MIMEBase('application', 'octet-stream')
         part.set_payload((attachment).read())

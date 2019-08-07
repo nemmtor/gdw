@@ -8,6 +8,8 @@ from config import font10, font10b, entry_width
 from konsultant import konsultant
 from mailsender import mailsender
 
+from config import ikona, goldwin
+
 
 class Umowa(Window):
     '''frame = entry frame'''
@@ -17,12 +19,12 @@ class Umowa(Window):
         self.top.title("Dodaj odbiorców")
         self.top.geometry('250x150')
         self.top.tk.call('wm', 'iconphoto',
-                         self.top._w, tk.PhotoImage(file='pliki/ikona.gif'))
+                         self.top._w, tk.PhotoImage(file=ikona))
 
         '''Ustawienie na środku ekranu oraz ikonka.'''
         self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
         self.top.tk.call('wm', 'iconphoto', self.top._w,
-                         tk.PhotoImage(file='pliki/ikona.gif'))
+                         tk.PhotoImage(file=ikona))
         self.top.update_idletasks()
         width = self.top.winfo_width()
         height = self.top.winfo_height()
@@ -121,7 +123,7 @@ class Umowa(Window):
         sprawy_frame.pack(pady=20)
 
         # MID FRAME
-        img = tk.PhotoImage(file="pliki/goldwin.png")
+        img = tk.PhotoImage(file=goldwin)
         img_Label = tk.Label(right_frame, image=img)
         img_Label.image = img
         img_Label.place(relx=.5, rely=.5, anchor="c")

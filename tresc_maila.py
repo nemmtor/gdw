@@ -1,5 +1,6 @@
 from klient import klient
 from konsultant import konsultant
+from config import rodo, tresc
 
 
 def stworz_stopke():
@@ -65,7 +66,7 @@ def stworz_subject(subject_type):
 
 
 def stworz_rodo():
-    with open('pliki/rodo.txt', 'rb') as f:
+    with open(rodo, 'rb') as f:
         tresc_rodo = f.read().decode("UTF-8")
     body = tresc_rodo
     f.close()
@@ -85,7 +86,7 @@ def stworz_oferte(plec, cena):
         pana_pani = "Pani"
         panem_pania = "Panią"
 
-    with open('pliki/oferta/tresc.txt', 'rb') as f:
+    with open(tresc, 'rb') as f:
         body = f.read().decode("UTF-8")
     f.close()
     body += stworz_stopke()
