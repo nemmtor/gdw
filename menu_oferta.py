@@ -7,8 +7,8 @@ from config import font10, entry_width
 from konsultant import konsultant
 from mailsender import mailsender
 
-class Menu_Oferta(Window):
 
+class Menu_Oferta(Window):
 
     def widgets(self):
         '''Widgety'''
@@ -20,7 +20,6 @@ class Menu_Oferta(Window):
         cena_frame = tk.Frame(page_frame)
         mail_frame = tk.Frame(page_frame)
         buttons_frame = tk.Frame(page_frame)
-        separator = tk.Frame(page_frame)
 
         # Informacja kto zalogowany
         # Label
@@ -32,26 +31,26 @@ class Menu_Oferta(Window):
         zwrot_label = tk.Label(plec_frame, text='Zwrot\ngrzecznościowy',
                                font=font10)
         cena_label = tk.Label(cena_frame, text='Cena\npakietu',
-                       font=font10)
+                              font=font10)
 
         # Płeć
         self.plec = tk.IntVar()
         self.cena = tk.IntVar()
         # Pan
         pan = tk.Radiobutton(plec_frame, text='Pan', font=font10,
-                              variable=self.plec, value=1)
-                          # Pani
+                             variable=self.plec, value=1)
+        # Pani
         pani = tk.Radiobutton(plec_frame, text='Pani', font=font10,
                               variable=self.plec, value=2)
 
         cena129 = tk.Radiobutton(cena_frame, text='129zł', font=font10,
-                                    variable=self.cena, value=129)
+                                 variable=self.cena, value=129)
 
         cena159 = tk.Radiobutton(cena_frame, text='159zł', font=font10,
-                                    variable=self.cena, value=159)
+                                 variable=self.cena, value=159)
 
         cena199 = tk.Radiobutton(cena_frame, text='199zł', font=font10,
-                                    variable=self.cena, value=199)
+                                 variable=self.cena, value=199)
 
         # Entry
         # Mail klienta
@@ -62,11 +61,12 @@ class Menu_Oferta(Window):
         menu_butt = tk.Button(buttons_frame, text='MENU', font=font10,
                               width=10, command=lambda: self.menu_butt())
         wyslij_butt = tk.Button(buttons_frame, text='WYŚLIJ', font=font10,
-                              width=10,
-                              command=lambda: mailsender.oferta(self.cena.get(),
-                                                                self.plec.get(),
-                                                                mail_entry.get(),
-                                                                self.root))
+                                width=10,
+                                command=lambda:
+                                mailsender.oferta(self.cena.get(),
+                                                  self.plec.get(),
+                                                  mail_entry.get(),
+                                                  self.root))
 
         # Pack
 

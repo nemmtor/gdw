@@ -6,7 +6,7 @@ from menu_oferta import Menu_Oferta
 from umowa import Umowa
 # Obiekty
 from konsultant import konsultant  # dane konsultanta
-from mailsender import mailsender
+# from mailsender import mailsender
 
 # Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
 login = Login('Goldwin - login', '200x100')

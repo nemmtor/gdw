@@ -1,7 +1,7 @@
 <html>
-<body style="font-family:Calibri;font-size:11pt;">
+<body style="font-family:Calibri, sans-serif;font-size:11pt;">
 <p><i>Dzień  dobry,
-w odpowiedzi na naszą rozmowę, wysyłam {panu_pani} informację o naszym pakiecie.</p>
+w odpowiedzi na naszą rozmowę, wysyłam {1} informację o naszym pakiecie.</p>
 
 <p>W załączniku wysyłam opinie na temat współpracy z naszą kancelarią.
 Dodaję też naszą stronę internetową: www.gpgoldwin.pl - tam znajdują się nasze referencje od Klientów oraz nr tel 222692222.</p>
@@ -19,31 +19,31 @@ Dodaję też naszą stronę internetową: www.gpgoldwin.pl - tam znajdują się 
 Windykacja należności, Prawo spółek handlowych, Prawo cywilne, Postępowanie cywilne, Prawo ubezpieczeń społecznych,
 Prawo spadkowe, Prawo rodzinne, Prawo konsumenckie, Prawo pracy, Prawo wykroczeń, Ochrona danych osobowych, Prawo autorskie.</p>
 
-<p>Otrzymuje {pan_pani}:
+<p>Otrzymuje {0}:
 <ul>
     <li>
-        Nielimitowane konsultacje z osobistym prawnikiem, gdziekolwiek {pan_pani} będzie wystarczy wyciągnąć telefon i zadzwonić otrzyma {pan_pani} szybkie odpowiedzi
+        Nielimitowane konsultacje z osobistym prawnikiem, gdziekolwiek {0} będzie wystarczy wyciągnąć telefon i zadzwonić otrzyma {0} szybkie odpowiedzi
     </li>
     <li>
-        Sam prawnik skonsultuje się z {panem_pania} w ciągu 3 dni, już wtedy może mu {pan_pani} zlecić wykonanie dla {pana_pani} jakiś czynności
+        Sam prawnik skonsultuje się z {3} w ciągu 3 dni, już wtedy może mu {0} zlecić wykonanie dla {2} jakiś czynności
     </li>
     <li>
-        3 godziny na obsługę prawną i tu może {pan_pani}zlecić prawnikowi wykonanie dla {pana_pani}np. wzorów umów, które będzie {pan_pani}mógł stosować z klientami
-        (warto to zrobić bo wtedy łatwiej udowodnić, że {pan_pani}wykonał jakieś zlecenie jest to wtedy napisane "czarno na białym") oprócz tego jest tu też weryfikacja umów, sprawy spadkowe rodzinne nawet mandaty (często dla klientów piszemy pisma o ich umorzenie ).
+        3 godziny na obsługę prawną i tu może {0} zlecić prawnikowi wykonanie dla {2} np. wzorów umów, które będzie {0} mógł stosować z klientami
+        (warto to zrobić bo wtedy łatwiej udowodnić, że {0} wykonał jakieś zlecenie jest to wtedy napisane "czarno na białym") oprócz tego jest tu też weryfikacja umów, sprawy spadkowe rodzinne nawet mandaty (często dla klientów piszemy pisma o ich umorzenie ).
     </li>
     <li>
-        Może {pan_pani}też sprawdzać przyszłych klientów, jeśli nie jest {pan_pani}pewien czy są rzetelni (po prostu czy są w stanie {panu_pani}zapłacić) 3 sprawdzenia
+        Może {0} też sprawdzać przyszłych klientów, jeśli nie jest {0} pewien czy są rzetelni (po prostu czy są w stanie {1} zapłacić) 3 sprawdzenia
         we wszystkich bazach dłużników wystarczy podać dane do sprawdzenia prawnikowi
     </li>
     <li>
-        Jeśli już zdarzy się klient, który {panu_pani} nie zapłaci gwarantujemy windykacje z pełną możliwością ich odzyskania. Opłata za windykację wynosi już od 5% i to dopiero po odzyskaniu dla {pana_pani} zaległych pieniędzy, więc jeśli my nie odzyskamy dla {pana_pani} tej kwoty nie pobierzemy również nic od {pana_pani}
+        Jeśli już zdarzy się klient, który {1} nie zapłaci gwarantujemy windykacje z pełną możliwością ich odzyskania. Opłata za windykację wynosi już od 5% i to dopiero po odzyskaniu dla {2} zaległych pieniędzy, więc jeśli my nie odzyskamy dla {2} tej kwoty nie pobierzemy również nic od {2}
     </li>
 </ul>
 </p>
 
 <p>
-U nas w kancelarii zatrudniamy również specjalistów z dziedziny dofinansowań krajowych np. Urząd Pracy (np. zatrudnienie pracownika, doposażenie stanowiska pracy) watro powiedzieć prawnikowi by skierował do {pana_pani} kontakt takiego specjalisty, aby mógł {pan_pani} uzyskać środki na rozwój swojej firmy.
+U nas w kancelarii zatrudniamy również specjalistów z dziedziny dofinansowań krajowych np. Urząd Pracy (np. zatrudnienie pracownika, doposażenie stanowiska pracy) watro powiedzieć prawnikowi by skierował do {2} kontakt takiego specjalisty, aby mógł {0} uzyskać środki na rozwój swojej firmy.
 Warto też raz do roku wykonać audyt umów i całej firmowej dokumentacji, nasz prawnik sprawdzi to wszystko i naniesie potrzebne poprawki jeśli coś się zmieniło w dotychczas obowiązującym prawie (taki audyt na rynku to koszt 500zł my to zrobimy za darmo!)
-Tak kompleksową ochronę prawną obniżyliśmy do kwoty 129 netto miesięcznie, która dotyczy {pana_pani} dopiero po okresie testowym.
-Niech {pan_pani} pamięta w ciągu tego miesiąca korzysta {pan_pani} z usług prawnika całkowicie za darmo! I to {pan_pani} decyduje czy chce {pan_pani} z nami współpracować dalej.
+Tak kompleksową ochronę prawną obniżyliśmy do kwoty {4}zł netto miesięcznie, która dotyczy {3} dopiero po okresie testowym.
+Niech {0} pamięta w ciągu tego miesiąca korzysta {0} z usług prawnika całkowicie za darmo! I to {0} decyduje czy chce {0} z nami współpracować dalej.
 </p>

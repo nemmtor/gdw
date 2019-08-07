@@ -20,6 +20,7 @@ from tkinter import messagebox  # popup message
 # Odbiorcy
 from config import bcc_rodo, odbiorcy_sprzedazowy
 
+
 class Mailsender():
     '''Klasa Mail dla obiektu mailsender.
     Odpowiada za przechowywanie odbiorców, dodatkowych odbiorców,
@@ -42,7 +43,7 @@ class Mailsender():
         msg["Date"] = formatdate(localtime=True)
 
         # Body
-        msg.attach(MIMEText(stworz_oferte(self.plec), 'html'))
+        msg.attach(MIMEText(stworz_oferte(self.plec, self.cena), 'html'))
 
         # Załącznik
         attachment = open('pliki/oferta/Goldwin.pdf', 'rb')
@@ -63,7 +64,6 @@ class Mailsender():
         elif self.cena == 199:
             attachment = open('pliki/oferta/199.pdf', 'rb')
 
-
         part = MIMEBase('application', 'octet-stream')
         part.set_payload((attachment).read())
         encoders.encode_base64(part)
@@ -77,6 +77,7 @@ class Mailsender():
         server.smtp.send_message(msg)
         # Dodaj wiadomosc do folderu SENT
         self.dodaj_do_sent(msg)
+        print("Rozlaczam")
         server.rozlacz()
         root.destroy()
         return True

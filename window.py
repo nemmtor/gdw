@@ -106,8 +106,9 @@ class Window():
                     klient.rej = ''
                     klient.kor = ''
                     klient.dost = ''
-                    messagebox.showinfo('Wysłano',
-                                        'Wysłano maila sprzedażowego oraz maila z RODO.')
+                    messagebox.showinfo(
+                        'Wysłano',
+                        'Wysłano maila sprzedażowego oraz maila z RODO.')
                     server.rozlacz()
                     os.remove(mailsender.zalacznik)
                     self.root.destroy()

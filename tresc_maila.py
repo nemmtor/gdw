@@ -33,7 +33,6 @@ def stworz_stopke():
                 www.gpgoldwin.pl
                 </a></p>'''
 
-
     stopka += '''<p style="font-size:8pt;">
                KRS: 0000586888 NIP: 8792679200, REGON: 362044066'''
     stopka += '<br>'
@@ -74,7 +73,7 @@ def stworz_rodo():
     return(body)
 
 
-def stworz_oferte(plec):
+def stworz_oferte(plec, cena):
     if plec == 1:
         pan_pani = "Pan"
         panu_pani = "Panu"
@@ -90,12 +89,13 @@ def stworz_oferte(plec):
         body = f.read().decode("UTF-8")
     f.close()
     body += stworz_stopke()
-    body.format(pan_pani=pan_pani, panu_pani=panu_pani, pana_pani=pana_pani, panem_pania=panem_pania)
-    return(body)
+    return(body.format(pan_pani, panu_pani, pana_pani, panem_pania, str(cena)))
+
 
 def stworz_body():
     if konsultant.wybor == 1:
-        body = '''<html><body style="font-family:Calibri;font-size:11pt;">'''
+        body = '''<html><body style="font-family:Calibri, sans-serif;
+        font-size:11pt;">'''
         body += '<p>Imie i nazwisko: {}'.format(klient.imnaz)
         body += '<br>'
         body += 'Nr telefonu: {}'.format(klient.tel)
@@ -110,10 +110,10 @@ def stworz_body():
             body += 'Adres rejestrowy: {}'.format(klient.rej)
             body += '<br>'
         if not klient.kor_var:
-            body += '<p>Adres korespondencyjny: {} </p>'.format(klient.kor)
+            body += 'Adres korespondencyjny: {}'.format(klient.kor)
             body += '<br>'
         if not klient.dost_var:
-            body += '<p>Adres dostarczenia: {} </p>'.format(klient.dost)
+            body += 'Adres dostarczenia: {}'.format(klient.dost)
             body += '<br>'
 
         body += 'Branża: {}'.format(klient.branza)
