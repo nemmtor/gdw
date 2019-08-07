@@ -28,7 +28,8 @@ a.datas += [('ikona.gif',r'./pliki/ikona.gif', 'Data'),
             ('129.pdf',r'./pliki/oferta/129.pdf', 'Data'),
             ('159.pdf',r'./pliki/oferta/159.pdf', 'Data'),
             ('199.pdf',r'./pliki/oferta/199.pdf', 'Data'),
-            ('Goldwin.pdf',r'./pliki/oferta/Goldwin.pdf', 'Data')]
+            ('Goldwin.pdf',r'./pliki/oferta/Goldwin.pdf', 'Data'),
+            ('ikona.ico',r'./ikona.ico', 'Data')]
 
 
 pyz = PYZ(a.pure, a.zipped_data,
@@ -47,4 +48,4 @@ exe = EXE(pyz,
           upx_exclude=[],
           runtime_tmpdir=None,
           console=True,
-	  icon='ikona.ico')
+	      icon='ikona.ico')
