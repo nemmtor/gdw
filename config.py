@@ -16,4 +16,3 @@ bcc_rodo = ['administrator@bedekoderem.pl']
 #                         'justyna.sujkowska@gpgoldwin.pl',
 #                         'oliwia.zachar@gpgoldwin.pl']
 # bcc_rodo = ['informacje@gpgoldwin.pl']
-klient_oferta = ['']

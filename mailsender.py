@@ -18,8 +18,7 @@ import imaplib
 from tkinter import messagebox  # popup message
 
 # Odbiorcy
-from config import bcc_rodo, odbiorcy_sprzedazowy, klient_oferta
-
+from config import bcc_rodo, odbiorcy_sprzedazowy
 
 class Mailsender():
     '''Klasa Mail dla obiektu mailsender.
@@ -43,7 +42,7 @@ class Mailsender():
         msg["Date"] = formatdate(localtime=True)
 
         # Body
-        msg.attach(MIMEText(stworz_oferte(), 'html'))
+        msg.attach(MIMEText(stworz_oferte(self.plec), 'html'))
 
         # Załącznik
         attachment = open('pliki/oferta/Goldwin.pdf', 'rb')

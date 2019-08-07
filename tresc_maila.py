@@ -74,14 +74,24 @@ def stworz_rodo():
     return(body)
 
 
-def stworz_oferte():
+def stworz_oferte(plec):
+    if plec == 1:
+        pan_pani = "Pan"
+        panu_pani = "Panu"
+        pana_pani = "Pana"
+        panem_pania = "Panem"
+    if plec == 2:
+        pan_pani = "Pani"
+        panu_pani = "Pani"
+        pana_pani = "Pani"
+        panem_pania = "Panią"
+
     with open('pliki/oferta/tresc.txt', 'rb') as f:
         body = f.read().decode("UTF-8")
     f.close()
     body += stworz_stopke()
-    body = body.format('TEST')
+    body.format(pan_pani=pan_pani, panu_pani=panu_pani, pana_pani=pana_pani, panem_pania=panem_pania)
     return(body)
-
 
 def stworz_body():
     if konsultant.wybor == 1:
