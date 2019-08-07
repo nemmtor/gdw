@@ -32,11 +32,13 @@ class Mailsender():
         self.dod_odbiorcy = ['', '', '']
         self.zalacznik = ''
 
-    def oferta(self):
+    def oferta(self, cena, plec, mail, root):
         # Dane do maila
+        self.plec = plec
+        self.cena = cena
         msg = MIMEMultipart('mixed')
         msg['From'] = konsultant.login
-        msg['To'] = ', '.join(klient_oferta)
+        msg['To'] = mail
         msg['Subject'] = 'Grupa Prawna Goldwin'
         msg["Date"] = formatdate(localtime=True)
 
@@ -44,30 +46,40 @@ class Mailsender():
         msg.attach(MIMEText(stworz_oferte(), 'html'))
 
         # Załącznik
-        attachment = open('pliki/Goldwin.pdf', 'rb')
+        attachment = open('pliki/oferta/Goldwin.pdf', 'rb')
         part = MIMEBase('application', 'octet-stream')
         part.set_payload((attachment).read())
         encoders.encode_base64(part)
         # TODO - basename = zmiennazwe()
         part.add_header('Content-Disposition',
                         "attachment; filename= " +
-                        os.path.basename('Goldwin.pdf'))
+                        os.path.basename('Grupa Prawna Goldwin.pdf'))
         msg.attach(part)
 
-        # Załącznik 2
-        attachment = open('pliki/129.png', 'rb')
+        # Załącznik - oferta
+        if self.cena == 129:
+            attachment = open('pliki/oferta/129.pdf', 'rb')
+        elif self.cena == 159:
+            attachment = open('pliki/oferta/159.pdf', 'rb')
+        elif self.cena == 199:
+            attachment = open('pliki/oferta/199.pdf', 'rb')
+
+
         part = MIMEBase('application', 'octet-stream')
         part.set_payload((attachment).read())
         encoders.encode_base64(part)
         part.add_header('Content-Disposition',
                         "attachment; filename= " +
-                        os.path.basename('Oferta.png'))
+                        os.path.basename('Oferta.pdf'))
         msg.attach(part)
 
         # Do servera
+        server.zaloguj()
         server.smtp.send_message(msg)
         # Dodaj wiadomosc do folderu SENT
         self.dodaj_do_sent(msg)
+        server.rozlacz()
+        root.destroy()
         return True
 
     def wyslij_sprzedazowy(self):

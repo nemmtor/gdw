@@ -68,7 +68,7 @@ def stworz_rodo():
 
 
 def stworz_oferte():
-    with open('pliki/129pan.txt', 'rb') as f:
+    with open('pliki/oferta/tresc.txt', 'rb') as f:
         body = f.read().decode("UTF-8")
     f.close()
     body += stworz_stopke()

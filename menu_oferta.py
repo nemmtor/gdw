@@ -5,14 +5,10 @@ from config import font10, entry_width
 
 # Obiekty
 from konsultant import konsultant
+from mailsender import mailsender
 
 class Menu_Oferta(Window):
 
-    # Funkcje przycisków:
-    def plec_butt(self, wybor):
-        '''Wybór menu, następnie usunięcie okna menu.'''
-        konsultant.menu(wybor)
-        self.root.destroy()
 
     def widgets(self):
         '''Widgety'''
@@ -23,6 +19,8 @@ class Menu_Oferta(Window):
         plec_frame = tk.Frame(page_frame)
         cena_frame = tk.Frame(page_frame)
         mail_frame = tk.Frame(page_frame)
+        buttons_frame = tk.Frame(page_frame)
+        separator = tk.Frame(page_frame)
 
         # Informacja kto zalogowany
         # Label
@@ -60,6 +58,16 @@ class Menu_Oferta(Window):
         mail_label = tk.Label(mail_frame, text='Mail klienta', font=font10)
         mail_entry = tk.Entry(mail_frame, width=entry_width)
 
+        # Przyciski
+        menu_butt = tk.Button(buttons_frame, text='MENU', font=font10,
+                              width=10, command=lambda: self.menu_butt())
+        wyslij_butt = tk.Button(buttons_frame, text='WYŚLIJ', font=font10,
+                              width=10,
+                              command=lambda: mailsender.oferta(self.cena.get(),
+                                                                self.plec.get(),
+                                                                mail_entry.get(),
+                                                                self.root))
+
         # Pack
 
         zalog_label.pack()
@@ -77,9 +85,14 @@ class Menu_Oferta(Window):
         mail_label.pack()
         mail_entry.pack()
 
-        zalog_frame.grid(row=1, column=1)
+        menu_butt.pack(side=tk.LEFT)
+        wyslij_butt.pack(pady=10, padx=20)
+
+        zalog_frame.grid(row=1, column=1, columnspan=2)
         plec_frame.grid(row=2, column=1)
         cena_frame.grid(row=2, column=2)
         mail_frame.grid(row=3, column=1, columnspan=2)
+        # separator.grid(row=4)
+        buttons_frame.grid(row=5, column=1, columnspan=2)
 
         page_frame.pack()
