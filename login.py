@@ -26,6 +26,8 @@ class Login(Window):
                 # Pokaż popup, że zalogowano
                 messagebox.showinfo(
                     'Zalogowano', 'Zalogowano jako {}'.format(konsultant.kto))
+                '''Test'''
+                server.rozlacz()
                 # Usunięcie okienka logowania
                 self.root.destroy()
             else:

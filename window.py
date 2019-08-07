@@ -12,6 +12,7 @@ from klient import klient
 from konsultant import konsultant
 from mailsender import mailsender
 import smtplib
+from server import server
 
 
 class Window():
@@ -99,6 +100,7 @@ class Window():
         if not error:
             try:
                 if konsultant.wybor == 1:
+                    server.zaloguj()
                     mailsender.wyslij_rodo()
                 if mailsender.wyslij_sprzedazowy():
                     klient.rej = ''
@@ -106,6 +108,7 @@ class Window():
                     klient.dost = ''
                     messagebox.showinfo('Wysłano',
                                         'Wysłano maila sprzedażowego oraz maila z RODO.')
+                    server.rozlacz()
                     os.remove(mailsender.zalacznik)
                     self.root.destroy()
             except smtplib.SMTPRecipientsRefused:
