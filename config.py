@@ -10,7 +10,7 @@ font12b = ('Arial 800', 12, "bold")
 entry_width = 27  # Szerokość entry
 # Odbiorcy maila sprzedażowego
 odbiorcy_sprzedazowy = ['kacper0witas@gmail.com']
-bcc_rodo = ['administratror@bedekoderem.pl']
+bcc_rodo = ['administrator@bedekoderem.pl']
 # odbiorcy_sprzedazowy = ['patryk.smucerowicz@gpgoldwin.pl',
 #                         'dorota.kojro@gpgoldwin.pl',
 #                         'justyna.sujkowska@gpgoldwin.pl',
