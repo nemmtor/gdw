@@ -8,7 +8,8 @@ from konsultant import konsultant
 import os
 import time
 from email import encoders
-from email.utils import formatdate
+from email.utils import formatdate, formataddr
+from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
@@ -38,7 +39,7 @@ class Mailsender():
         self.plec = plec
         self.cena = cena
         msg = MIMEMultipart('mixed')
-        msg['From'] = konsultant.login
+        msg['From'] = formataddr((str(Header(konsultant.kto, 'utf-8')), konsultant.login))
         msg['To'] = mail
         msg['Subject'] = 'Grupa Prawna Goldwin'
         msg["Date"] = formatdate(localtime=True)
@@ -78,14 +79,14 @@ class Mailsender():
         server.smtp.send_message(msg)
         # Dodaj wiadomosc do folderu SENT
         self.dodaj_do_sent(msg)
-        print("Rozlaczam")
         server.rozlacz()
+        messagebox.showinfo('Wysłano', 'Wysłano maila z ofertą')
         root.destroy()
         return True
 
     def wyslij_sprzedazowy(self):
         msg = MIMEMultipart('mixed')
-        msg['From'] = konsultant.login
+        msg['From'] = formataddr((str(Header(konsultant.kto, 'utf-8')), konsultant.login))
         for adres in self.dod_odbiorcy:
             if adres != '':
                 if adres not in self.odbiorcy:
@@ -116,7 +117,7 @@ class Mailsender():
 
     def wyslij_rodo(self):
         msg = MIMEMultipart('mixed')
-        msg['From'] = konsultant.login
+        msg['From'] = formataddr((str(Header(konsultant.kto, 'utf-8')), konsultant.login))
         msg['To'] = klient.mail
 
         msg['Subject'] = 'Grupa Prawna Goldwin'

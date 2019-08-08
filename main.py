@@ -10,16 +10,17 @@ from konsultant import konsultant  # dane konsultanta
 
 
 # Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
-login = Login('Goldwin - login', '200x100')
+# login = Login('Goldwin - login', '200x100')
+login = Login('Goldwin - login')
 
 
 # Nieskończona pętla służąca do obsługi menu
 while True:
     # Stwórz okno menu
-    menu = Menu('Goldwin - menu', '200x150')
+    menu = Menu('Goldwin - menu')
     # Umowa
     if konsultant.wybor == 1:
-        umowa = Umowa('Goldwin - umowa', '800x400')
+        umowa = Umowa('Goldwin - umowa')
     # # Aneks
     # elif konsultant.wybor == 2:
     #     pass
@@ -28,4 +29,4 @@ while True:
     #     pass
     # Mail z ofertą
     elif konsultant.wybor == 4:
-        menu_oferta = Menu_Oferta('Oferta', '300x250')
+        menu_oferta = Menu_Oferta('Oferta')

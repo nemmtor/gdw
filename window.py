@@ -17,28 +17,31 @@ from config import ikona
 
 
 class Window():
-    def __init__(self, title, size):
+    # usunalem size z nawiasow
+    def __init__(self, title):
         '''Ustawienie tytułu, rozmiaru'''
         self.title = title
-        self.size = size
+        # self.size = size
         self.filename = ''
 
         self.root = tk.Tk()
         self.root.title(self.title)
-        self.root.geometry(self.size)
+
 
         '''Ustawienie na środku ekranu oraz ikonka.'''
         self.root.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
         self.root.tk.call('wm', 'iconphoto', self.root._w,
                           tk.PhotoImage(file=ikona))
+        self.widgets()
         self.root.update_idletasks()
         width = self.root.winfo_width()
         height = self.root.winfo_height()
-        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
-        y = (self.root.winfo_screenheight() // 2) - (height // 2)
+        x = (self.root.winfo_screenwidth() // 2)  - (width // 2)
+        y = (self.root.winfo_screenheight() // 2)  - (height // 2)
         self.root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+        # self.root.geometry('{}x{}'.format(width, height))
 
-        self.widgets()  # widgety
+        # self.widgets()  # widgety
 
         self.root.mainloop()  # główny loop
 

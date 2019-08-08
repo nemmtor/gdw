@@ -87,7 +87,7 @@ class Umowa(Window):
 
         left_frame = tk.Frame(page_frame)
         # mid_frame = tk.Frame(page_frame, bg='green')
-        right_frame = tk.Frame(page_frame)
+        right_frame = tk.Frame(page_frame, height=388, width=354)
         menu_frame = tk.Frame(page_frame)
         left_frame.pack(fill=tk.BOTH, expand=False, side=tk.LEFT)
         # mid_frame.pack(fill=tk.BOTH, expan=True, side=tk.LEFT)
@@ -113,13 +113,11 @@ class Umowa(Window):
 
         sprawy_frame = tk.Frame(menu_frame)
 
-        spr_nierozw_label = tk.Label(sprawy_frame, text='Sprawy nierozwiązane')
         self.spr_nierozw_var = tk.IntVar(value=0)
-        self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame,
+        self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame, text='Sprawy nierozwiązane',
                                              variable=self.spr_nierozw_var,
                                              command=lambda: self.zmienvar())
         self.spr_nierozw_cb.pack(side=tk.LEFT)
-        spr_nierozw_label.pack()
         sprawy_frame.pack(pady=20)
 
         # MID FRAME

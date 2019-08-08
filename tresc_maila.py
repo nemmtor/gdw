@@ -8,8 +8,8 @@ def stworz_stopke():
     stopka += '<i>Pozdrawiam,</i><br><br>'
     stopka += '{}'.format(konsultant.kto)
     stopka += '<br>'
-    stopka += '<span style="font-size:8pt";>Specjalista ds. sprzedaży</span>'
-    stopka += '<br>'
+    # stopka += '<span style="font-size:8pt";>Specjalista ds. sprzedaży</span>'
+    # stopka += '<br>'
     stopka += '{}'.format(konsultant.login)
     stopka += '</p>'
 
@@ -97,9 +97,9 @@ def stworz_body():
     if konsultant.wybor == 1:
         body = '''<html><body style="font-family:Calibri, sans-serif;
         font-size:11pt;">'''
-        body += '<p>Imie i nazwisko: {}'.format(klient.imnaz)
+        body += '<p>Nr telefonu: {}'.format(klient.tel)
         body += '<br>'
-        body += 'Nr telefonu: {}'.format(klient.tel)
+        body += 'Imie i nazwisko: {}'.format(klient.imnaz)
         body += '<br>'
         body += 'Data doręczenia: {}'.format(klient.datawys)
         body += '<br>'

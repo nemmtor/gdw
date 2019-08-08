@@ -39,12 +39,15 @@ class Menu_Oferta(Window):
         # Pan
         pan = tk.Radiobutton(plec_frame, text='Pan', font=font10,
                              variable=self.plec, value=1)
+        pan.select()
         # Pani
         pani = tk.Radiobutton(plec_frame, text='Pani', font=font10,
                               variable=self.plec, value=2)
 
         cena129 = tk.Radiobutton(cena_frame, text='129zł', font=font10,
                                  variable=self.cena, value=129)
+
+        cena129.select()
 
         cena159 = tk.Radiobutton(cena_frame, text='159zł', font=font10,
                                  variable=self.cena, value=159)
