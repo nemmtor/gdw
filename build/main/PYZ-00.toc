@@ -11,13 +11,17 @@
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\datetime.py',
    'PYMODULE'),
-  ('fnmatch',
+  ('tracemalloc',
    'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('_compat_pickle',
+  ('typing',
    'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\_compat_pickle.py',
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
+   'PYMODULE'),
+  ('stringprep',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
    'PYMODULE'),
   ('__future__',
    'c:\\users\\nowe '
@@ -235,6 +239,10 @@
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\uu.py',
    'PYMODULE'),
+  ('quopri',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\quopri.py',
+   'PYMODULE'),
   ('email.feedparser',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\email\\feedparser.py',
@@ -282,6 +290,10 @@
   ('email.charset',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\email\\charset.py',
+   'PYMODULE'),
+  ('base64',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
    'PYMODULE'),
   ('email._encoded_words',
    'c:\\users\\nowe '
@@ -335,9 +347,17 @@
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\email\\message.py',
    'PYMODULE'),
+  ('bz2',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\bz2.py',
+   'PYMODULE'),
   ('lzma',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\lzma.py',
+   'PYMODULE'),
+  ('_compression',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\_compression.py',
    'PYMODULE'),
   ('gzip',
    'c:\\users\\nowe '
@@ -371,6 +391,10 @@
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\pydoc.py',
    'PYMODULE'),
+  ('getopt',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\getopt.py',
+   'PYMODULE'),
   ('pdb',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\pdb.py',
@@ -387,9 +411,21 @@
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\string.py',
    'PYMODULE'),
+  ('_compat_pickle',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\_compat_pickle.py',
+   'PYMODULE'),
+  ('pickle',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\pickle.py',
+   'PYMODULE'),
   ('logging',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('pprint',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\pprint.py',
    'PYMODULE'),
   ('unittest.case',
    'c:\\users\\nowe '
@@ -398,6 +434,10 @@
   ('unittest.suite',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\unittest\\suite.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
    'PYMODULE'),
   ('unittest.loader',
    'c:\\users\\nowe '
@@ -423,77 +463,9 @@
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\doctest.py',
    'PYMODULE'),
-  ('pprint',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\pprint.py',
-   'PYMODULE'),
-  ('pickle',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\pickle.py',
-   'PYMODULE'),
-  ('tracemalloc',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
-   'PYMODULE'),
   ('_py_abc',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
-   'PYMODULE'),
-  ('token',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\token.py',
-   'PYMODULE'),
-  ('textwrap',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\textwrap.py',
-   'PYMODULE'),
-  ('argparse',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\argparse.py',
-   'PYMODULE'),
-  ('tokenize',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\tokenize.py',
-   'PYMODULE'),
-  ('stringprep',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
-   'PYMODULE'),
-  ('base64',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
-   'PYMODULE'),
-  ('struct',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\struct.py',
-   'PYMODULE'),
-  ('gettext',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\gettext.py',
-   'PYMODULE'),
-  ('getopt',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\getopt.py',
-   'PYMODULE'),
-  ('quopri',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\quopri.py',
-   'PYMODULE'),
-  ('_compression',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\_compression.py',
-   'PYMODULE'),
-  ('bz2',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\bz2.py',
-   'PYMODULE'),
-  ('copy',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\copy.py',
-   'PYMODULE'),
-  ('typing',
-   'c:\\users\\nowe '
-   'konto\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
    'PYMODULE'),
   ('stat',
    'c:\\users\\nowe '
@@ -534,6 +506,34 @@
   ('os',
    'c:\\users\\nowe '
    'konto\\appdata\\local\\programs\\python\\python37\\lib\\os.py',
+   'PYMODULE'),
+  ('token',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\token.py',
+   'PYMODULE'),
+  ('struct',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\struct.py',
+   'PYMODULE'),
+  ('gettext',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\gettext.py',
+   'PYMODULE'),
+  ('copy',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\copy.py',
+   'PYMODULE'),
+  ('textwrap',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\textwrap.py',
+   'PYMODULE'),
+  ('argparse',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\argparse.py',
+   'PYMODULE'),
+  ('tokenize',
+   'c:\\users\\nowe '
+   'konto\\appdata\\local\\programs\\python\\python37\\lib\\tokenize.py',
    'PYMODULE'),
   ('konsultant',
    'C:\\Users\\Nowe Konto\\Desktop\\gdw\\gdw\\konsultant.py',
