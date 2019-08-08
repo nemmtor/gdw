@@ -69,7 +69,7 @@ class Menu_Oferta(Window):
                                 command=lambda:
                                 mailsender.oferta(self.cena.get(),
                                                   self.plec.get(),
-                                                  mail_entry.get(),
+                                                  mail_entry.get().strip(),
                                                   self.root))
 
         # Pack

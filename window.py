@@ -73,21 +73,21 @@ class Window():
         self.root.destroy()
 
     def wyslij_butt(self):
-        klient.stworz_klienta(self.imie_entry.get(),
-                              self.tel_entry.get(),
-                              self.sprz_entry.get(),
-                              self.dost_entry.get(),
-                              self.cena_entry.get(),
-                              self.mail_entry.get(),
-                              self.branza_entry.get(),
-                              self.pytania_entry.get(),
-                              self.dodatkowe_entry.get("1.0", tk.END),
+        klient.stworz_klienta(self.imie_entry.get().strip(),
+                              self.tel_entry.get().strip(),
+                              self.sprz_entry.get().strip(),
+                              self.dost_entry.get().strip(),
+                              self.cena_entry.get().strip(),
+                              self.mail_entry.get().strip(),
+                              self.branza_entry.get().strip(),
+                              self.pytania_entry.get().strip(),
+                              self.dodatkowe_entry.get("1.0", tk.END).strip(),
                               self.adr_rej_var.get(),
                               self.adr_kor_var.get(),
                               self.adr_dost_var.get(),
-                              self.adr_rej_entry.get(),
-                              self.adr_kor_entry.get(),
-                              self.adr_dost_entry.get(),
+                              self.adr_rej_entry.get().strip(),
+                              self.adr_kor_entry.get().strip(),
+                              self.adr_dost_entry.get().strip(),
                               self.spr_nierozw_var.get()
                               )
         error = False

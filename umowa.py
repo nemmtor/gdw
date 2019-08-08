@@ -56,7 +56,7 @@ class Umowa(Window):
     def wez_adresy(self):
         '''Pobiera adresy z entry'''
         mailsender.dod_odbiorcy = [
-            self.adres1.get(), self.adres2.get(), self.adres3.get()]
+            self.adres1.get().strip(), self.adres2.get().strip(), self.adres3.get().strip()]
         self.top.destroy()
 
     def zmienvar(self):
