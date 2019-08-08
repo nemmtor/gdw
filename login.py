@@ -51,6 +51,7 @@ class Login(Window):
         # Login label, entry
         login_label = tk.Label(page_frame, text='Login:')
         self.login_entry = tk.Entry(page_frame, width=entry_width)
+        self.login_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Password label, entry
         password_label = tk.Label(page_frame, text='Hasło:')

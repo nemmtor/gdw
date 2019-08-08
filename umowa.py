@@ -133,6 +133,7 @@ class Umowa(Window):
         imie.grid(row=0, column=0)
         self.imie_entry = tk.Entry(left_frame, width=entry_width)
         self.imie_entry.grid(row=0, column=1, sticky='E')
+        self.imie_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Numer telefonu
         tel = tk.Label(left_frame, text="Numer telefonu:", font=font10b)
@@ -241,6 +242,7 @@ class Umowa(Window):
         self.dodatkowe_entry = ScrolledText(
             left_frame, width=entry_width - 7, height=2)
         self.dodatkowe_entry.grid(row=130, column=1)
+        self.dodatkowe_entry.bind_class("Text", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Spacer
         spacer = tk.Label(left_frame)

@@ -26,6 +26,7 @@ class Window():
 
         self.root = tk.Tk()
         self.root.title(self.title)
+        self.make_menu()
 
 
         '''Ustawienie na środku ekranu oraz ikonka.'''
@@ -44,6 +45,22 @@ class Window():
         # self.widgets()  # widgety
 
         self.root.mainloop()  # główny loop
+
+    def make_menu(self):
+        self.the_menu = tk.Menu(self.root, tearoff=0)
+        self.the_menu.add_command(label="Wytnij")
+        self.the_menu.add_command(label="Kopiuj")
+        self.the_menu.add_command(label="Wklej")
+
+    def show_menu(self, e):
+        w = e.widget
+        self.the_menu.entryconfigure("Wytnij",
+        command=lambda: w.event_generate("<<Cut>>"))
+        self.the_menu.entryconfigure("Kopiuj",
+        command=lambda: w.event_generate("<<Copy>>"))
+        self.the_menu.entryconfigure("Wklej",
+        command=lambda: w.event_generate("<<Paste>>"))
+        self.the_menu.tk.call("tk_popup", self.the_menu, e.x_root, e.y_root)
 
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''
