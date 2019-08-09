@@ -7,13 +7,12 @@ import tkinter as tk
 from tkinter import messagebox  # popup message
 import sys
 import os
-# from config import entry_width, font10
 from klient import klient
 from konsultant import konsultant
 from mailsender import mailsender
 import smtplib
 from server import server
-from config import ikona
+from config import ikona, font12b
 
 
 class Window():
@@ -70,7 +69,31 @@ class Window():
             entry.config(state='normal')
 
     def menu_butt(self):
-        self.root.destroy()
+        # Warning
+        warning_window = tk.Toplevel(self.root)
+        warning_window.title("Uwaga")
+        warning_label = tk.Label(warning_window, text="Uwaga!\nPowrót do menu usunie wszystkie zapisane dane.\nCzy napewno chcesz wrócić do menu?", fg='red',
+                                 font=font12b)
+        warning_label.pack()
+        ok_butt = tk.Button(warning_window, text='Tak', width=10, font=font12b,
+                            command=lambda: self.root.destroy())
+        ok_butt.pack(side=tk.LEFT)
+        cancel_butt = tk.Button(warning_window, text='Anuluj', width=10, font=font12b,
+                                command=lambda: warning_window.destroy())
+        cancel_butt.pack(side=tk.RIGHT)
+
+        '''Ustawienie na środku ekranu oraz ikonka.'''
+        warning_window.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
+        warning_window.tk.call('wm', 'iconphoto', warning_window._w,
+                          tk.PhotoImage(file=ikona))
+        warning_window.update_idletasks()
+        width = warning_window.winfo_width()
+        height = warning_window.winfo_height()
+        x = (warning_window.winfo_screenwidth() // 2)  - (width // 2)
+        y = (warning_window.winfo_screenheight() // 2)  - (height // 2)
+        warning_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
+        # self.root.destroy()
 
     def wyslij_butt(self):
         klient.stworz_klienta(self.imie_entry.get().strip(),

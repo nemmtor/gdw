@@ -15,21 +15,11 @@ class Umowa(Window):
 
     def dod_butt(self):
         self.top = tk.Toplevel()
-        self.top.title("Dodaj odbiorców")
-        self.top.geometry('250x150')
+
+
+        # self.top.geometry('250x150')
         self.top.tk.call('wm', 'iconphoto',
                          self.top._w, tk.PhotoImage(file=ikona))
-
-        '''Ustawienie na środku ekranu oraz ikonka.'''
-        self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
-        self.top.tk.call('wm', 'iconphoto', self.top._w,
-                         tk.PhotoImage(file=ikona))
-        self.top.update_idletasks()
-        width = self.top.winfo_width()
-        height = self.top.winfo_height()
-        x = (self.top.winfo_screenwidth() // 2) - (width // 2)
-        y = (self.top.winfo_screenheight() // 2) - (height // 2)
-        self.top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
         # Dodatkowe adresy
         adresy_frame = tk.Frame(self.top)
@@ -51,6 +41,17 @@ class Umowa(Window):
                             font=font10, width=10,
                             command=lambda: self.wez_adresy())
         ok_butt.pack()
+
+        '''Ustawienie na środku ekranu oraz ikonka.'''
+        self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
+        self.top.tk.call('wm', 'iconphoto', self.top._w,
+                         tk.PhotoImage(file=ikona))
+        self.top.update_idletasks()
+        width = self.top.winfo_width()
+        height = self.top.winfo_height()
+        x = (self.top.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.top.winfo_screenheight() // 2) - (height // 2)
+        self.top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
     def wez_adresy(self):
         '''Pobiera adresy z entry'''
