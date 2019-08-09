@@ -20,28 +20,30 @@ class Window():
         '''Ustawienie tytułu, rozmiaru'''
         self.title = title
         # self.size = size
-        self.filename = ''
+        # self.filename = ''
 
         self.root = tk.Tk()
         self.root.title(self.title)
         self.make_menu()
-
-        '''Ustawienie na środku ekranu oraz ikonka.'''
-        self.root.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
-        self.root.tk.call('wm', 'iconphoto', self.root._w,
-                          tk.PhotoImage(file=ikona))
         self.widgets()
-        self.root.update_idletasks()
-        width = self.root.winfo_width()
-        height = self.root.winfo_height()
-        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
-        y = (self.root.winfo_screenheight() // 2) - (height // 2)
-        self.root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-        # self.root.geometry('{}x{}'.format(width, height))
-
-        # self.widgets()  # widgety
+        self.center(self.root)
 
         self.root.mainloop()  # główny loop
+
+    def center(self, window, isroot=True):
+        '''Ustawienie na środku ekranu oraz ikonka.'''
+        if isroot:
+            window.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
+        # else:
+        #     window.protocol('WM_DELETE_WINDOW', lambda: window.destroy())
+        window.tk.call('wm', 'iconphoto', window._w,
+                       tk.PhotoImage(file=ikona))
+        window.update_idletasks()
+        width = window.winfo_width()
+        height = window.winfo_height()
+        x = (window.winfo_screenwidth() // 2) - (width // 2)
+        y = (window.winfo_screenheight() // 2) - (height // 2)
+        window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
     def make_menu(self):
         self.the_menu = tk.Menu(self.root, tearoff=0)
@@ -71,7 +73,8 @@ class Window():
 
     def menu_butt(self):
         # Warning
-        warning_window = tk.Toplevel(self.root)
+        warning_window = tk.Toplevel()
+        warning_window.grab_set()
         warning_window.title("Uwaga")
         warning_label = tk.Label(warning_window,
                                  text=(
@@ -87,19 +90,7 @@ class Window():
                                 font=font12b,
                                 command=lambda: warning_window.destroy())
         cancel_butt.pack(side=tk.RIGHT, padx=(0, 40), pady=(20, 0))
-
-        '''Ustawienie na środku ekranu oraz ikonka.'''
-        warning_window.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
-        warning_window.tk.call('wm', 'iconphoto', warning_window._w,
-                               tk.PhotoImage(file=ikona))
-        warning_window.update_idletasks()
-        width = warning_window.winfo_width()
-        height = warning_window.winfo_height()
-        x = (warning_window.winfo_screenwidth() // 2) - (width // 2)
-        y = (warning_window.winfo_screenheight() // 2) - (height // 2)
-        warning_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-
-        # self.root.destroy()
+        self.center(warning_window, False)
 
     def wyslij_butt(self):
         klient.stworz_klienta(self.imie_entry.get().strip(),

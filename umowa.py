@@ -7,7 +7,7 @@ from config import font10, font10b, entry_width
 from konsultant import konsultant
 from mailsender import mailsender
 
-from config import ikona, goldwin
+from config import goldwin
 
 
 class Umowa(Window):
@@ -15,10 +15,8 @@ class Umowa(Window):
 
     def dod_butt(self):
         self.top = tk.Toplevel()
-
-        self.top.tk.call('wm', 'iconphoto',
-                         self.top._w, tk.PhotoImage(file=ikona))
-
+        self.top.title('Dodatkowi odbiorcy')
+        self.top.grab_set()
         # Dodatkowe adresy
         adresy_frame = tk.Frame(self.top)
         adresy_frame.pack()
@@ -39,17 +37,7 @@ class Umowa(Window):
                             font=font10, width=10,
                             command=lambda: self.wez_adresy())
         ok_butt.pack()
-
-        '''Ustawienie na środku ekranu oraz ikonka.'''
-        self.top.protocol('WM_DELETE_WINDOW', lambda: self.wez_adresy())
-        self.top.tk.call('wm', 'iconphoto', self.top._w,
-                         tk.PhotoImage(file=ikona))
-        self.top.update_idletasks()
-        width = self.top.winfo_width()
-        height = self.top.winfo_height()
-        x = (self.top.winfo_screenwidth() // 2) - (width // 2)
-        y = (self.top.winfo_screenheight() // 2) - (height // 2)
-        self.top.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+        self.center(self.top, False)
 
     def wez_adresy(self):
         '''Pobiera adresy z entry'''
