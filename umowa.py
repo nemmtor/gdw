@@ -71,7 +71,7 @@ class Umowa(Window):
         zalacznik = askopenfilename()
         if zalacznik != '' and zalacznik != ():
             mailsender.zalacznik = zalacznik
-            self.zal_label.configure(text='Wgrano załącznik', fg='green')
+            self.zal_label.configure(text=mailsender.zalacznik.split(r'/')[-1], fg='green')
 
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''
