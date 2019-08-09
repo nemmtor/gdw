@@ -20,7 +20,8 @@ class Login(Window):
         '''Funkcja przycisku Zaloguj'''
         # Sprawdź czy mail ma poprawną formułę(domena gpgoldwin.pl)
         if re.search(mail_expr_goldwin, self.login_entry.get().strip()):
-            konsultant.dane(self.login_entry.get().strip(), self.password_entry.get().strip())
+            konsultant.dane(self.login_entry.get().strip(),
+                            self.password_entry.get().strip())
             # Sprawdzenie czy login/pw są prawidłowe
             if server.zaloguj():
                 # Pokaż popup, że zalogowano
@@ -51,7 +52,8 @@ class Login(Window):
         # Login label, entry
         login_label = tk.Label(page_frame, text='Login:')
         self.login_entry = tk.Entry(page_frame, width=entry_width)
-        self.login_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
+        self.login_entry.bind_class(
+            "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Password label, entry
         password_label = tk.Label(page_frame, text='Hasło:')

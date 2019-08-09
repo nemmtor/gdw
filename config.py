@@ -9,8 +9,8 @@ font12 = ('Arial 800', 12)
 font12b = ('Arial 800', 12, "bold")
 
 version = '1.0.3b'
-developer_mail = False
-build = True
+developer_mail = True
+build = False
 
 # Ustawienia
 entry_width = 27  # Szerokość entry
@@ -36,7 +36,6 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
-
 
 
 if not build:

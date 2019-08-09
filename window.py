@@ -6,13 +6,12 @@ funkcję createframes, tam ustawia się widgety.'''
 import tkinter as tk
 from tkinter import messagebox  # popup message
 import sys
-import os
 from klient import klient
 from konsultant import konsultant
 from mailsender import mailsender
 import smtplib
 from server import server
-from config import ikona, font12b
+from config import ikona, font10b, font12b
 
 
 class Window():
@@ -27,7 +26,6 @@ class Window():
         self.root.title(self.title)
         self.make_menu()
 
-
         '''Ustawienie na środku ekranu oraz ikonka.'''
         self.root.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
         self.root.tk.call('wm', 'iconphoto', self.root._w,
@@ -36,8 +34,8 @@ class Window():
         self.root.update_idletasks()
         width = self.root.winfo_width()
         height = self.root.winfo_height()
-        x = (self.root.winfo_screenwidth() // 2)  - (width // 2)
-        y = (self.root.winfo_screenheight() // 2)  - (height // 2)
+        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.root.winfo_screenheight() // 2) - (height // 2)
         self.root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
         # self.root.geometry('{}x{}'.format(width, height))
 
@@ -54,11 +52,14 @@ class Window():
     def show_menu(self, e):
         w = e.widget
         self.the_menu.entryconfigure("Wytnij",
-        command=lambda: w.event_generate("<<Cut>>"))
+                                     command=lambda: w.event_generate(
+                                         "<<Cut>>"))
         self.the_menu.entryconfigure("Kopiuj",
-        command=lambda: w.event_generate("<<Copy>>"))
+                                     command=lambda: w.event_generate(
+                                         "<<Copy>>"))
         self.the_menu.entryconfigure("Wklej",
-        command=lambda: w.event_generate("<<Paste>>"))
+                                     command=lambda: w.event_generate(
+                                         "<<Paste>>"))
         self.the_menu.tk.call("tk_popup", self.the_menu, e.x_root, e.y_root)
 
     def ukryj(self, entry, var):
@@ -72,25 +73,30 @@ class Window():
         # Warning
         warning_window = tk.Toplevel(self.root)
         warning_window.title("Uwaga")
-        warning_label = tk.Label(warning_window, text="Uwaga!\nPowrót do menu usunie wszystkie zapisane dane.\nCzy napewno chcesz wrócić do menu?", fg='red',
-                                 font=font12b)
+        warning_label = tk.Label(warning_window,
+                                 text=(
+                                     "Uwaga!\nPowrót do menu usunie "
+                                     "wszystkie zapisane dane.\n"
+                                     "Czy napewno chcesz wrócić do menu?"),
+                                 fg='red', font=font10b)
         warning_label.pack()
         ok_butt = tk.Button(warning_window, text='Tak', width=10, font=font12b,
                             command=lambda: self.root.destroy())
-        ok_butt.pack(side=tk.LEFT)
-        cancel_butt = tk.Button(warning_window, text='Anuluj', width=10, font=font12b,
+        ok_butt.pack(side=tk.LEFT, padx=(40, 0), pady=(20, 0))
+        cancel_butt = tk.Button(warning_window, text='Anuluj', width=10,
+                                font=font12b,
                                 command=lambda: warning_window.destroy())
-        cancel_butt.pack(side=tk.RIGHT)
+        cancel_butt.pack(side=tk.RIGHT, padx=(0, 40), pady=(20, 0))
 
         '''Ustawienie na środku ekranu oraz ikonka.'''
         warning_window.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
         warning_window.tk.call('wm', 'iconphoto', warning_window._w,
-                          tk.PhotoImage(file=ikona))
+                               tk.PhotoImage(file=ikona))
         warning_window.update_idletasks()
         width = warning_window.winfo_width()
         height = warning_window.winfo_height()
-        x = (warning_window.winfo_screenwidth() // 2)  - (width // 2)
-        y = (warning_window.winfo_screenheight() // 2)  - (height // 2)
+        x = (warning_window.winfo_screenwidth() // 2) - (width // 2)
+        y = (warning_window.winfo_screenheight() // 2) - (height // 2)
         warning_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
         # self.root.destroy()

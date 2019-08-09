@@ -39,7 +39,8 @@ class Mailsender():
         self.plec = plec
         self.cena = cena
         msg = MIMEMultipart('mixed')
-        msg['From'] = formataddr((str(Header(konsultant.kto, 'utf-8')), konsultant.login))
+        msg['From'] = formataddr(
+            (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
         msg['To'] = mail
         msg['Subject'] = 'Grupa Prawna Goldwin'
         msg["Date"] = formatdate(localtime=True)
@@ -86,7 +87,8 @@ class Mailsender():
 
     def wyslij_sprzedazowy(self):
         msg = MIMEMultipart('mixed')
-        msg['From'] = formataddr((str(Header(konsultant.kto, 'utf-8')), konsultant.login))
+        msg['From'] = formataddr(
+            (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
         for adres in self.dod_odbiorcy:
             if adres != '':
                 if adres not in self.odbiorcy:
@@ -103,7 +105,8 @@ class Mailsender():
             encoders.encode_base64(part)
             part.add_header('Content-Disposition',
                             "attachment; filename= " +
-                            os.path.basename('zalacznik.'+self.zalacznik.split('.')[1]))
+                            os.path.basename('zalacznik.'
+                                             + self.zalacznik.split('.')[1]))
             msg.attach(part)
 
             # Do servera
@@ -117,7 +120,8 @@ class Mailsender():
 
     def wyslij_rodo(self):
         msg = MIMEMultipart('mixed')
-        msg['From'] = formataddr((str(Header(konsultant.kto, 'utf-8')), konsultant.login))
+        msg['From'] = formataddr(
+            (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
         msg['To'] = klient.mail
 
         msg['Subject'] = 'Grupa Prawna Goldwin'

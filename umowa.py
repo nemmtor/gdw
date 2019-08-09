@@ -16,8 +16,6 @@ class Umowa(Window):
     def dod_butt(self):
         self.top = tk.Toplevel()
 
-
-        # self.top.geometry('250x150')
         self.top.tk.call('wm', 'iconphoto',
                          self.top._w, tk.PhotoImage(file=ikona))
 
@@ -56,7 +54,9 @@ class Umowa(Window):
     def wez_adresy(self):
         '''Pobiera adresy z entry'''
         mailsender.dod_odbiorcy = [
-            self.adres1.get().strip(), self.adres2.get().strip(), self.adres3.get().strip()]
+            self.adres1.get().strip(),
+            self.adres2.get().strip(),
+            self.adres3.get().strip()]
         self.top.destroy()
 
     def zmienvar(self):
@@ -71,7 +71,8 @@ class Umowa(Window):
         zalacznik = askopenfilename()
         if zalacznik != '' and zalacznik != ():
             mailsender.zalacznik = zalacznik
-            self.zal_label.configure(text=mailsender.zalacznik.split(r'/')[-1], fg='green')
+            self.zal_label.configure(
+                text=mailsender.zalacznik.split(r'/')[-1], fg='green')
 
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''
@@ -113,7 +114,8 @@ class Umowa(Window):
         sprawy_frame = tk.Frame(menu_frame)
 
         self.spr_nierozw_var = tk.IntVar(value=0)
-        self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame, text='Sprawy nierozwiązane',
+        self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame,
+                                             text='Sprawy nierozwiązane',
                                              variable=self.spr_nierozw_var,
                                              command=lambda: self.zmienvar())
         self.spr_nierozw_cb.pack(side=tk.LEFT)
@@ -132,7 +134,8 @@ class Umowa(Window):
         imie.grid(row=0, column=0)
         self.imie_entry = tk.Entry(left_frame, width=entry_width)
         self.imie_entry.grid(row=0, column=1, sticky='E')
-        self.imie_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
+        self.imie_entry.bind_class(
+            "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Numer telefonu
         tel = tk.Label(left_frame, text="Numer telefonu:", font=font10b)
@@ -241,7 +244,8 @@ class Umowa(Window):
         self.dodatkowe_entry = ScrolledText(
             left_frame, width=entry_width - 7, height=2)
         self.dodatkowe_entry.grid(row=130, column=1)
-        self.dodatkowe_entry.bind_class("Text", "<Button-3><ButtonRelease-3>", self.show_menu)
+        self.dodatkowe_entry.bind_class(
+            "Text", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Spacer
         spacer = tk.Label(left_frame)
