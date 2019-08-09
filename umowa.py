@@ -3,7 +3,6 @@ from window import Window
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.filedialog import askopenfilename
-from bezpolskich import stworz_plik_ascii
 from config import font10, font10b, entry_width
 from konsultant import konsultant
 from mailsender import mailsender
@@ -71,8 +70,7 @@ class Umowa(Window):
         zalacznik = askopenfilename()
         if zalacznik != '' and zalacznik != ():
             mailsender.zalacznik = zalacznik
-            mailsender.zalacznik = stworz_plik_ascii(mailsender.zalacznik)
-            self.zal_label.configure(text=mailsender.zalacznik, fg='green')
+            self.zal_label.configure(text='Wgrano załącznik', fg='green')
 
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''

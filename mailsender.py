@@ -103,7 +103,7 @@ class Mailsender():
             encoders.encode_base64(part)
             part.add_header('Content-Disposition',
                             "attachment; filename= " +
-                            os.path.basename(self.zalacznik))
+                            os.path.basename('zalacznik.'+self.zalacznik.split('.')[1]))
             msg.attach(part)
 
             # Do servera

@@ -131,7 +131,6 @@ class Window():
                         'Wysłano',
                         'Wysłano maila sprzedażowego oraz maila z RODO.')
                     server.rozlacz()
-                    os.remove(mailsender.zalacznik)
                     self.root.destroy()
             except smtplib.SMTPRecipientsRefused:
                 messagebox.showinfo('Error',
