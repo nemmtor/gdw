@@ -44,6 +44,6 @@ Prawo spadkowe, Prawo rodzinne, Prawo konsumenckie, Prawo pracy, Prawo wykrocze�
 <p>
 U nas w kancelarii zatrudniamy również specjalistów z dziedziny dofinansowań krajowych np. Urząd Pracy (np. zatrudnienie pracownika, doposażenie stanowiska pracy) watro powiedzieć prawnikowi by skierował do {2} kontakt takiego specjalisty, aby mógł {0} uzyskać środki na rozwój swojej firmy.
 Warto też raz do roku wykonać audyt umów i całej firmowej dokumentacji, nasz prawnik sprawdzi to wszystko i naniesie potrzebne poprawki jeśli coś się zmieniło w dotychczas obowiązującym prawie (taki audyt na rynku to koszt 500zł my to zrobimy za darmo!)
-Tak kompleksową ochronę prawną obniżyliśmy do kwoty {4}zł netto miesięcznie, która dotyczy {3} dopiero po okresie testowym.
+Tak kompleksową ochronę prawną obniżyliśmy do kwoty {4}zł netto miesięcznie, która dotyczy {2} dopiero po okresie testowym.
 Niech {0} pamięta w ciągu tego miesiąca korzysta {0} z usług prawnika całkowicie za darmo! I to {0} decyduje czy chce {0} z nami współpracować dalej.
 </p>

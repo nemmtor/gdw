@@ -9,8 +9,8 @@ font12 = ('Arial 800', 12)
 font12b = ('Arial 800', 12, "bold")
 
 version = '1.0.3'
-developer_mail = True
-build = False
+developer_mail = False
+build = True
 
 # Ustawienia
 entry_width = 27  # Szerokość entry
