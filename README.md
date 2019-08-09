@@ -1,2 +1,2 @@
 Instalacja:
-pyinstaller --icon=ikona.ico --clean main.spec
+pyinstaller main.spec
