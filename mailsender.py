@@ -106,7 +106,7 @@ class Mailsender():
             part.add_header('Content-Disposition',
                             "attachment; filename= " +
                             os.path.basename('zalacznik.'
-                                             + self.zalacznik.split('.')[1]))
+                                             + self.zalacznik.split('.')[-1]))
             msg.attach(part)
 
             # Do servera
