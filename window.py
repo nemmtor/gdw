@@ -72,7 +72,7 @@ class Window():
             entry.config(state='normal')
 
     def menu_butt(self):
-        # Warning
+        '''Przycisk menu.'''
         warning_window = tk.Toplevel()
         warning_window.grab_set()
         warning_window.title("Uwaga")
@@ -140,16 +140,22 @@ class Window():
             error = True
         if not error:
             try:
-                if konsultant.wybor == 1:
-                    server.zaloguj()
-                    mailsender.wyslij_rodo()
+                server.zaloguj()
                 if mailsender.wyslij_sprzedazowy():
-                    klient.rej = ''
-                    klient.kor = ''
-                    klient.dost = ''
-                    messagebox.showinfo(
-                        'Wysłano',
-                        'Wysłano maila sprzedażowego oraz maila z RODO.')
+                    print(klient.mail.lower())
+                    if klient.nierozw == 1 or\
+                    klient.mail.lower() == 'brak':
+                        messagebox.showinfo(
+                            'Wysłano',
+                            'Wysłano maila sprzedażowego.')
+                    else:
+                        messagebox.showinfo(
+                            'Wysłano',
+                            'Wysłano maila sprzedażowego oraz maila z RODO.')
+                    if konsultant.wybor == 1 and\
+                    klient.mail.lower() != 'brak' and\
+                    klient.nierozw != 1:
+                        mailsender.wyslij_rodo()
                     server.rozlacz()
                     self.root.destroy()
             except smtplib.SMTPRecipientsRefused:

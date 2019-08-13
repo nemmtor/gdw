@@ -8,7 +8,7 @@ font10b = ('Arial 800', 10, "bold")
 font12 = ('Arial 800', 12)
 font12b = ('Arial 800', 12, "bold")
 
-version = '1.0.3.0'
+version = '1.0.4.0'
 developer_mail = True
 build = False
 

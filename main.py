@@ -6,7 +6,8 @@ from menu_oferta import Menu_Oferta
 from umowa import Umowa
 # Obiekty
 from konsultant import konsultant  # dane konsultanta
-# from mailsender import mailsender
+from mailsender import mailsender
+from klient import klient
 
 
 # Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
@@ -16,6 +17,10 @@ login = Login('Goldwin Mailsender')
 
 # Nieskończona pętla służąca do obsługi menu
 while True:
+    klient.rej = ''
+    klient.kor = ''
+    klient.dost = ''
+    mailsender.zalacznik = ''
     # Stwórz okno menu
     menu = Menu('Goldwin Mailsender')
     # Umowa

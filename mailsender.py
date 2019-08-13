@@ -115,7 +115,7 @@ class Mailsender():
             # Dodaj wiadomosc do folderu SENT
             self.dodaj_do_sent(msg)
             return True
-        except AttributeError:
+        except (AttributeError and FileNotFoundError):
             messagebox.showinfo('Error', 'Nie dodałeś załącznika.')
 
     def wyslij_rodo(self):
