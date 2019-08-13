@@ -16,7 +16,7 @@ mail_expr_goldwin = re.compile(r'^(.+?)@gpgoldwin.pl')
 class Login(Window):
     '''Tworzy okienko logowania. Inherituje z Window.'''
 
-    def press_login(self):
+    def press_login(self, value):
         '''Funkcja przycisku Zaloguj'''
         # Sprawdź czy mail ma poprawną formułę(domena gpgoldwin.pl)
         if re.search(mail_expr_goldwin, self.login_entry.get().strip()):
@@ -61,7 +61,9 @@ class Login(Window):
 
         # Przycisk zaloguj
         submit = tk.Button(page_frame, text='Zaloguj',
-                           command=lambda: self.press_login())
+                           command=lambda: self.press_login(None))
+
+        self.root.bind('<Return>', self.press_login)
 
         # Pack
         login_label.pack()

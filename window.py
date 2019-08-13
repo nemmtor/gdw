@@ -15,13 +15,9 @@ from config import ikona, font10b, font12b
 
 
 class Window():
-    # usunalem size z nawiasow
     def __init__(self, title):
         '''Ustawienie tytułu, rozmiaru'''
         self.title = title
-        # self.size = size
-        # self.filename = ''
-
         self.root = tk.Tk()
         self.root.title(self.title)
         self.make_menu()
@@ -29,6 +25,7 @@ class Window():
         self.center(self.root)
 
         self.root.mainloop()  # główny loop
+
 
     def center(self, window, isroot=True):
         '''Ustawienie na środku ekranu oraz ikonka.'''
@@ -142,7 +139,6 @@ class Window():
             try:
                 server.zaloguj()
                 if mailsender.wyslij_sprzedazowy():
-                    print(klient.mail.lower())
                     if klient.nierozw == 1 or\
                     klient.mail.lower() == 'brak':
                         messagebox.showinfo(
