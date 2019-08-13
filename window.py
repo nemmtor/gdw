@@ -26,7 +26,6 @@ class Window():
 
         self.root.mainloop()  # główny loop
 
-
     def center(self, window, isroot=True):
         '''Ustawienie na środku ekranu oraz ikonka.'''
         if isroot:
@@ -140,7 +139,7 @@ class Window():
                 server.zaloguj()
                 if mailsender.wyslij_sprzedazowy():
                     if klient.nierozw == 1 or\
-                    klient.mail.lower() == 'brak':
+                            klient.mail.lower() == 'brak':
                         messagebox.showinfo(
                             'Wysłano',
                             'Wysłano maila sprzedażowego.')
@@ -149,8 +148,8 @@ class Window():
                             'Wysłano',
                             'Wysłano maila sprzedażowego oraz maila z RODO.')
                     if konsultant.wybor == 1 and\
-                    klient.mail.lower() != 'brak' and\
-                    klient.nierozw != 1:
+                            klient.mail.lower() != 'brak' and\
+                            klient.nierozw != 1:
                         mailsender.wyslij_rodo()
                     server.rozlacz()
                     self.root.destroy()
