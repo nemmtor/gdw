@@ -48,4 +48,5 @@ exe = EXE(pyz,
           upx_exclude=[],
           runtime_tmpdir=None,
           console=False,
-	      icon='ikona.ico')
+	      icon='ikona.ico',
+		  version='version.txt')
