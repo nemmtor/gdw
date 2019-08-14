@@ -13,7 +13,7 @@ from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
-from tresc_maila import stworz_body, stworz_subject, stworz_rodo, stworz_oferte
+from tresc_maila import stworz_body, stworz_subject, stworz_rodo, stworz_oferte, stworz_rodoinf
 from server import server
 import imaplib
 from tkinter import messagebox  # popup message
@@ -33,6 +33,30 @@ class Mailsender():
         self.odbiorcy = odbiorcy_sprzedazowy
         self.dod_odbiorcy = ['', '', '']
         self.zalacznik = ''
+
+    def rodo_inf(self, mail, root):
+        msg = MIMEMultipart('mixed')
+        msg['From'] = formataddr(
+            (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
+        msg['To'] = mail
+        msg['Subject'] = 'Grupa Prawna Goldwin'
+        msg["Date"] = formatdate(localtime=True)
+
+        # Body
+        msg.attach(MIMEText(stworz_rodoinf(), 'html'))
+
+        # Do servera
+        server.zaloguj()
+        server.smtp.send_message(msg)
+        # Dodaj wiadomosc do folderu SENT
+        self.dodaj_do_sent(msg)
+        server.rozlacz()
+        messagebox.showinfo('Wysłano', 'Wysłano maila informacyjnego z RODO.')
+        root.destroy()
+        return True
+
+
+
 
     def oferta(self, cena, plec, mail, root):
         # Dane do maila

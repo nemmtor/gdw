@@ -1,6 +1,7 @@
 from klient import klient
 from konsultant import konsultant
-from config import rodo, tresc
+from config import rodo, tresc, rodoinf
+
 
 
 def stworz_stopke():
@@ -71,6 +72,13 @@ def stworz_rodo():
     body = tresc_rodo
     f.close()
     body += stworz_stopke()
+    return(body)
+
+def stworz_rodoinf():
+    with open(rodoinf, 'rb') as f:
+        tresc = f.read().decode("UTF-8")
+    body = tresc
+    f.close()
     return(body)
 
 

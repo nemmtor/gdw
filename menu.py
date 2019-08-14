@@ -54,6 +54,10 @@ class Menu(Window):
                            height=2, width=18,
                            command=lambda: self.menu_button(4))
 
+        rodo_skrypt = tk.Button(page_frame, text='Mail informacyjny RODO', font=font10,
+                           height=2, width=18,
+                           command=lambda: self.menu_button(5))
+
         # Pack
         zalog_label.pack()
         kons_label.pack()
@@ -61,5 +65,6 @@ class Menu(Window):
         # aneks.pack()
         # wypo.pack()
         oferta.pack()
+        rodo_skrypt.pack()
         wersja_label.pack()
         page_frame.pack()

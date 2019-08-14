@@ -24,6 +24,7 @@ for d in a.datas:
 a.datas += [('ikona.gif',r'./pliki/ikona.gif', 'Data'),
             ('goldwin.png',r'./pliki/goldwin.png', 'Data'),
             ('rodo.txt',r'./pliki/rodo.txt', 'Data'),
+			('rodoinf.txt',r'./pliki/rodoinf.txt', 'Data'),
             ('tresc.txt',r'./pliki/oferta/tresc.txt', 'Data'),
             ('129.pdf',r'./pliki/oferta/129.pdf', 'Data'),
             ('159.pdf',r'./pliki/oferta/159.pdf', 'Data'),

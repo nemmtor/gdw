@@ -8,7 +8,7 @@ font10b = ('Arial 800', 10, "bold")
 font12 = ('Arial 800', 12)
 font12b = ('Arial 800', 12, "bold")
 
-version = '1.0.5.0'
+version = '1.0.6.0'
 developer_mail = True
 build = False
 
@@ -41,6 +41,7 @@ def resource_path(relative_path):
 if not build:
     ikona = resource_path('./pliki/ikona.gif')
     rodo = resource_path('./pliki/rodo.txt')
+    rodoinf = resource_path('./pliki/rodoinf.txt')
     goldwin = resource_path('./pliki/goldwin.png')
     pdf129 = resource_path('./pliki/oferta/129.pdf')
     pdf159 = resource_path('./pliki/oferta/159.pdf')
@@ -51,6 +52,7 @@ if not build:
 else:
     ikona = resource_path('ikona.gif')
     rodo = resource_path('rodo.txt')
+    rodoinf = resource_path('rodoinf.txt')
     goldwin = resource_path('goldwin.png')
     pdf129 = resource_path('129.pdf')
     pdf159 = resource_path('159.pdf')

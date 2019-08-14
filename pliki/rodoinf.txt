@@ -1,0 +1,44 @@
+<html>
+<body style="font-family:Calibri, sans-serif;font-size:11pt;">
+<i>
+<p>Szanowni Państwo,</p>
+<p>W związku z wejściem w życie RODO informujemy, że administratorem Państwa
+danych osobowych jest Grupa Prawna Goldwin S.A., ul. Kościuszki 71/304, 87-100 Toruń.
+W razie potrzeby uzyskania informacji o przetwarzaniu przez nas Państwa danych osobowych prosimy o kontakt pod
+adresem:daneosobowe@gpgoldwin.pl </p>
+
+<p>Państwa dane będą przetwarzane
+w celu realizacji prawnie uzasadnionego interesu
+administratora danych w postaci realizacji działań z zakresu
+marketingu bezpośredniego oraz w celu zapisywania rozmów handlowych,
+niezbędnego do wykazania zgodności z prawem działań Administratora, zaś
+podstawą prawną przetwarzania będzie art. 6 ust. 1 lit. f RODO. </p>
+
+<p>Mają Państwo prawo do dostępu do swoich danych oraz ich sprostowania. W przypadkach przewidzianych w art. 17 i 18 RODO (tj. w szczególności, gdyby Państwa dane były przetwarzane niezgodnie z prawem), mają Państwo do żądania usunięcia Państwa danych lub ograniczenia ich przetwarzania. </p>
+
+<p>Podawanie przez Państwa danych osobowych jest dobrowolne, jednak może okazać się niezbędne do zawarcia umowy z Administratorem . </p>
+
+<p>Państwa dane osobowe będą przetwarzane przez następujące okresy: </p>
+  <ul>
+    <li>Do czasu zgłoszenia sprzeciwu wobec przetwarzania danych w celach marketingowych lub wycofania zgody na przetwarzanie danych – w odniesieniu do Państwa danych identyfikacyjnych i kontaktowych, </li>
+    <li>Do czasu przedawnienia potencjalnych wzajemnych roszczeń pomiędzy Państwem a Administratorem w przypadku, gdy dojdzie do zawarcia umowy pomiędzy Państwem a Administratorem – w odniesieniu do Państwa danych w postaci zapisu rozmowy telefonicznej, </li>
+    <li>Przez okres jednego roku – odniesieniu do Państwa danych w postaci zapisu rozmowy telefonicznej, w sytuacji gdy nie dojdzie do zawarcia umowy, który to okres może ulec przedłużeniu, gdy zapis ten stanowi dowód w jakimkolwiek postępowaniu wobec administratora – do czasu niezbędnego do ostatecznego lub prawomocnego zakończenia takiego postępowania.</li>
+  </ul>
+</p>
+
+<p>W przypadkach, w których Państwa dane przetwarzane są w celu realizacji naszego uzasadnionego interesu, mają Państwo prawo wniesienia sprzeciwu wobec ich przetwarzania: w każdym przypadku, gdy przetwarzanie odbywa się dla celów marketingu bezpośredniego oraz w pozostałych przypadkach ze względu na Państwa szczególną sytuację.</p>
+<p>Państwa mogą być przekazywane następującym podmiotom: osobom u nas zatrudnionym, dostawcom usług hostingowych, dostawcom oprogramowania (w szczególności typu CRM oraz ERP), dostawcom usług telekomunikacyjnych, oraz podmiotom świadczącym na naszą rzecz usługi sprzedażowe. </p>
+<p>Jeżeli mają Państwo zastrzeżenia co do zgodności z prawem przetwarzania Państwa danych, mogą Państwo skontaktować się z nami pod adresem e-mail:daneosobowe@gpgoldwin.pl lub skorzystać z prawa do wniesienia skargi do organu nadzorczego, którym na terenie Rzeczypospolitej Polskiej jest Prezes Urzędu Ochrony Danych Osobowych.</p>
+<p>Przetwarzamy następujące kategorie Państwa danych osobowych: NAZWA_FIRMY, WOJEWÓDZTWO, POWIAT, GMINA, KOD_POCZTOWY, MIASTO, ULICA, ULICA_NR, TEL_KOM, WWW, EMAIL, NIP, REGON, KRS, FORMA_PRAWNA, FORMA_WŁASNOŚCI, ROK_POWSTANIA, ZATRUDNIENIE, OBROTY, OSOBA_DECYZYJNA, PKD_KOD, PKD_NAZWA, oraz dane nieustrukturyzowane, które podają nam Państwo w trakcie rozmowy telefonicznej.</p>
+<p>Państwa dane osobowe (za wyjątkiem treści nagrań rozmów telefonicznych) pozyskaliśmy ze źródeł ogólnodostępnych za pośrednictwem sieci Internet, a w szczególności Centralnej Ewidencji i Informacji o Działalności Gospodarczej, Krajowego Rejestru Sądowego, katalogów firm oraz stron firmowych.</p>
+<p>W razie jakichkolwiek pytań zapraszamy do kontaktu: daneosobowe@gpgoldwin.pl</p>
+
+<p align="center">Nadawcą wiadomości jest Grupa Prawna Goldwin S.A. przy Ul. Kościuszki 71/304, 87-100 w Toruniu.<br>
+Firma wpisana jest do rejestru przedsiębiorców KRS przez Sąd Rejonowy w Toruniu, VII Wydział<br>
+Gospodarczy Krajowego Rejestru Sądowego pod numerem KRS: 0000586888 NIP: 8792679200, REGON:362044066.<br>
+Kapitał zakładowy: 150.000,00 zł w całości wpłacony Copyright © 2018 Grupa Prawna Goldwin S.A.<br>
+T: +48 222 692 222 www.gpgoldwin.pl</p>
+<p align="center">Jeśli nie chcesz otrzymywać od nas wiadomości, możesz się <a href="http://mail.great-news.pl/r/2ei72nttpb/j9bgb2bcdj/">wypisać</a>.</p>
+</i>
+</body>
+</html

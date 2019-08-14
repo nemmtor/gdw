@@ -3,6 +3,7 @@
 from login import Login
 from menu import Menu
 from menu_oferta import Menu_Oferta
+from menu_rodoskrypt import Rodo_Skrypt
 from umowa import Umowa
 # Obiekty
 from konsultant import konsultant  # dane konsultanta
@@ -35,3 +36,5 @@ while True:
     # Mail z ofertą
     elif konsultant.wybor == 4:
         menu_oferta = Menu_Oferta('Goldwin Mailsender')
+    elif konsultant.wybor == 5:
+        rodo_skrypt = Rodo_Skrypt('Goldwin Mailsender')
