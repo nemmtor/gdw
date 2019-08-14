@@ -1,7 +1,7 @@
 '''Okno menu. Aneks i wypowiedzenie do zrobienia później.'''
 from window import Window  # klasa okna
 import tkinter as tk
-from config import font10
+from config import font10, version
 
 # Obiekty
 from konsultant import konsultant
@@ -23,6 +23,7 @@ class Menu(Window):
 
         # Informacja kto zalogowany
         # Label
+        wersja_label = tk.Label(page_frame, text=f'Wersja {version}', font=font10, fg='green')
         zalog_label = tk.Label(page_frame, text='Zalogowany jako:')
         # Label z imieniem i nazwiskiem
         kons_label = tk.Label(page_frame, text=konsultant.kto,
@@ -60,4 +61,5 @@ class Menu(Window):
         # aneks.pack()
         # wypo.pack()
         oferta.pack()
+        wersja_label.pack()
         page_frame.pack()
