@@ -46,7 +46,6 @@ class Rodo_Skrypt(Window):
         zalog_label.pack()
         kons_label.pack()
 
-
         mail_label.pack()
         mail_entry.pack()
 

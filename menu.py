@@ -23,7 +23,8 @@ class Menu(Window):
 
         # Informacja kto zalogowany
         # Label
-        wersja_label = tk.Label(page_frame, text=f'Wersja {version}', font=font10, fg='green')
+        wersja_label = tk.Label(page_frame, text=f'Wersja {version}',
+                                font=font10, fg='green')
         zalog_label = tk.Label(page_frame, text='Zalogowany jako:')
         # Label z imieniem i nazwiskiem
         kons_label = tk.Label(page_frame, text=konsultant.kto,
@@ -54,9 +55,9 @@ class Menu(Window):
                            height=2, width=18,
                            command=lambda: self.menu_button(4))
 
-        rodo_skrypt = tk.Button(page_frame, text='Mail informacyjny RODO', font=font10,
-                           height=2, width=18,
-                           command=lambda: self.menu_button(5))
+        rodo_skrypt = tk.Button(page_frame, text='Mail informacyjny RODO',
+                                font=font10, height=2, width=18,
+                                command=lambda: self.menu_button(5))
 
         # Pack
         zalog_label.pack()

@@ -12,7 +12,6 @@ from klient import klient
 
 
 # Stwórz okno logowania - przejdzie dalej po poprawnym logowaniu
-# login = Login('Goldwin - login', '200x100')
 login = Login('Goldwin Mailsender')
 
 
@@ -33,6 +32,7 @@ while True:
     # # Wypowiedzenie
     # elif konsultant.wybor == 3:
     #     pass
+
     # Mail z ofertą
     elif konsultant.wybor == 4:
         menu_oferta = Menu_Oferta('Goldwin Mailsender')

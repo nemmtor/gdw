@@ -13,14 +13,17 @@ from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
-from tresc_maila import stworz_body, stworz_subject, stworz_rodo, stworz_oferte, stworz_rodoinf
+from tresc_maila import stworz_body, stworz_subject, stworz_rodo
+from tresc_maila import stworz_oferte, stworz_rodoinf
 from server import server
 import imaplib
 from tkinter import messagebox  # popup message
 
 # Odbiorcy
+import re
 from config import bcc_rodo, odbiorcy_sprzedazowy
 from config import pdf129, pdf159, pdf199, pdfgoldwin
+from config import mail_regex
 
 
 class Mailsender():
@@ -35,79 +38,83 @@ class Mailsender():
         self.zalacznik = ''
 
     def rodo_inf(self, mail, root):
-        msg = MIMEMultipart('mixed')
-        msg['From'] = formataddr(
-            (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
-        msg['To'] = mail
-        msg['Subject'] = 'Grupa Prawna Goldwin'
-        msg["Date"] = formatdate(localtime=True)
+        if re.match(mail_regex, mail):
+            msg = MIMEMultipart('mixed')
+            msg['From'] = formataddr(
+                (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
+            msg['To'] = mail
+            msg['Subject'] = 'Grupa Prawna Goldwin'
+            msg["Date"] = formatdate(localtime=True)
 
-        # Body
-        msg.attach(MIMEText(stworz_rodoinf(), 'html'))
+            # Body
+            msg.attach(MIMEText(stworz_rodoinf(), 'html'))
 
-        # Do servera
-        server.zaloguj()
-        server.smtp.send_message(msg)
-        # Dodaj wiadomosc do folderu SENT
-        self.dodaj_do_sent(msg)
-        server.rozlacz()
-        messagebox.showinfo('Wysłano', 'Wysłano maila informacyjnego z RODO.')
-        root.destroy()
-        return True
-
-
-
+            # Do servera
+            server.zaloguj()
+            server.smtp.send_message(msg)
+            # Dodaj wiadomosc do folderu SENT
+            self.dodaj_do_sent(msg)
+            server.rozlacz()
+            messagebox.showinfo(
+                'Wysłano', 'Wysłano maila informacyjnego z RODO.')
+            root.destroy()
+            return True
+        else:
+            messagebox.showinfo('Error', 'Błędny adres mailowy!')
 
     def oferta(self, cena, plec, mail, root):
         # Dane do maila
-        self.plec = plec
-        self.cena = cena
-        msg = MIMEMultipart('mixed')
-        msg['From'] = formataddr(
-            (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
-        msg['To'] = mail
-        msg['Subject'] = 'Grupa Prawna Goldwin'
-        msg["Date"] = formatdate(localtime=True)
+        if re.match(mail_regex, mail):
+            self.plec = plec
+            self.cena = cena
+            msg = MIMEMultipart('mixed')
+            msg['From'] = formataddr(
+                (str(Header(konsultant.kto, 'utf-8')), konsultant.login))
+            msg['To'] = mail
+            msg['Subject'] = 'Grupa Prawna Goldwin'
+            msg["Date"] = formatdate(localtime=True)
 
-        # Body
-        msg.attach(MIMEText(stworz_oferte(self.plec, self.cena), 'html'))
+            # Body
+            msg.attach(MIMEText(stworz_oferte(self.plec, self.cena), 'html'))
 
-        # Załącznik
-        attachment = open(pdfgoldwin, 'rb')
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload((attachment).read())
-        encoders.encode_base64(part)
-        # TODO - basename = zmiennazwe()
-        part.add_header('Content-Disposition',
-                        "attachment; filename= " +
-                        os.path.basename('Grupa Prawna Goldwin.pdf'))
-        msg.attach(part)
+            # Załącznik
+            attachment = open(pdfgoldwin, 'rb')
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload((attachment).read())
+            encoders.encode_base64(part)
+            # TODO - basename = zmiennazwe()
+            part.add_header('Content-Disposition',
+                            "attachment; filename= " +
+                            os.path.basename('Grupa Prawna Goldwin.pdf'))
+            msg.attach(part)
 
-        # Załącznik - oferta
-        if self.cena == 129:
-            attachment = open(pdf129, 'rb')
-        elif self.cena == 159:
-            attachment = open(pdf159, 'rb')
-        elif self.cena == 199:
-            attachment = open(pdf199, 'rb')
+            # Załącznik - oferta
+            if self.cena == 129:
+                attachment = open(pdf129, 'rb')
+            elif self.cena == 159:
+                attachment = open(pdf159, 'rb')
+            elif self.cena == 199:
+                attachment = open(pdf199, 'rb')
 
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload((attachment).read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition',
-                        "attachment; filename= " +
-                        os.path.basename('Oferta.pdf'))
-        msg.attach(part)
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload((attachment).read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition',
+                            "attachment; filename= " +
+                            os.path.basename('Oferta.pdf'))
+            msg.attach(part)
 
-        # Do servera
-        server.zaloguj()
-        server.smtp.send_message(msg)
-        # Dodaj wiadomosc do folderu SENT
-        self.dodaj_do_sent(msg)
-        server.rozlacz()
-        messagebox.showinfo('Wysłano', 'Wysłano maila z ofertą')
-        root.destroy()
-        return True
+            # Do servera
+            server.zaloguj()
+            server.smtp.send_message(msg)
+            # Dodaj wiadomosc do folderu SENT
+            self.dodaj_do_sent(msg)
+            server.rozlacz()
+            messagebox.showinfo('Wysłano', 'Wysłano maila z ofertą')
+            root.destroy()
+            return True
+        else:
+            messagebox.showinfo('Error', 'Błędny adres mailowy!')
 
     def wyslij_sprzedazowy(self):
         msg = MIMEMultipart('mixed')

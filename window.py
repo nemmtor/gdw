@@ -11,7 +11,8 @@ from konsultant import konsultant
 from mailsender import mailsender
 import smtplib
 from server import server
-from config import ikona, font10b, font12b
+from config import ikona, font10b, font12b, mail_regex
+import re
 
 
 class Window():
@@ -133,6 +134,10 @@ class Window():
             error = True
         if klient.dodatkowe == '':
             messagebox.showinfo('Error', 'Brak dodatkowych informacji')
+            error = True
+        if klient.mail.lower() != 'brak' and\
+                not re.match(klient.mail, mail_regex):
+            messagebox.showinfo('Error', 'Błędny adres mailowy')
             error = True
         if not error:
             try:

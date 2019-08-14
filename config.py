@@ -7,6 +7,7 @@ font10 = ('Arial 800', 10)
 font10b = ('Arial 800', 10, "bold")
 font12 = ('Arial 800', 12)
 font12b = ('Arial 800', 12, "bold")
+mail_regex = r'.+@.+\..+'
 
 version = '1.0.6.0'
 developer_mail = True

@@ -3,7 +3,6 @@ from konsultant import konsultant
 from config import rodo, tresc, rodoinf
 
 
-
 def stworz_stopke():
     stopka = '<p style="font-size:10pt";>'
     stopka += '<i>Pozdrawiam,</i><br><br>'
@@ -73,6 +72,7 @@ def stworz_rodo():
     f.close()
     body += stworz_stopke()
     return(body)
+
 
 def stworz_rodoinf():
     with open(rodoinf, 'rb') as f:
