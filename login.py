@@ -19,7 +19,7 @@ class Login(Window):
     def press_login(self, value):
         '''Funkcja przycisku Zaloguj'''
         # Sprawdź czy mail ma poprawną formułę(domena gpgoldwin.pl)
-        if re.search(mail_expr_goldwin, self.login_entry.get().strip()):
+        if re.match(mail_expr_goldwin, self.login_entry.get().strip()):
             konsultant.dane(self.login_entry.get().strip(),
                             self.password_entry.get().strip())
             # Sprawdzenie czy login/pw są prawidłowe

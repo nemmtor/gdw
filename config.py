@@ -3,18 +3,21 @@
 # Czcionki
 import os
 import sys
-font10 = ('Arial 800', 10)
-font10b = ('Arial 800', 10, "bold")
-font12 = ('Arial 800', 12)
-font12b = ('Arial 800', 12, "bold")
-mail_regex = r'.+@.+\..+'
+import datetime
+
 
 version = '1.0.6.1'
 developer_mail = True
 build = False
 
+
 # Ustawienia
-entry_width = 27  # Szerokość entry
+font10 = ('Arial 800', 10)
+font10b = ('Arial 800', 10, "bold")
+font12 = ('Arial 800', 12)
+font12b = ('Arial 800', 12, "bold")
+mail_regex = r'.+@.+\..+'
+entry_width = 33  # Szerokość entry
 # Odbiorcy maila sprzedażowego
 if developer_mail:
     odbiorcy_sprzedazowy = ['kacper0witas@gmail.com']
@@ -26,6 +29,29 @@ else:
                             'oliwia.zachar@gpgoldwin.pl']
     bcc_rodo = ['informacje@gpgoldwin.pl',
                 'kacper.witas@gpgoldwin.pl']
+# data
+
+
+def czy_dodac_0(num):
+    if len(num) == 1:
+        num = f'0{num}'
+    return(num)
+
+
+def stworz_date(kiedy):
+    if kiedy == 'dzis':
+        dzien = str(datetime.datetime.now().day)
+        miesiac = str(datetime.datetime.now().month)
+        rok = str(datetime.datetime.now().year)
+    elif kiedy == 'jutro':
+        dzien = str((datetime.date.today() + datetime.timedelta(days=1)).day)
+        miesiac = str(
+            (datetime.date.today() + datetime.timedelta(days=1)).month)
+        rok = str((datetime.date.today() + datetime.timedelta(days=1)).year)
+    dzien = czy_dodac_0(dzien)
+    miesiac = czy_dodac_0(miesiac)
+    data = f'{dzien}.{miesiac}.{rok}'
+    return(data)
 
 
 def resource_path(relative_path):

@@ -112,19 +112,57 @@ def stworz_body():
         body += 'Data doręczenia: {}'.format(klient.datawys)
         body += '<br>'
         body += 'Adres email: {}'.format(klient.mail)
+
+        if klient.rodzajadresu == 'rejkordost':
+            if klient.rej_var:
+                body += '<br>'
+                body += '''Adres rejestrowy, korespondencyjny,
+                dostarczenia: {}'''.format(
+                    klient.rej)
+
+        if klient.rodzajadresu == 'rejkor':
+            if klient.rej_var:
+                body += '<br>'
+                body += '''Adres rejestrowy, korespondencyjny: {}'''.format(
+                    klient.rej)
+            if klient.dost_var:
+                body += '<br>'
+                body += 'Adres dostarczenia: {}'.format(klient.dost)
+
+        if klient.rodzajadresu == 'rejdost':
+            if klient.rej_var:
+                body += '<br>'
+                body += '''Adres rejestrowy, dostarczenia: {}'''.format(
+                    klient.rej)
+            if klient.kor_var:
+                body += '<br>'
+                body += 'Adres korespondencyjny: {}'.format(klient.kor)
+
+        if klient.rodzajadresu == 'kordost':
+            if klient.rej_var:
+                body += '<br>'
+                body += '''Adres rejestrowy: {}'''.format(
+                    klient.rej)
+            if klient.kor_var:
+                body += '<br>'
+                body += 'Adres korespondencyjny, dostarczenia: {}'.format(
+                    klient.kor)
+
+        if klient.rodzajadresu == 'osobne':
+            if klient.rej_var:
+                body += '<br>'
+                body += '''Adres rejestrowy: {}'''.format(
+                    klient.rej)
+            if klient.kor_var:
+                body += '<br>'
+                body += 'Adres korespondencyjny: {}'.format(
+                    klient.kor)
+            if klient.dost_var:
+                body += '<br>'
+                body += 'Adres dostarczenia: {}'.format(
+                    klient.dost)
+
         body += '<br>'
-
-        # Jeżeli checkbox odznaczony:
-        if not klient.rej_var:
-            body += 'Adres rejestrowy: {}'.format(klient.rej)
-            body += '<br>'
-        if not klient.kor_var:
-            body += 'Adres korespondencyjny: {}'.format(klient.kor)
-            body += '<br>'
-        if not klient.dost_var:
-            body += 'Adres dostarczenia: {}'.format(klient.dost)
-            body += '<br>'
-
         body += 'Branża: {}'.format(klient.branza)
         body += '<br>'
         body += 'Pytania do prawnika: {}'.format(klient.pytania)

@@ -8,10 +8,20 @@ class Klient():
     def __init__(self):
         pass
 
+    def stworz_adres(self, var):
+        if var == 1:
+            return(self.adr1)
+        elif var == 2:
+            return(self.adr2)
+        elif var == 3:
+            return(self.adr3)
+        else:
+            return(None)
+
     def stworz_klienta(self, imnaz, tel, datasprz, datawys,
                        cena_dl, mail, branza, pytania, dodatkowe,
                        rej_var, kor_var, dost_var,
-                       rej, kor, dost, nierozw):
+                       adr1, adr2, adr3, nierozw):
         '''Tworzy atrybuty - dane klienta, w oparciu o dane z entry.'''
         self.imnaz = imnaz
         self.tel = tel
@@ -25,15 +35,30 @@ class Klient():
         self.rej_var = rej_var
         self.kor_var = kor_var
         self.dost_var = dost_var
+        self.adr1 = adr1
+        self.adr2 = adr2
+        self.adr3 = adr3
         self.nierozw = nierozw
 
-        # Jeżeli checkboxy odznaczone to pobierz adresy z entry
-        if not self.rej_var:
-            self.rej = rej
-        if not self.kor_var:
-            self.kor = kor
-        if not self.dost_var:
-            self.dost = dost
+        if self.rej_var == self.kor_var and self.rej_var == self.dost_var:
+            self.rodzajadresu = 'rejkordost'
+
+        if self.rej_var == self.kor_var and self.rej_var != self.dost_var:
+            self.rodzajadresu = 'rejkor'
+
+        if self.rej_var != self.kor_var and self.rej_var == self.dost_var:
+            self.rodzajadresu = 'rejdost'
+
+        if self.rej_var != self.kor_var and self.kor_var == self.dost_var:
+            self.rodzajadresu = 'kordost'
+
+        if self.rej_var != self.kor_var and self.kor_var != self.dost_var and\
+                self.rej_var != self.dost_var:
+            self.rodzajadresu = 'osobne'
+
+        self.rej = self.stworz_adres(self.rej_var)
+        self.kor = self.stworz_adres(self.kor_var)
+        self.dost = self.stworz_adres(self.dost_var)
 
 
 # Nowy obiekt

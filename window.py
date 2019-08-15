@@ -99,12 +99,12 @@ class Window():
                               self.branza_entry.get().strip(),
                               self.pytania_entry.get().strip(),
                               self.dodatkowe_entry.get("1.0", tk.END).strip(),
-                              self.adr_rej_var.get(),
-                              self.adr_kor_var.get(),
-                              self.adr_dost_var.get(),
-                              self.adr_rej_entry.get().strip(),
-                              self.adr_kor_entry.get().strip(),
-                              self.adr_dost_entry.get().strip(),
+                              self.rej_var.get(),
+                              self.kor_var.get(),
+                              self.dost_var.get(),
+                              self.adr_1_entry.get().strip(),
+                              self.adr_2_entry.get().strip(),
+                              self.adr_3_entry.get().strip(),
                               self.spr_nierozw_var.get()
                               )
         error = False
@@ -136,7 +136,7 @@ class Window():
             messagebox.showinfo('Error', 'Brak dodatkowych informacji')
             error = True
         if klient.mail.lower() != 'brak' and\
-                not re.match(klient.mail, mail_regex):
+                re.match(klient.mail, mail_regex):
             messagebox.showinfo('Error', 'Błędny adres mailowy')
             error = True
         if not error:
