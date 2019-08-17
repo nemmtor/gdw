@@ -61,11 +61,11 @@ class Menu(Window):
 
         # Pack
         zalog_label.pack()
-        kons_label.pack()
+        kons_label.pack(pady=(0, 10))
         umowa.pack()
         # aneks.pack()
         # wypo.pack()
         oferta.pack()
         rodo_skrypt.pack()
-        wersja_label.pack()
+        wersja_label.pack(pady=(10, 0))
         page_frame.pack()

@@ -7,7 +7,7 @@ from config import font10, font10b, entry_width, stworz_date
 from konsultant import konsultant
 from mailsender import mailsender
 
-from config import goldwin
+# from config import goldwin
 
 
 class Umowa(Window):
@@ -64,9 +64,6 @@ class Umowa(Window):
 
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''
-        print(f'Rej var: {self.rej_var.get()}')
-        print(f'Kor var: {self.kor_var.get() }')
-        print(f'Dost var: {self.dost_var.get() }')
         if self.rej_var.get() != 1 and\
                 self.kor_var.get() != 1 and\
                 self.dost_var.get() != 1:
@@ -93,17 +90,15 @@ class Umowa(Window):
         page_frame = tk.Frame(self.root)
 
         left_frame = tk.Frame(page_frame)
-        # mid_frame = tk.Frame(page_frame, bg='green')
-        right_frame = tk.Frame(page_frame, height=388, width=354)
+        right_frame = tk.Frame(page_frame)
         menu_frame = tk.Frame(page_frame)
         left_frame.pack(fill=tk.BOTH, expand=False, side=tk.LEFT)
-        # mid_frame.pack(fill=tk.BOTH, expan=True, side=tk.LEFT)
         right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
-        menu_frame.pack(fill=tk.BOTH, expand=True)
+        menu_frame.pack(fill=tk.BOTH, expand=True, padx=(100, 0))
 
         # MENU FRAME (po prawej stronie)
         zalog_label = tk.Label(menu_frame, text='Zalogowany jako:')
-        zalog_label.pack(pady=10)
+        zalog_label.pack()
         kons_label = tk.Label(menu_frame, text=konsultant.kto,
                               font=('Arial 800', 10), fg='green')
         kons_label.pack()
@@ -111,28 +106,28 @@ class Umowa(Window):
         menu_button = tk.Button(menu_frame, text='MENU',
                                 font=font10, width=10,
                                 command=lambda: self.menu_butt())
-        menu_button.pack(pady=20)
+        menu_button.pack(pady=(10, 0))
 
         dod_adresy_button = tk.Button(menu_frame, text='Dodaj odbiorce',
                                       font=font10, width=10,
                                       command=lambda: self.dod_butt())
         dod_adresy_button.pack()
 
-        sprawy_frame = tk.Frame(menu_frame)
+        # sprawy_frame = tk.Frame(menu_frame)
 
         self.spr_nierozw_var = tk.IntVar(value=0)
-        self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame,
-                                             text='Sprawy nierozwiązane',
+        self.spr_nierozw_cb = tk.Checkbutton(menu_frame,
+                                             text='Sprawy\nnierozwiązane',
                                              variable=self.spr_nierozw_var,
                                              command=lambda: self.zmienvar())
-        self.spr_nierozw_cb.pack(side=tk.LEFT)
-        sprawy_frame.pack(pady=20)
+        self.spr_nierozw_cb.pack(side=tk.BOTTOM)
+        # sprawy_frame.pack(pady=20)
 
         # MID FRAME
-        img = tk.PhotoImage(file=goldwin)
-        img_Label = tk.Label(right_frame, image=img)
-        img_Label.image = img
-        img_Label.place(relx=.5, rely=.5, anchor='c')
+        # img = tk.PhotoImage(file=goldwin)
+        # img_Label = tk.Label(right_frame, image=img)
+        # img_Label.image = img
+        # img_Label.place(relx=.5, rely=.5, anchor='c')
 
         # LEFT FRAME
 

@@ -1,5 +1,5 @@
 '''Okno logowania.'''
-from config import entry_width  # konfiguracja
+# from config import entry_width  # konfiguracja
 import re  # regex dla sprawdzenia maila
 from window import Window  # klasa okna
 from tkinter import messagebox  # popup message
@@ -51,13 +51,13 @@ class Login(Window):
 
         # Login label, entry
         login_label = tk.Label(page_frame, text='Login:')
-        self.login_entry = tk.Entry(page_frame, width=entry_width)
+        self.login_entry = tk.Entry(page_frame, width=30)
         self.login_entry.bind_class(
             "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Password label, entry
         password_label = tk.Label(page_frame, text='Hasło:')
-        self.password_entry = tk.Entry(page_frame, width=entry_width, show='*')
+        self.password_entry = tk.Entry(page_frame, width=30, show='*')
 
         # Przycisk zaloguj
         submit = tk.Button(page_frame, text='Zaloguj',
@@ -68,7 +68,7 @@ class Login(Window):
         # Pack
         login_label.pack()
         self.login_entry.pack()
-        password_label.pack()
+        password_label.pack(pady=(10, 0))
         self.password_entry.pack()
+        submit.pack(pady=(10, 0))
         page_frame.pack()
-        submit.pack()
