@@ -28,7 +28,10 @@ class Klient():
         self.datasprz = datasprz
         self.datawys = datawys
         self.cena_dl = cena_dl
-        self.mail = mail
+
+        mail = mail.split()
+        self.mail = ', '.join(mail)
+
         self.branza = branza
         self.pytania = pytania
         self.dodatkowe = dodatkowe

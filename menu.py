@@ -25,7 +25,7 @@ class Menu(Window):
         # Label
         wersja_label = tk.Label(page_frame, text=f'Wersja {version}',
                                 font=font10, fg='green')
-        zalog_label = tk.Label(page_frame, text='Zalogowany jako:')
+        zalog_label = tk.Label(page_frame, text='Zalogowano jako:')
         # Label z imieniem i nazwiskiem
         kons_label = tk.Label(page_frame, text=konsultant.kto,
                               font=font10, fg='green')

@@ -92,15 +92,19 @@ class Umowa(Window):
         left_frame = tk.Frame(page_frame)
         right_frame = tk.Frame(page_frame)
         menu_frame = tk.Frame(page_frame)
-        left_frame.pack(fill=tk.BOTH, expand=False, side=tk.LEFT)
+        # W Menu frame
+        rozne_frame = tk.Frame(menu_frame)
+
+        rozne_frame.pack(side=tk.BOTTOM)
+        left_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT, padx=(20, 0))
         right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
-        menu_frame.pack(fill=tk.BOTH, expand=True, padx=(100, 0))
+        menu_frame.pack(fill=tk.BOTH, expand=True, padx=(100, 20))
 
         # MENU FRAME (po prawej stronie)
-        zalog_label = tk.Label(menu_frame, text='Zalogowany jako:')
+        zalog_label = tk.Label(menu_frame, text='Zalogowano jako:')
         zalog_label.pack()
         kons_label = tk.Label(menu_frame, text=konsultant.kto,
-                              font=('Arial 800', 10), fg='green')
+                              font=font10, fg='green')
         kons_label.pack()
 
         menu_button = tk.Button(menu_frame, text='MENU',
@@ -113,15 +117,14 @@ class Umowa(Window):
                                       command=lambda: self.dod_butt())
         dod_adresy_button.pack()
 
-        # sprawy_frame = tk.Frame(menu_frame)
-
+        # Sprawy nierozwiązane
         self.spr_nierozw_var = tk.IntVar(value=0)
-        self.spr_nierozw_cb = tk.Checkbutton(menu_frame,
+        self.spr_nierozw_cb = tk.Checkbutton(rozne_frame,
                                              text='Sprawy\nnierozwiązane',
                                              variable=self.spr_nierozw_var,
                                              command=lambda: self.zmienvar())
-        self.spr_nierozw_cb.pack(side=tk.BOTTOM)
-        # sprawy_frame.pack(pady=20)
+        self.spr_nierozw_cb.pack()
+        rozne_frame.pack(side=tk.BOTTOM, pady=(0, 10))
 
         # MID FRAME
         # img = tk.PhotoImage(file=goldwin)

@@ -111,7 +111,7 @@ def stworz_body():
         body += '<br>'
         body += 'Data doręczenia: {}'.format(klient.datawys)
         body += '<br>'
-        body += 'Adres email: {}'.format(klient.mail)
+        body += 'Adres email: {}'.format(klient.mail.replace(',', ''))
 
         if klient.rodzajadresu == 'rejkordost':
             if klient.rej_var:
