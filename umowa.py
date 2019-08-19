@@ -96,7 +96,7 @@ class Umowa(Window):
         rozne_frame = tk.Frame(menu_frame)
 
         rozne_frame.pack(side=tk.BOTTOM)
-        left_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT, padx=(20, 0))
+        left_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT, padx=(20, 20))
         right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         menu_frame.pack(fill=tk.BOTH, expand=True, padx=(100, 20))
 
