@@ -27,10 +27,28 @@ class Window():
 
         self.root.mainloop()  # główny loop
 
+    def przycisk_x(self):
+        warning_window = tk.Toplevel()
+        warning_window.grab_set()
+        warning_window.title("Uwaga")
+        warning_label = tk.Label(warning_window,
+                                 text=(
+                                     "Czy napewno chcesz wyłączyć program?"),
+                                 font=font10b)
+        warning_label.pack()
+        ok_butt = tk.Button(warning_window, text='Tak', width=10, font=font12b,
+                            command=lambda: sys.exit())
+        ok_butt.pack(side=tk.LEFT, padx=(40, 0), pady=(10, 0))
+        cancel_butt = tk.Button(warning_window, text='Anuluj', width=10,
+                                font=font12b,
+                                command=lambda: warning_window.destroy())
+        cancel_butt.pack(side=tk.RIGHT, padx=(0, 40), pady=(10, 0))
+        self.center(warning_window, False)
+
     def center(self, window, isroot=True):
         '''Ustawienie na środku ekranu oraz ikonka.'''
         if isroot:
-            window.protocol('WM_DELETE_WINDOW', lambda: sys.exit())
+            window.protocol('WM_DELETE_WINDOW', lambda: self.przycisk_x())
         # else:
         #     window.protocol('WM_DELETE_WINDOW', lambda: window.destroy())
         window.tk.call('wm', 'iconphoto', window._w,
@@ -82,11 +100,11 @@ class Window():
         warning_label.pack()
         ok_butt = tk.Button(warning_window, text='Tak', width=10, font=font12b,
                             command=lambda: self.root.destroy())
-        ok_butt.pack(side=tk.LEFT, padx=(40, 0), pady=(20, 0))
+        ok_butt.pack(side=tk.LEFT, padx=(40, 0), pady=(10, 0))
         cancel_butt = tk.Button(warning_window, text='Anuluj', width=10,
                                 font=font12b,
                                 command=lambda: warning_window.destroy())
-        cancel_butt.pack(side=tk.RIGHT, padx=(0, 40), pady=(20, 0))
+        cancel_butt.pack(side=tk.RIGHT, padx=(0, 40), pady=(10, 0))
         self.center(warning_window, False)
 
     def wyslij_butt(self):
@@ -99,12 +117,12 @@ class Window():
                               self.branza_entry.get().strip(),
                               self.pytania_entry.get().strip(),
                               self.dodatkowe_entry.get("1.0", tk.END).strip(),
-                              self.adr_rej_var.get(),
-                              self.adr_kor_var.get(),
-                              self.adr_dost_var.get(),
-                              self.adr_rej_entry.get().strip(),
-                              self.adr_kor_entry.get().strip(),
-                              self.adr_dost_entry.get().strip(),
+                              self.rej_var.get(),
+                              self.kor_var.get(),
+                              self.dost_var.get(),
+                              self.adr_1_entry.get().strip(),
+                              self.adr_2_entry.get().strip(),
+                              self.adr_3_entry.get().strip(),
                               self.spr_nierozw_var.get()
                               )
         error = False
@@ -136,7 +154,7 @@ class Window():
             messagebox.showinfo('Error', 'Brak dodatkowych informacji')
             error = True
         if klient.mail.lower() != 'brak' and\
-                not re.match(klient.mail, mail_regex):
+                re.match(klient.mail, mail_regex):
             messagebox.showinfo('Error', 'Błędny adres mailowy')
             error = True
         if not error:

@@ -21,7 +21,7 @@ class Rodo_Skrypt(Window):
 
         # Informacja kto zalogowany
         # Label
-        zalog_label = tk.Label(zalog_frame, text='Zalogowany jako:')
+        zalog_label = tk.Label(zalog_frame, text='Zalogowano jako:')
         # Label z imieniem i nazwiskiem
         kons_label = tk.Label(zalog_frame, text=konsultant.kto,
                               font=font10, fg='green')

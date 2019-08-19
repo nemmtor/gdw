@@ -3,11 +3,11 @@ from window import Window
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.filedialog import askopenfilename
-from config import font10, font10b, entry_width
+from config import font10, font10b, entry_width, stworz_date
 from konsultant import konsultant
 from mailsender import mailsender
 
-from config import goldwin
+# from config import goldwin
 
 
 class Umowa(Window):
@@ -33,7 +33,7 @@ class Umowa(Window):
         self.adres3.pack(pady=5)
         self.adres3.insert(tk.END, mailsender.dod_odbiorcy[2])
 
-        ok_butt = tk.Button(self.top, text="Zapisz",
+        ok_butt = tk.Button(self.top, text='Zapisz',
                             font=font10, width=10,
                             command=lambda: self.wez_adresy())
         ok_butt.pack()
@@ -64,94 +64,113 @@ class Umowa(Window):
 
     def ukryj(self, entry, var):
         '''Funkcja blokowania entry adresów.'''
-        if var.get():
-            entry.config(state='disabled')
-        else:
-            entry.config(state='normal')
+        if self.rej_var.get() != 1 and\
+                self.kor_var.get() != 1 and\
+                self.dost_var.get() != 1:
+            self.adr_1_entry.config(state='disabled')
+
+        if self.rej_var.get() != 2 and\
+                self.kor_var.get() != 2 and\
+                self.dost_var.get() != 2:
+            self.adr_2_entry.config(state='disabled')
+
+        if self.rej_var.get() != 3 and\
+                self.kor_var.get() != 3 and\
+                self.dost_var.get() != 3:
+            self.adr_3_entry.config(state='disabled')
+
+        if entry is not None and var is not None:
+            if var.get():
+                entry.config(state='normal')
+            else:
+                entry.config(state='disabled')
 
     def widgets(self):
         '''Widgety.'''
         page_frame = tk.Frame(self.root)
 
         left_frame = tk.Frame(page_frame)
-        # mid_frame = tk.Frame(page_frame, bg='green')
-        right_frame = tk.Frame(page_frame, height=388, width=354)
+        right_frame = tk.Frame(page_frame)
         menu_frame = tk.Frame(page_frame)
-        left_frame.pack(fill=tk.BOTH, expand=False, side=tk.LEFT)
-        # mid_frame.pack(fill=tk.BOTH, expan=True, side=tk.LEFT)
+        # W Menu frame
+        rozne_frame = tk.Frame(menu_frame)
+
+        rozne_frame.pack(side=tk.BOTTOM)
+        left_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT, padx=(20, 0))
         right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
-        menu_frame.pack(fill=tk.BOTH, expand=True)
+        menu_frame.pack(fill=tk.BOTH, expand=True, padx=(100, 20))
 
         # MENU FRAME (po prawej stronie)
-        zalog_label = tk.Label(menu_frame, text='Zalogowany jako:')
-        zalog_label.pack(pady=10)
+        zalog_label = tk.Label(menu_frame, text='Zalogowano jako:')
+        zalog_label.pack()
         kons_label = tk.Label(menu_frame, text=konsultant.kto,
-                              font=('Arial 800', 10), fg='green')
+                              font=font10, fg='green')
         kons_label.pack()
 
-        menu_button = tk.Button(menu_frame, text="MENU",
+        menu_button = tk.Button(menu_frame, text='MENU',
                                 font=font10, width=10,
                                 command=lambda: self.menu_butt())
-        menu_button.pack(pady=20)
+        menu_button.pack(pady=(10, 0))
 
-        dod_adresy_button = tk.Button(menu_frame, text="Dodaj odbiorce",
+        dod_adresy_button = tk.Button(menu_frame, text='Dodaj odbiorce',
                                       font=font10, width=10,
                                       command=lambda: self.dod_butt())
         dod_adresy_button.pack()
 
-        sprawy_frame = tk.Frame(menu_frame)
-
+        # Sprawy nierozwiązane
         self.spr_nierozw_var = tk.IntVar(value=0)
-        self.spr_nierozw_cb = tk.Checkbutton(sprawy_frame,
-                                             text='Sprawy nierozwiązane',
+        self.spr_nierozw_cb = tk.Checkbutton(rozne_frame,
+                                             text='Sprawy\nnierozwiązane',
                                              variable=self.spr_nierozw_var,
                                              command=lambda: self.zmienvar())
-        self.spr_nierozw_cb.pack(side=tk.LEFT)
-        sprawy_frame.pack(pady=20)
+        self.spr_nierozw_cb.pack()
+        rozne_frame.pack(side=tk.BOTTOM, pady=(0, 10))
 
         # MID FRAME
-        img = tk.PhotoImage(file=goldwin)
-        img_Label = tk.Label(right_frame, image=img)
-        img_Label.image = img
-        img_Label.place(relx=.5, rely=.5, anchor="c")
+        # img = tk.PhotoImage(file=goldwin)
+        # img_Label = tk.Label(right_frame, image=img)
+        # img_Label.image = img
+        # img_Label.place(relx=.5, rely=.5, anchor='c')
 
         # LEFT FRAME
 
         # Imie i nazwisko
-        imie = tk.Label(left_frame, text="Imię i nazwisko:", font=font10b)
+        imie = tk.Label(left_frame, text='Imię i nazwisko:', font=font10b)
         imie.grid(row=0, column=0)
         self.imie_entry = tk.Entry(left_frame, width=entry_width)
         self.imie_entry.grid(row=0, column=1, sticky='E')
         self.imie_entry.bind_class(
-            "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
+            'Entry', '<Button-3><ButtonRelease-3>', self.show_menu)
 
         # Numer telefonu
-        tel = tk.Label(left_frame, text="Numer telefonu:", font=font10b)
+        tel = tk.Label(left_frame, text='Numer telefonu:', font=font10b)
         tel.grid(row=10, column=0)
         self.tel_entry = tk.Entry(left_frame, width=entry_width)
         self.tel_entry.grid(row=10, column=1)
 
         # Data sprzedaży
-        sprz = tk.Label(left_frame, text="Data sprzedaży:", font=font10b)
+        sprz = tk.Label(left_frame, text='Data sprzedaży:', font=font10b)
         sprz.grid(row=20, column=0)
         self.sprz_entry = tk.Entry(left_frame, width=entry_width)
+        self.sprz_entry.insert(0, stworz_date('dzis'))
         self.sprz_entry.grid(row=20, column=1)
 
         # Date dostarczenia
-        dost = tk.Label(left_frame, text="Data dostarczenia:", font=font10b)
+        dost = tk.Label(left_frame, text='Data dostarczenia:', font=font10b)
         dost.grid(row=30, column=0)
         self.dost_entry = tk.Entry(left_frame, width=entry_width)
+        self.dost_entry.insert(0, stworz_date('jutro'))
         self.dost_entry.grid(row=30, column=1)
 
         # Cena
         cena = tk.Label(
-            left_frame, text="Cena/długość zobowiązania:", font=font10b)
+            left_frame, text='Cena/długość zobowiązania:', font=font10b)
         cena.grid(row=40, column=0)
         self.cena_entry = tk.Entry(left_frame, width=entry_width)
         self.cena_entry.grid(row=40, column=1)
 
         # Adres mailowy
-        mail = tk.Label(left_frame, text="Adres mailowy", font=font10b)
+        mail = tk.Label(left_frame, text='Adres mailowy', font=font10b)
         mail.grid(row=50, column=0)
         self.mail_entry = tk.Entry(left_frame, width=entry_width)
         self.mail_entry.grid(row=50, column=1)
@@ -160,52 +179,136 @@ class Umowa(Window):
         spacer = tk.Label(left_frame)
         spacer.grid(row=60, column=0)
 
-        # Adres rejestrowy
-        adr_rej = tk.Label(left_frame, text="Adres rejestrowy", font=font10b)
-        adr_rej.grid(row=70, column=0)
-        self.adr_rej_entry = tk.Entry(
-            left_frame, width=entry_width, state='disabled')
-        self.adr_rej_entry.grid(row=70, column=1)
-        # Checkbox
-        self.adr_rej_var = tk.IntVar(value=1)
-        adr_rej_cb = tk.Checkbutton(left_frame, variable=self.adr_rej_var,
-                                    command=lambda:
-                                    self.ukryj(self.adr_rej_entry,
-                                               self.adr_rej_var))
-        adr_rej_cb.select()
-        adr_rej_cb.grid(row=70, column=2)
+        # Adresy
+        # Frame dla radiobuttonow
+        adresy_frame = tk.Frame(left_frame)
+        adresy_frame.grid(row=62, column=0, rowspan=5, columnspan=2)
 
-        # Adres adr_korespondencyjny
-        adr_kor = tk.Label(
-            left_frame, text="Adres korespondencyjny", font=font10b)
-        adr_kor.grid(row=80, column=0)
-        self.adr_kor_entry = tk.Entry(
-            left_frame, width=entry_width, state='disabled')
-        self.adr_kor_entry.grid(row=80, column=1)
-        # Checkbox
-        self.adr_kor_var = tk.IntVar(value=1)
-        adr_kor_cb = tk.Checkbutton(left_frame, variable=self.adr_kor_var,
-                                    command=lambda:
-                                    self.ukryj(self.adr_kor_entry,
-                                               self.adr_kor_var))
-        adr_kor_cb.select()
-        adr_kor_cb.grid(row=80, column=2)
+        # rkd labele
+        r_label = tk.Label(adresy_frame, text='rej', font=font10b)
+        r_label.grid(row=0, column=1, pady=10)
 
-        # Adres dostarczenia
-        adr_dost = tk.Label(
-            left_frame, text="Adres dostarczenia", font=font10b)
-        adr_dost.grid(row=90, column=0)
-        self.adr_dost_entry = tk.Entry(
-            left_frame, width=entry_width, state='disabled')
-        self.adr_dost_entry.grid(row=90, column=1)
-        # Checkbox
-        self.adr_dost_var = tk.IntVar(value=1)
-        adr_dost_cb = tk.Checkbutton(left_frame, variable=self.adr_dost_var,
-                                     command=lambda:
-                                     self.ukryj(self.adr_dost_entry,
-                                                self.adr_dost_var))
-        adr_dost_cb.select()
-        adr_dost_cb.grid(row=90, column=2)
+        k_label = tk.Label(adresy_frame, text='kor', font=font10b)
+        k_label.grid(row=0, column=2)
+
+        d_label = tk.Label(adresy_frame, text='dost', font=font10b)
+        d_label.grid(row=0, column=3)
+
+        # vary
+        self.rej_var = tk.IntVar(value=0)
+        self.kor_var = tk.IntVar(value=0)
+        self.dost_var = tk.IntVar(value=0)
+
+        # RADIO BUTTONY
+        # REJESTROWY
+
+        # Ceidg REJESTROWY
+        ceidg_rej_rb = tk.Radiobutton(
+            adresy_frame, variable=self.rej_var, value=0,
+            command=lambda: self.ukryj(None, None))
+        ceidg_rej_rb.grid(row=1, column=1)
+
+        # Adr1 REJESTROWY
+        adr1_rej_rb = tk.Radiobutton(
+            adresy_frame, variable=self.rej_var, value=1,
+            command=lambda: self.ukryj(self.adr_1_entry, self.rej_var))
+        adr1_rej_rb.grid(row=2, column=1)
+
+        # Adr2 REJESTROWY
+        adr2_rej_rb = tk.Radiobutton(
+            adresy_frame, variable=self.rej_var, value=2,
+            command=lambda: self.ukryj(self.adr_2_entry, self.rej_var))
+        adr2_rej_rb.grid(row=3, column=1)
+
+        # Adr3 REJESTROWY
+        adr3_rej_rb = tk.Radiobutton(
+            adresy_frame, variable=self.rej_var, value=3,
+            command=lambda: self.ukryj(self.adr_3_entry, self.rej_var))
+        adr3_rej_rb.grid(row=4, column=1)
+
+        # KORESPONDENCJI
+
+        # Ceidg KORESPONDENCJI
+        ceidg_kor_rb = tk.Radiobutton(
+            adresy_frame, variable=self.kor_var, value=0,
+            command=lambda: self.ukryj(None, None))
+        ceidg_kor_rb.grid(row=1, column=2)
+
+        # Adr1 KORESPONDENCJI
+        adr1_kor_rb = tk.Radiobutton(
+            adresy_frame, variable=self.kor_var, value=1,
+            command=lambda: self.ukryj(self.adr_1_entry, self.kor_var))
+        adr1_kor_rb.grid(row=2, column=2)
+
+        # Adr2 KORESPONDENCJI
+        adr2_kor_rb = tk.Radiobutton(
+            adresy_frame, variable=self.kor_var, value=2,
+            command=lambda: self.ukryj(self.adr_2_entry, self.kor_var))
+        adr2_kor_rb.grid(row=3, column=2)
+
+        # Adr3 KORESPONDENCJI
+        adr3_kor_rb = tk.Radiobutton(
+            adresy_frame, variable=self.kor_var, value=3,
+            command=lambda: self.ukryj(self.adr_3_entry, self.kor_var))
+        adr3_kor_rb.grid(row=4, column=2)
+
+        # DOSTARCZENIA
+
+        # Ceidg DOSTARCZENIA
+        ceidg_dost_rb = tk.Radiobutton(
+            adresy_frame, variable=self.dost_var, value=0,
+            command=lambda: self.ukryj(None, None))
+        ceidg_dost_rb.grid(row=1, column=3)
+
+        # Adr1 DOSTARCZENIA
+        adr1_dost_rb = tk.Radiobutton(
+            adresy_frame, variable=self.dost_var, value=1,
+            command=lambda: self.ukryj(self.adr_1_entry, self.dost_var))
+        adr1_dost_rb.grid(row=2, column=3)
+
+        # Adr2 DOSTARCZENIA
+        adr2_dost_rb = tk.Radiobutton(
+            adresy_frame, variable=self.dost_var, value=2,
+            command=lambda: self.ukryj(self.adr_2_entry, self.dost_var))
+        adr2_dost_rb.grid(row=3, column=3)
+
+        # Adr3 DOSTARCZENIA
+        adr3_dost_rb = tk.Radiobutton(
+            adresy_frame, variable=self.dost_var, value=3,
+            command=lambda: self.ukryj(self.adr_3_entry, self.dost_var))
+        adr3_dost_rb.grid(row=4, column=3)
+
+        # Zaznacz wszystko CEIDG
+        ceidg_rej_rb.select()
+        ceidg_kor_rb.select()
+        ceidg_dost_rb.select()
+
+        # Adresy entry
+        # CEIDG
+        ceidg_label = tk.Label(adresy_frame,
+                               text='Adres taki sam jak rejestrowy w CEIDG',
+                               font=font10b)
+        ceidg_label.grid(row=1, column=0, padx=20, pady=7)
+        # Adres 1
+        self.adr_1_entry = tk.Entry(
+            adresy_frame, width=entry_width, state='disabled')
+        self.adr_1_entry.grid(row=2, column=0, pady=7)
+        # Adres 2
+        self.adr_2_entry = tk.Entry(
+            adresy_frame, width=entry_width, state='disabled')
+        self.adr_2_entry.grid(row=3, column=0, pady=7)
+        # Adres 3
+        self.adr_3_entry = tk.Entry(
+            adresy_frame, width=entry_width, state='disabled')
+        self.adr_3_entry.grid(row=4, column=0, pady=7)
+
+        # # Checkbox
+        # self.adr_dost_var = tk.IntVar(value=1)
+        # adr_dost_cb = tk.Checkbutton(left_frame, variable=self.adr_dost_var,
+        #                              command=lambda:
+        #                              self.ukryj(self.adr_dost_entry,
+        #                                         self.adr_dost_var))
+        # adr_dost_cb.select()
 
         # Spacer
         spacer = tk.Label(left_frame)
@@ -213,41 +316,41 @@ class Umowa(Window):
         page_frame.pack(fill=tk.BOTH, expand=True)
 
         # Branża
-        branza = tk.Label(left_frame, text="Branża:", font=font10b)
+        branza = tk.Label(left_frame, text='Branża:', font=font10b)
         branza.grid(row=110, column=0)
         self.branza_entry = tk.Entry(left_frame, width=entry_width)
         self.branza_entry.grid(row=110, column=1)
 
         # Pytania do prawnika
         pytania = tk.Label(
-            left_frame, text="Pytania do prawnika:", font=font10b)
+            left_frame, text='Pytania do prawnika:', font=font10b)
         pytania.grid(row=120, column=0)
         self.pytania_entry = tk.Entry(left_frame, width=entry_width)
         self.pytania_entry.grid(row=120, column=1)
 
         # Dodatkowe informacje
         dodatkowe = tk.Label(
-            left_frame, text="Dodatkowe informacje:", font=font10b)
+            left_frame, text='Dodatkowe informacje:', font=font10b)
         dodatkowe.grid(row=130, column=0)
         self.dodatkowe_entry = ScrolledText(
             left_frame, width=entry_width - 7, height=2)
         self.dodatkowe_entry.grid(row=130, column=1)
         self.dodatkowe_entry.bind_class(
-            "Text", "<Button-3><ButtonRelease-3>", self.show_menu)
+            'Text', '<Button-3><ButtonRelease-3>', self.show_menu)
 
         # Spacer
         spacer = tk.Label(left_frame)
         spacer.grid(row=140, column=0)
 
         # Załącznik
-        zalacznik = tk.Button(left_frame, text="Załącznik", font=font10b,
+        zalacznik = tk.Button(left_frame, text='Załącznik', font=font10b,
                               command=lambda: self.zal_butt())
         zalacznik.grid(row=150, column=0)
         self.zal_label = tk.Label(left_frame, text='', font=font10b)
         self.zal_label.grid(row=151, column=0, columnspan=1)
 
         # Wyślij
-        wyslij = tk.Button(left_frame, text="Wyślij", font=font10b,
+        wyslij = tk.Button(left_frame, text='Wyślij', font=font10b,
                            command=lambda: self.wyslij_butt())
         wyslij.grid(row=150, column=1)
 

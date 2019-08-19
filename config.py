@@ -1,24 +1,33 @@
-'''Zawiera zmienne konfiguracyjne do importowania w innych modułach.'''
+'''Zawiera elementy którę są importowane w wielu modułach.'''
 
-# Czcionki
+# dla odpowiedniego dodania plikow do wersji exe
 import os
 import sys
-font10 = ('Arial 800', 10)
-font10b = ('Arial 800', 10, "bold")
-font12 = ('Arial 800', 12)
-font12b = ('Arial 800', 12, "bold")
-mail_regex = r'.+@.+\..+'
+# dla ustawienia daty
+import datetime
+
 
 version = '1.0.6.0'
 developer_mail = True
 build = False
 
+
 # Ustawienia
-entry_width = 27  # Szerokość entry
-# Odbiorcy maila sprzedażowego
+#   Czcionki
+font10 = ('Arial 800', 10)
+font10b = ('Arial 800', 10, 'bold')
+font12 = ('Arial 800', 12)
+font12b = ('Arial 800', 12, 'bold')
+#   Regex dla sprawdzania poprawności maila
+mail_regex = r'.+@.+\..+'
+#   Szerokość entry
+entry_width = 33
+#   Odbiorcy maila sprzedażowego
+#       Jeżeli jest włączona opcja developer
 if developer_mail:
     odbiorcy_sprzedazowy = ['kacper0witas@gmail.com']
     bcc_rodo = ['administrator@bedekoderem.pl']
+#       Jeżeli normalni odbiorcy
 else:
     odbiorcy_sprzedazowy = ['patryk.smucerowicz@gpgoldwin.pl',
                             'kacper.witas@gpgoldwin.pl',
@@ -27,14 +36,47 @@ else:
     bcc_rodo = ['informacje@gpgoldwin.pl',
                 'kacper.witas@gpgoldwin.pl']
 
+# Funkcje
+#   Data
 
+
+def czy_dodac_0(num):
+    '''Funkcja sprawdza czy podany numer ma długość 1, jeżeli tak: dopisz 0.'''
+    if len(num) == 1:
+        num = f'0{num}'
+    return(num)
+
+
+def stworz_date(kiedy):
+    'Tworzy date dzisiejszą/jutrzejszą zależnie od argumentu.'
+    if kiedy == 'dzis':
+        # Pobierz dzien, miesiac, rok i wrzuc do strina
+        dzien = str(datetime.datetime.now().day)
+        miesiac = str(datetime.datetime.now().month)
+        rok = str(datetime.datetime.now().year)
+    elif kiedy == 'jutro':
+        # Pobierz dzien jutrzejszy, miesiac, rok i wrzuc do stringa
+        dzien = str((datetime.date.today() + datetime.timedelta(days=1)).day)
+        miesiac = str(
+            (datetime.date.today() + datetime.timedelta(days=1)).month)
+        rok = str((datetime.date.today() + datetime.timedelta(days=1)).year)
+
+    # Sprawdz czy dopisac 0, dla formatu DD.MM.YY
+    dzien = czy_dodac_0(dzien)
+    miesiac = czy_dodac_0(miesiac)
+    # Zwróć date w postaci DD.MM.YY
+    data = f'{dzien}.{miesiac}.{rok}'
+    return(data)
+
+
+#   Dla odpowiedniego dodania plików do wersji exe
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
+    '''Get absolute path to resource, works for dev and for PyInstaller.'''
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
-        base_path = os.path.abspath(".")
+        base_path = os.path.abspath('.')
 
     return os.path.join(base_path, relative_path)
 

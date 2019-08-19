@@ -25,7 +25,7 @@ class Menu(Window):
         # Label
         wersja_label = tk.Label(page_frame, text=f'Wersja {version}',
                                 font=font10, fg='green')
-        zalog_label = tk.Label(page_frame, text='Zalogowany jako:')
+        zalog_label = tk.Label(page_frame, text='Zalogowano jako:')
         # Label z imieniem i nazwiskiem
         kons_label = tk.Label(page_frame, text=konsultant.kto,
                               font=font10, fg='green')
@@ -61,11 +61,11 @@ class Menu(Window):
 
         # Pack
         zalog_label.pack()
-        kons_label.pack()
+        kons_label.pack(pady=(0, 10))
         umowa.pack()
         # aneks.pack()
         # wypo.pack()
         oferta.pack()
         rodo_skrypt.pack()
-        wersja_label.pack()
+        wersja_label.pack(pady=(10, 0))
         page_frame.pack()

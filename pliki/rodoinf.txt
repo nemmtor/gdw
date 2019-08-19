@@ -41,4 +41,4 @@ T: +48 222 692 222 www.gpgoldwin.pl</p>
 <p align="center">Jeśli nie chcesz otrzymywać od nas wiadomości, możesz się <a href="http://mail.great-news.pl/r/2ei72nttpb/j9bgb2bcdj/">wypisać</a>.</p>
 </i>
 </body>
-</html
+</html>
