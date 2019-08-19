@@ -354,3 +354,7 @@ class Umowa(Window):
         wyslij.grid(row=150, column=1)
 
         page_frame.pack(fill=tk.BOTH, expand=True)
+
+if __name__ == '__main__':
+    konsultant.kto = 'Developer'
+    umowa = Umowa('Goldwin Mailsender')
