@@ -9,7 +9,7 @@ import datetime
 
 version = '1.0.7.0'
 developer_mail = True
-build = Fale
+build = False
 
 
 # Ustawienia
