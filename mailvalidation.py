@@ -11,17 +11,15 @@ def validate_mail(mail):
     records = dns.resolver.query(domain, 'MX')
     mx = str(records[0].exchange)
 
-    # smtplib setup
-    server = smtplib.SMTP('smtp.gpgoldwin.pl:587')
-    server.starttls()
-    server.set_debuglevel(0)
-
     # smtp conversation
+    server = smtplib.SMTP('smtp.gpgoldwin.pl:587')
+    server.login('kacper.witas@gpgoldwin.pl','goldwin1234')
     server.connect(mx)
-    # print(server.hostname)
-    server.helo('KACPER')
-    server.mail('witas.kacper11@gmail.com')
+    server.set_debuglevel(2)
+    server.helo('test')
+    server.mail('kacper.witas@gpgoldwin.pl')
     code, message = server.rcpt(str(mail))
+    server.quit()
     print(code)
 
     if code != 550:
