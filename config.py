@@ -7,7 +7,7 @@ import sys
 import datetime
 
 
-version = '1.0.7.0'
+version = '1.0.6.0'
 developer_mail = True
 build = False
 
