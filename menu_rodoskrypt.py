@@ -1,7 +1,7 @@
 '''Okno menu. Aneks i wypowiedzenie do zrobienia później.'''
 from window import Window  # klasa okna
 import tkinter as tk
-from config import font10, entry_width
+from config import font10, entry_width, brwid
 
 # Obiekty
 from konsultant import konsultant
@@ -28,7 +28,7 @@ class Rodo_Skrypt(Window):
         # Entry
         # Mail klienta
         mail_label = tk.Label(mail_frame, text='Mail klienta', font=font10)
-        mail_entry = tk.Entry(mail_frame, width=entry_width)
+        mail_entry = tk.Entry(mail_frame, width=entry_width, borderwidth=brwid)
         mail_entry.bind_class(
             "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 

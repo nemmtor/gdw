@@ -7,6 +7,7 @@ from server import server  # sprawdzenie czy jest połączenie (login/pw)
 import tkinter as tk
 # Obiekty
 from konsultant import konsultant
+from config import brwid
 
 # Regex
 # Sprawdza czy mail ma domene gpgoldwin.pl
@@ -51,13 +52,13 @@ class Login(Window):
 
         # Login label, entry
         login_label = tk.Label(page_frame, text='Login:')
-        self.login_entry = tk.Entry(page_frame, width=30)
+        self.login_entry = tk.Entry(page_frame, width=30, borderwidth=brwid)
         self.login_entry.bind_class(
             "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Password label, entry
         password_label = tk.Label(page_frame, text='Hasło:')
-        self.password_entry = tk.Entry(page_frame, width=30, show='*')
+        self.password_entry = tk.Entry(page_frame, width=30, show='*', borderwidth=brwid)
 
         # Przycisk zaloguj
         submit = tk.Button(page_frame, text='Zaloguj',

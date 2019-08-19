@@ -22,6 +22,8 @@ font12b = ('Arial 800', 12, 'bold')
 mail_regex = r'.+@.+\..+'
 #   Szerokość entry
 entry_width = 33
+# Borded width
+brwid = 3
 #   Odbiorcy maila sprzedażowego
 #       Jeżeli jest włączona opcja developer
 if developer_mail:

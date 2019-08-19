@@ -3,7 +3,7 @@ from window import Window
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.filedialog import askopenfilename
-from config import font10, font10b, entry_width, stworz_date
+from config import font10, font10b, entry_width, stworz_date, brwid
 from konsultant import konsultant
 from mailsender import mailsender
 
@@ -21,15 +21,15 @@ class Umowa(Window):
         adresy_frame = tk.Frame(self.top)
         adresy_frame.pack()
 
-        self.adres1 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres1 = tk.Entry(adresy_frame, width=entry_width, borderwidth=brwid)
         self.adres1.pack(pady=5)
         self.adres1.insert(tk.END, mailsender.dod_odbiorcy[0])
 
-        self.adres2 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres2 = tk.Entry(adresy_frame, width=entry_width, borderwidth=brwid)
         self.adres2.pack(pady=5)
         self.adres2.insert(tk.END, mailsender.dod_odbiorcy[1])
 
-        self.adres3 = tk.Entry(adresy_frame, width=entry_width)
+        self.adres3 = tk.Entry(adresy_frame, width=entry_width, borderwidth=brwid)
         self.adres3.pack(pady=5)
         self.adres3.insert(tk.END, mailsender.dod_odbiorcy[2])
 
@@ -137,7 +137,7 @@ class Umowa(Window):
         # Imie i nazwisko
         imie = tk.Label(left_frame, text='Imię i nazwisko:', font=font10b)
         imie.grid(row=0, column=0)
-        self.imie_entry = tk.Entry(left_frame, width=entry_width)
+        self.imie_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.imie_entry.grid(row=0, column=1, sticky='E')
         self.imie_entry.bind_class(
             'Entry', '<Button-3><ButtonRelease-3>', self.show_menu)
@@ -145,33 +145,33 @@ class Umowa(Window):
         # Numer telefonu
         tel = tk.Label(left_frame, text='Numer telefonu:', font=font10b)
         tel.grid(row=10, column=0)
-        self.tel_entry = tk.Entry(left_frame, width=entry_width)
+        self.tel_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.tel_entry.grid(row=10, column=1)
 
         # Data sprzedaży
         sprz = tk.Label(left_frame, text='Data sprzedaży:', font=font10b)
         sprz.grid(row=20, column=0)
-        self.sprz_entry = tk.Entry(left_frame, width=entry_width)
+        self.sprz_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.sprz_entry.insert(0, stworz_date('dzis'))
         self.sprz_entry.grid(row=20, column=1)
 
         # Date dostarczenia
         dost = tk.Label(left_frame, text='Data dostarczenia:', font=font10b)
         dost.grid(row=30, column=0)
-        self.dost_entry = tk.Entry(left_frame, width=entry_width)
+        self.dost_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.dost_entry.grid(row=30, column=1)
 
         # Cena
         cena = tk.Label(
             left_frame, text='Cena/długość zobowiązania:', font=font10b)
         cena.grid(row=40, column=0)
-        self.cena_entry = tk.Entry(left_frame, width=entry_width)
+        self.cena_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.cena_entry.grid(row=40, column=1)
 
         # Adres mailowy
         mail = tk.Label(left_frame, text='Adres mailowy', font=font10b)
         mail.grid(row=50, column=0)
-        self.mail_entry = tk.Entry(left_frame, width=entry_width)
+        self.mail_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.mail_entry.grid(row=50, column=1)
 
         # Spacer
@@ -290,24 +290,20 @@ class Umowa(Window):
         ceidg_label.grid(row=1, column=0, padx=20, pady=7)
         # Adres 1
         self.adr_1_entry = tk.Entry(
-            adresy_frame, width=entry_width, state='disabled')
+            adresy_frame, width=entry_width, state='disabled',
+            disabledbackground='#C0C0C0', borderwidth=brwid)
         self.adr_1_entry.grid(row=2, column=0, pady=7)
         # Adres 2
         self.adr_2_entry = tk.Entry(
-            adresy_frame, width=entry_width, state='disabled')
+            adresy_frame, width=entry_width, state='disabled',
+            disabledbackground='#C0C0C0', borderwidth=brwid)
         self.adr_2_entry.grid(row=3, column=0, pady=7)
         # Adres 3
         self.adr_3_entry = tk.Entry(
-            adresy_frame, width=entry_width, state='disabled')
+            adresy_frame, width=entry_width, state='disabled',
+            disabledbackground='#C0C0C0', borderwidth=brwid)
         self.adr_3_entry.grid(row=4, column=0, pady=7)
 
-        # # Checkbox
-        # self.adr_dost_var = tk.IntVar(value=1)
-        # adr_dost_cb = tk.Checkbutton(left_frame, variable=self.adr_dost_var,
-        #                              command=lambda:
-        #                              self.ukryj(self.adr_dost_entry,
-        #                                         self.adr_dost_var))
-        # adr_dost_cb.select()
 
         # Spacer
         spacer = tk.Label(left_frame)
@@ -317,14 +313,14 @@ class Umowa(Window):
         # Branża
         branza = tk.Label(left_frame, text='Branża:', font=font10b)
         branza.grid(row=110, column=0)
-        self.branza_entry = tk.Entry(left_frame, width=entry_width)
+        self.branza_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.branza_entry.grid(row=110, column=1)
 
         # Pytania do prawnika
         pytania = tk.Label(
             left_frame, text='Pytania do prawnika:', font=font10b)
         pytania.grid(row=120, column=0)
-        self.pytania_entry = tk.Entry(left_frame, width=entry_width)
+        self.pytania_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid)
         self.pytania_entry.grid(row=120, column=1)
 
         # Dodatkowe informacje
@@ -332,7 +328,7 @@ class Umowa(Window):
             left_frame, text='Dodatkowe informacje:', font=font10b)
         dodatkowe.grid(row=130, column=0)
         self.dodatkowe_entry = ScrolledText(
-            left_frame, width=entry_width - 7, height=2)
+            left_frame, width=entry_width - 7, height=2, borderwidth=brwid)
         self.dodatkowe_entry.grid(row=130, column=1)
         self.dodatkowe_entry.bind_class(
             'Text', '<Button-3><ButtonRelease-3>', self.show_menu)

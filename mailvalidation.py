@@ -15,7 +15,7 @@ def validate_mail(mail):
     server = smtplib.SMTP('smtp.gpgoldwin.pl:587')
     server.login('kacper.witas@gpgoldwin.pl','goldwin1234')
     server.connect(mx)
-    server.set_debuglevel(2)
+    server.set_debuglevel(0)
     server.helo('test')
     server.mail('kacper.witas@gpgoldwin.pl')
     code, message = server.rcpt(str(mail))
