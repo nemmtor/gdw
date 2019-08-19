@@ -22,7 +22,6 @@ def validate_mail(mail):
     server.helo('KACPER')
     server.mail('witas.kacper11@gmail.com')
     code, message = server.rcpt(str(mail))
-    server.quit()
     print(code)
 
     if code != 550:
@@ -33,7 +32,4 @@ def validate_mail(mail):
 
 while True:
     mail = input("Podaj maila do sprawdzenia: ").strip()
-    try:
-        validate_mail(mail)
-    except smtplib.SMTPServerDisconnected:
-        print('Coś nie tak')
+    validate_mail(mail)

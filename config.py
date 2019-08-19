@@ -8,8 +8,8 @@ import datetime
 
 
 version = '1.0.7.0'
-developer_mail = False
-build = True
+developer_mail = True
+build = Fale
 
 
 # Ustawienia
