@@ -7,9 +7,9 @@ import sys
 import datetime
 
 
-version = '1.0.6.0'
-developer_mail = True
-build = False
+version = '1.0.7.0'
+developer_mail = False
+build = True
 
 
 # Ustawienia
@@ -54,13 +54,6 @@ def stworz_date(kiedy):
         dzien = str(datetime.datetime.now().day)
         miesiac = str(datetime.datetime.now().month)
         rok = str(datetime.datetime.now().year)
-    elif kiedy == 'jutro':
-        # Pobierz dzien jutrzejszy, miesiac, rok i wrzuc do stringa
-        dzien = str((datetime.date.today() + datetime.timedelta(days=1)).day)
-        miesiac = str(
-            (datetime.date.today() + datetime.timedelta(days=1)).month)
-        rok = str((datetime.date.today() + datetime.timedelta(days=1)).year)
-
     # Sprawdz czy dopisac 0, dla formatu DD.MM.YY
     dzien = czy_dodac_0(dzien)
     miesiac = czy_dodac_0(miesiac)

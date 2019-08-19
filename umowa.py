@@ -159,7 +159,6 @@ class Umowa(Window):
         dost = tk.Label(left_frame, text='Data dostarczenia:', font=font10b)
         dost.grid(row=30, column=0)
         self.dost_entry = tk.Entry(left_frame, width=entry_width)
-        self.dost_entry.insert(0, stworz_date('jutro'))
         self.dost_entry.grid(row=30, column=1)
 
         # Cena
