@@ -29,7 +29,6 @@ class Menu(Window):
         img = ImageTk.PhotoImage(img_resizer(goldwin, 0.5))
         img_Label = tk.Label(img_frame, image=img)
         img_Label.image = img
-        # img_Label.place(relx=.5, rely=.5, anchor='c')
         img_Label.pack()
 
         # Informacja kto zalogowany
