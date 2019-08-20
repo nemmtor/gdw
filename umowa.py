@@ -3,7 +3,7 @@ from window import Window
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.filedialog import askopenfilename
-from config import entry_width, stworz_date, brwid, font20b
+from config import entry_width, stworz_date, brwid
 from config import font9, font10, font10b, img_resizer, goldwin
 from PIL import ImageTk
 from konsultant import konsultant
@@ -23,15 +23,18 @@ class Umowa(Window):
         adresy_frame = tk.Frame(self.top)
         adresy_frame.pack()
 
-        self.adres1 = tk.Entry(adresy_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.adres1 = tk.Entry(
+            adresy_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.adres1.pack(pady=5)
         self.adres1.insert(tk.END, mailsender.dod_odbiorcy[0])
 
-        self.adres2 = tk.Entry(adresy_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.adres2 = tk.Entry(
+            adresy_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.adres2.pack(pady=5)
         self.adres2.insert(tk.END, mailsender.dod_odbiorcy[1])
 
-        self.adres3 = tk.Entry(adresy_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.adres3 = tk.Entry(
+            adresy_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.adres3.pack(pady=5)
         self.adres3.insert(tk.END, mailsender.dod_odbiorcy[2])
 
@@ -54,8 +57,6 @@ class Umowa(Window):
             self.spr_nierozw_var == 1
         else:
             self.spr_nierozw_var == 0
-
-
 
     def zal_butt(self):
         '''Dodawanie załącznika.'''
@@ -101,8 +102,6 @@ class Umowa(Window):
         # W Menu frame
         rozne_frame = tk.Frame(menu_frame)
 
-
-
         # MENU FRAME (po prawej stronie)
         img = ImageTk.PhotoImage(img_resizer(goldwin, 0.45))
         img_Label = tk.Label(menu_frame, image=img)
@@ -134,7 +133,6 @@ class Umowa(Window):
                                              command=lambda: self.zmienvar())
         self.spr_nierozw_cb.pack()
 
-
         # MID FRAME
         # img = tk.PhotoImage(file=goldwin)
         # img_Label = tk.Label(right_frame, image=img)
@@ -146,7 +144,8 @@ class Umowa(Window):
         # Imie i nazwisko
         imie = tk.Label(left_frame, text='Imię i nazwisko:', font=font10b)
         imie.grid(row=0, column=0)
-        self.imie_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.imie_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.imie_entry.grid(row=0, column=1)
         self.imie_entry.bind_class(
             'Entry', '<Button-3><ButtonRelease-3>', self.show_menu)
@@ -154,33 +153,38 @@ class Umowa(Window):
         # Numer telefonu
         tel = tk.Label(left_frame, text='Numer telefonu:', font=font10b)
         tel.grid(row=10, column=0)
-        self.tel_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.tel_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.tel_entry.grid(row=10, column=1)
 
         # Data sprzedaży
         sprz = tk.Label(left_frame, text='Data sprzedaży:', font=font10b)
         sprz.grid(row=20, column=0)
-        self.sprz_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.sprz_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.sprz_entry.insert(0, stworz_date('dzis'))
         self.sprz_entry.grid(row=20, column=1)
 
         # Date dostarczenia
         dost = tk.Label(left_frame, text='Data dostarczenia:', font=font10b)
         dost.grid(row=30, column=0)
-        self.dost_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.dost_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.dost_entry.grid(row=30, column=1)
 
         # Cena
         cena = tk.Label(
             left_frame, text='Cena/długość:', font=font10b)
         cena.grid(row=40, column=0)
-        self.cena_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.cena_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.cena_entry.grid(row=40, column=1)
 
         # Adres mailowy
         mail = tk.Label(left_frame, text='Adres mailowy', font=font10b)
         mail.grid(row=50, column=0)
-        self.mail_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        self.mail_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.mail_entry.grid(row=50, column=1)
 
         # Spacer
@@ -296,7 +300,7 @@ class Umowa(Window):
         ceidg_label = tk.Label(adresy_frame,
                                text='Adres taki sam jak rejestrowy w CEIDG',
                                font=font10b)
-        ceidg_label.grid(row=1, column=0, padx=(0,20), pady=7)
+        ceidg_label.grid(row=1, column=0, padx=(0, 20), pady=7)
         # Adres 1
         self.adr_1_entry = tk.Entry(
             adresy_frame, width=entry_width, state='disabled',
@@ -313,58 +317,60 @@ class Umowa(Window):
             disabledbackground='#C0C0C0', borderwidth=brwid, font=font9)
         self.adr_3_entry.grid(row=4, column=0, pady=7)
 
-
         # Spacer
         spacer = tk.Label(left_frame)
         spacer.grid(row=100, column=0)
 
-
         # Branża
         branza = tk.Label(left_frame, text='Branża:', font=font10b)
-        branza.grid(row=0, column=2, padx=(20,10))
-        self.branza_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        branza.grid(row=0, column=2, padx=(20, 10))
+        self.branza_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.branza_entry.grid(row=0, column=3)
 
         # Pytania do prawnika
         pytania = tk.Label(
             left_frame, text='Pytania:', font=font10b)
-        pytania.grid(row=10, column=2, padx=(20,10))
-        self.pytania_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
+        pytania.grid(row=10, column=2, padx=(20, 10))
+        self.pytania_entry = tk.Entry(
+            left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.pytania_entry.grid(row=10, column=3)
 
         # Dodatkowe informacje
         dodatkowe = tk.Label(
             left_frame, text='Dodatkowe\ninformacje:', font=font10b)
-        dodatkowe.grid(row=20, column=2, padx=(20,10), rowspan=30)
+        dodatkowe.grid(row=20, column=2, padx=(20, 10), rowspan=30)
         self.dodatkowe_entry = ScrolledText(
-            left_frame, width=entry_width-2, height=5, borderwidth=brwid, font=font9)
+            left_frame, width=entry_width - 2, height=5,
+            borderwidth=brwid, font=font9)
         self.dodatkowe_entry.grid(row=20, column=3, rowspan=30)
         self.dodatkowe_entry.bind_class(
             'Text', '<Button-3><ButtonRelease-3>', self.show_menu)
-
 
         # Spacer
         spacer = tk.Label(left_frame)
         spacer.grid(row=140, column=0)
 
         # Załącznik
-        zalacznik = tk.Button(left_frame, text='Załącznik', font=font10, width=12, padx=10,
+        zalacznik = tk.Button(left_frame, text='Załącznik',
+                              font=font10, width=12, padx=10,
                               command=lambda: self.zal_butt())
         zalacznik.grid(row=150, column=0)
         self.zal_label = tk.Label(left_frame, text='', font=font10b)
         self.zal_label.grid(row=151, column=0)
 
         # Wyślij
-        wyslij = tk.Button(left_frame, text='Wyślij', font=font10, width=12, padx=10,
+        wyslij = tk.Button(left_frame, text='Wyślij',
+                           font=font10, width=12, padx=10,
                            command=lambda: self.wyslij_butt())
         wyslij.grid(row=150, column=1)
-
 
         rozne_frame.pack(side=tk.BOTTOM, pady=(0, 10))
         left_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT, padx=(0, 20))
         right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         menu_frame.pack(fill=tk.BOTH, expand=True, padx=(0, 20))
         page_frame.pack(fill=tk.BOTH, expand=True, pady=10, padx=10)
+
 
 if __name__ == '__main__':
     konsultant.kto = 'Developer ON'

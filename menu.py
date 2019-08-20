@@ -72,14 +72,15 @@ class Menu(Window):
         # Pack
         zalog_label.pack()
         kons_label.pack(pady=(0, 10))
-        umowa.pack(pady=(0,5))
+        umowa.pack(pady=(0, 5))
         # aneks.pack()
         # wypo.pack()
-        oferta.pack(pady=(0,5))
-        rodo_skrypt.pack(pady=(0,5))
+        oferta.pack(pady=(0, 5))
+        rodo_skrypt.pack(pady=(0, 5))
         wersja_label.pack(pady=(5, 0))
-        page_frame.pack(side=tk.LEFT, padx=(20,0))
+        page_frame.pack(side=tk.LEFT, padx=(20, 0))
         img_frame.pack(side=tk.LEFT)
+
 
 if __name__ == '__main__':
     konsultant.kto = 'Developer ON'

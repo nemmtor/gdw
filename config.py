@@ -48,12 +48,14 @@ else:
 # Funkcje
 #   Data
 
+
 def img_resizer(file, scale):
     image = Image.open(file)
     [imageSizeWidth, imageSizeHeight] = image.size
-    newImageSizeWidth = int(imageSizeWidth*scale)
-    newImageSizeHeight = int(imageSizeHeight*scale)
-    image = image.resize((newImageSizeWidth, newImageSizeHeight), Image.ANTIALIAS)
+    newImageSizeWidth = int(imageSizeWidth * scale)
+    newImageSizeHeight = int(imageSizeHeight * scale)
+    image = image.resize((newImageSizeWidth,
+                          newImageSizeHeight), Image.ANTIALIAS)
     return(image)
 
 

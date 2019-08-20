@@ -13,7 +13,7 @@ def validate_mail(mail):
 
     # smtp conversation
     server = smtplib.SMTP('smtp.gpgoldwin.pl:587')
-    server.login('kacper.witas@gpgoldwin.pl','goldwin1234')
+    server.login('kacper.witas@gpgoldwin.pl', 'goldwin1234')
     server.connect(mx)
     server.set_debuglevel(0)
     server.helo('test')

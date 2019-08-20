@@ -61,7 +61,7 @@ class Klient():
 
         self.branza = branza
         self.pytania = pytania
-        self.dodatkowe = dodatkowe
+        self.dodatkowe = "<br />".join(dodatkowe.split("\n"))
 
         # Wszystko co związane z adresami
         #    Sprawdza jakie checkboxy zaznaczone
