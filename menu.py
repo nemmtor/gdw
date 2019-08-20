@@ -1,7 +1,9 @@
 '''Okno menu. Aneks i wypowiedzenie do zrobienia później.'''
 from window import Window  # klasa okna
 import tkinter as tk
-from config import font10, version
+from config import font10, version, goldwin, img_resizer
+from PIL import ImageTk
+
 
 # Obiekty
 from konsultant import konsultant
@@ -20,6 +22,15 @@ class Menu(Window):
 
         # Główny frame
         page_frame = tk.Frame(self.root)
+        img_frame = tk.Frame(self.root)
+
+        # img_frame widgets
+
+        img = ImageTk.PhotoImage(img_resizer(goldwin, 0.5))
+        img_Label = tk.Label(img_frame, image=img)
+        img_Label.image = img
+        # img_Label.place(relx=.5, rely=.5, anchor='c')
+        img_Label.pack()
 
         # Informacja kto zalogowany
         # Label
@@ -68,7 +79,8 @@ class Menu(Window):
         oferta.pack(pady=(0,5))
         rodo_skrypt.pack(pady=(0,5))
         wersja_label.pack(pady=(5, 0))
-        page_frame.pack(padx=20)
+        page_frame.pack(side=tk.LEFT, padx=(20,0))
+        img_frame.pack(side=tk.LEFT)
 
 if __name__ == '__main__':
     konsultant.kto = 'Developer ON'

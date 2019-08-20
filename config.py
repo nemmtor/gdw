@@ -5,7 +5,8 @@ import os
 import sys
 # dla ustawienia daty
 import datetime
-
+# dla img resizera
+from PIL import Image
 
 version = '1.0.7.0'
 developer_mail = True
@@ -45,6 +46,14 @@ else:
 
 # Funkcje
 #   Data
+
+def img_resizer(file, scale):
+    image = Image.open(file)
+    [imageSizeWidth, imageSizeHeight] = image.size
+    newImageSizeWidth = int(imageSizeWidth*scale)
+    newImageSizeHeight = int(imageSizeHeight*scale)
+    image = image.resize((newImageSizeWidth, newImageSizeHeight), Image.ANTIALIAS)
+    return(image)
 
 
 def czy_dodac_0(num):

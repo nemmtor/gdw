@@ -4,7 +4,8 @@ import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.filedialog import askopenfilename
 from config import entry_width, stworz_date, brwid
-from config import font9, font10, font10b
+from config import font9, font10, font10b, img_resizer, goldwin
+from PIL import ImageTk
 from konsultant import konsultant
 from mailsender import mailsender
 
@@ -102,6 +103,11 @@ class Umowa(Window):
         menu_frame.pack(fill=tk.BOTH, expand=True, padx=(100, 20))
 
         # MENU FRAME (po prawej stronie)
+        img = ImageTk.PhotoImage(img_resizer(goldwin, 0.45))
+        img_Label = tk.Label(menu_frame, image=img)
+        img_Label.image = img
+        img_Label.pack()
+
         zalog_label = tk.Label(menu_frame, text='Zalogowano jako:')
         zalog_label.pack()
         kons_label = tk.Label(menu_frame, text=konsultant.kto,
