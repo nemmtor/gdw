@@ -57,7 +57,7 @@ class Menu_Oferta(Window):
 
         # Entry
         # Mail klienta
-        mail_label = tk.Label(mail_frame, text='Mail klienta', font=font10)
+        mail_label = tk.Label(mail_frame, text='Mail klienta:', font=font10)
         mail_entry = tk.Entry(mail_frame, width=entry_width, borderwidth=brwid, font=font9)
         mail_entry.bind_class(
             "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)

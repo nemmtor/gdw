@@ -8,7 +8,7 @@ import datetime
 # dla img resizera
 from PIL import Image
 
-version = '1.0.7.0'
+version = '1.0.7.1'
 developer_mail = True
 build = False
 
@@ -23,6 +23,7 @@ font10 = ('Arial 800', 10)
 font10b = ('Arial 800', 10, 'bold')
 font12 = ('Arial 800', 12)
 font12b = ('Arial 800', 12, 'bold')
+font20b = ('Arial 800', 20, 'bold')
 buttonfont = ('Arial 800', 10)
 #   Regex dla sprawdzania poprawności maila
 mail_regex = r'.+@.+\..+'

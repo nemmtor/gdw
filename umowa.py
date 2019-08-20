@@ -3,7 +3,7 @@ from window import Window
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.filedialog import askopenfilename
-from config import entry_width, stworz_date, brwid
+from config import entry_width, stworz_date, brwid, font20b
 from config import font9, font10, font10b, img_resizer, goldwin
 from PIL import ImageTk
 from konsultant import konsultant
@@ -55,6 +55,8 @@ class Umowa(Window):
         else:
             self.spr_nierozw_var == 0
 
+
+
     def zal_butt(self):
         '''Dodawanie załącznika.'''
         #  Musi być osobna zmienna, problem z cancel przy wybieraniu zalacznika
@@ -89,18 +91,17 @@ class Umowa(Window):
 
     def widgets(self):
         '''Widgety.'''
+        self.hidden = False
         page_frame = tk.Frame(self.root)
 
         left_frame = tk.Frame(page_frame)
         right_frame = tk.Frame(page_frame)
+        # menu_frame = tk.Frame(page_frame)
         menu_frame = tk.Frame(page_frame)
         # W Menu frame
         rozne_frame = tk.Frame(menu_frame)
 
-        rozne_frame.pack(side=tk.BOTTOM)
-        left_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT, padx=(20, 20))
-        right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
-        menu_frame.pack(fill=tk.BOTH, expand=True, padx=(100, 20))
+
 
         # MENU FRAME (po prawej stronie)
         img = ImageTk.PhotoImage(img_resizer(goldwin, 0.45))
@@ -132,7 +133,7 @@ class Umowa(Window):
                                              font=font10,
                                              command=lambda: self.zmienvar())
         self.spr_nierozw_cb.pack()
-        rozne_frame.pack(side=tk.BOTTOM, pady=(0, 10))
+
 
         # MID FRAME
         # img = tk.PhotoImage(file=goldwin)
@@ -171,7 +172,7 @@ class Umowa(Window):
 
         # Cena
         cena = tk.Label(
-            left_frame, text='Cena/długość zobowiązania:', font=font10b)
+            left_frame, text='Cena/długość:', font=font10b)
         cena.grid(row=40, column=0)
         self.cena_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
         self.cena_entry.grid(row=40, column=1)
@@ -295,7 +296,7 @@ class Umowa(Window):
         ceidg_label = tk.Label(adresy_frame,
                                text='Adres taki sam jak rejestrowy w CEIDG',
                                font=font10b)
-        ceidg_label.grid(row=1, column=0, padx=20, pady=7)
+        ceidg_label.grid(row=1, column=0, padx=(0,20), pady=7)
         # Adres 1
         self.adr_1_entry = tk.Entry(
             adresy_frame, width=entry_width, state='disabled',
@@ -316,30 +317,31 @@ class Umowa(Window):
         # Spacer
         spacer = tk.Label(left_frame)
         spacer.grid(row=100, column=0)
-        page_frame.pack(fill=tk.BOTH, expand=True)
+
 
         # Branża
         branza = tk.Label(left_frame, text='Branża:', font=font10b)
-        branza.grid(row=110, column=0)
+        branza.grid(row=0, column=2, padx=(20,10))
         self.branza_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
-        self.branza_entry.grid(row=0, column=1)
+        self.branza_entry.grid(row=0, column=3)
 
         # Pytania do prawnika
         pytania = tk.Label(
-            left_frame, text='Pytania do prawnika:', font=font10b)
-        pytania.grid(row=120, column=0)
+            left_frame, text='Pytania:', font=font10b)
+        pytania.grid(row=10, column=2, padx=(20,10))
         self.pytania_entry = tk.Entry(left_frame, width=entry_width, borderwidth=brwid, font=font9)
-        self.pytania_entry.grid(row=120, column=1)
+        self.pytania_entry.grid(row=10, column=3)
 
         # Dodatkowe informacje
         dodatkowe = tk.Label(
-            left_frame, text='Dodatkowe informacje:', font=font10b)
-        dodatkowe.grid(row=130, column=0)
+            left_frame, text='Dodatkowe\ninformacje:', font=font10b)
+        dodatkowe.grid(row=20, column=2, padx=(20,10), rowspan=30)
         self.dodatkowe_entry = ScrolledText(
-            left_frame, width=entry_width - 7, height=2, borderwidth=brwid, font=font9)
-        self.dodatkowe_entry.grid(row=130, column=1)
+            left_frame, width=entry_width-2, height=5, borderwidth=brwid, font=font9)
+        self.dodatkowe_entry.grid(row=20, column=3, rowspan=30)
         self.dodatkowe_entry.bind_class(
             'Text', '<Button-3><ButtonRelease-3>', self.show_menu)
+
 
         # Spacer
         spacer = tk.Label(left_frame)
@@ -350,14 +352,19 @@ class Umowa(Window):
                               command=lambda: self.zal_butt())
         zalacznik.grid(row=150, column=0)
         self.zal_label = tk.Label(left_frame, text='', font=font10b)
-        self.zal_label.grid(row=151, column=0, columnspan=1)
+        self.zal_label.grid(row=151, column=0)
 
         # Wyślij
         wyslij = tk.Button(left_frame, text='Wyślij', font=font10, width=12, padx=10,
                            command=lambda: self.wyslij_butt())
         wyslij.grid(row=150, column=1)
 
-        page_frame.pack(fill=tk.BOTH, expand=True)
+
+        rozne_frame.pack(side=tk.BOTTOM, pady=(0, 10))
+        left_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT, padx=(0, 20))
+        right_frame.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
+        menu_frame.pack(fill=tk.BOTH, expand=True, padx=(0, 20))
+        page_frame.pack(fill=tk.BOTH, expand=True, pady=10, padx=10)
 
 if __name__ == '__main__':
     konsultant.kto = 'Developer ON'
