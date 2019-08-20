@@ -32,7 +32,7 @@ class Menu(Window):
 
         # Przycisk umowa
         umowa = tk.Button(page_frame, text='Umowa', font=font10,
-                          height=2, width=18,
+                          height=2, width=20, padx=5,
                           command=lambda: self.menu_button(1))
 
         # # Przycisk sprawy nierozwiązane
@@ -52,20 +52,24 @@ class Menu(Window):
 
         # Przycisk Mail z ofertą
         oferta = tk.Button(page_frame, text='Mail z ofertą', font=font10,
-                           height=2, width=18,
+                           height=2, width=20, padx=5,
                            command=lambda: self.menu_button(4))
 
         rodo_skrypt = tk.Button(page_frame, text='Mail informacyjny RODO',
-                                font=font10, height=2, width=18,
+                                font=font10, height=2, width=20, padx=5,
                                 command=lambda: self.menu_button(5))
 
         # Pack
         zalog_label.pack()
         kons_label.pack(pady=(0, 10))
-        umowa.pack()
+        umowa.pack(pady=(0,5))
         # aneks.pack()
         # wypo.pack()
-        oferta.pack()
-        rodo_skrypt.pack()
-        wersja_label.pack(pady=(10, 0))
-        page_frame.pack()
+        oferta.pack(pady=(0,5))
+        rodo_skrypt.pack(pady=(0,5))
+        wersja_label.pack(pady=(5, 0))
+        page_frame.pack(padx=20)
+
+if __name__ == '__main__':
+    konsultant.kto = 'Developer ON'
+    menu = Menu('Goldwin Mailsender')

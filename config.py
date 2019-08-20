@@ -14,10 +14,15 @@ build = False
 
 # Ustawienia
 #   Czcionki
+font8 = ('Arial 800', 8)
+font8b = ('Arial 800', 8, 'bold')
+font9 = ('Arial 800', 9)
+font9b = ('Arial 800', 9, 'bold')
 font10 = ('Arial 800', 10)
 font10b = ('Arial 800', 10, 'bold')
 font12 = ('Arial 800', 12)
 font12b = ('Arial 800', 12, 'bold')
+buttonfont = ('Arial 800', 10)
 #   Regex dla sprawdzania poprawności maila
 mail_regex = r'.+@.+\..+'
 #   Szerokość entry

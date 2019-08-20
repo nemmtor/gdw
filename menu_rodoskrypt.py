@@ -1,7 +1,7 @@
 '''Okno menu. Aneks i wypowiedzenie do zrobienia później.'''
 from window import Window  # klasa okna
 import tkinter as tk
-from config import font10, entry_width, brwid
+from config import font9, font10, entry_width, brwid
 
 # Obiekty
 from konsultant import konsultant
@@ -28,15 +28,15 @@ class Rodo_Skrypt(Window):
         # Entry
         # Mail klienta
         mail_label = tk.Label(mail_frame, text='Mail klienta', font=font10)
-        mail_entry = tk.Entry(mail_frame, width=entry_width, borderwidth=brwid)
+        mail_entry = tk.Entry(mail_frame, width=entry_width, borderwidth=brwid, font=font9)
         mail_entry.bind_class(
             "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Przyciski
         menu_butt = tk.Button(buttons_frame, text='MENU', font=font10,
-                              width=10, command=lambda: self.menu_butt())
+                              width=12, padx=10, command=lambda: self.menu_butt())
         wyslij_butt = tk.Button(buttons_frame, text='WYŚLIJ', font=font10,
-                                width=10,
+                                width=12, padx=10,
                                 command=lambda:
                                 mailsender.rodo_inf(mail_entry.get().strip(),
                                                     self.root))
@@ -49,8 +49,8 @@ class Rodo_Skrypt(Window):
         mail_label.pack()
         mail_entry.pack()
 
-        menu_butt.pack(side=tk.LEFT)
-        wyslij_butt.pack(pady=10, padx=20)
+        menu_butt.pack(side=tk.LEFT, pady=10, padx=(10, 10))
+        wyslij_butt.pack(pady=10, padx=(10,10))
 
         zalog_frame.grid(row=1, column=1, columnspan=2)
         mail_frame.grid(row=2, column=1, columnspan=2)
@@ -58,3 +58,7 @@ class Rodo_Skrypt(Window):
         buttons_frame.grid(row=3, column=1, columnspan=2)
 
         page_frame.pack()
+
+if __name__ == '__main__':
+    konsultant.kto = 'Developer ON'
+    rodo_skrypt = Rodo_Skrypt('Goldwin Mailsender')

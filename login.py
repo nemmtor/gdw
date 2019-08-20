@@ -7,7 +7,7 @@ from server import server  # sprawdzenie czy jest połączenie (login/pw)
 import tkinter as tk
 # Obiekty
 from konsultant import konsultant
-from config import brwid
+from config import brwid, font10, font12, font12b
 
 # Regex
 # Sprawdza czy mail ma domene gpgoldwin.pl
@@ -51,17 +51,17 @@ class Login(Window):
         page_frame = tk.Frame(self.root)
 
         # Login label, entry
-        login_label = tk.Label(page_frame, text='Login:')
-        self.login_entry = tk.Entry(page_frame, width=30, borderwidth=brwid)
+        login_label = tk.Label(page_frame, text='Login:', font=font12b)
+        self.login_entry = tk.Entry(page_frame, width=30, borderwidth=brwid, font=font10)
         self.login_entry.bind_class(
             "Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
         # Password label, entry
-        password_label = tk.Label(page_frame, text='Hasło:')
-        self.password_entry = tk.Entry(page_frame, width=30, show='*', borderwidth=brwid)
+        password_label = tk.Label(page_frame, text='Hasło:', font=font12b)
+        self.password_entry = tk.Entry(page_frame, width=30, show='*', borderwidth=brwid, font=font10)
 
         # Przycisk zaloguj
-        submit = tk.Button(page_frame, text='Zaloguj',
+        submit = tk.Button(page_frame, text='Zaloguj', width=10, padx=10, font=font12,
                            command=lambda: self.press_login(None))
 
         self.root.bind('<Return>', self.press_login)
@@ -72,4 +72,7 @@ class Login(Window):
         password_label.pack(pady=(10, 0))
         self.password_entry.pack()
         submit.pack(pady=(10, 0))
-        page_frame.pack()
+        page_frame.pack(padx=30, pady=(5,15))
+
+if __name__ == '__main__':
+    login = Login('Goldwin Mailsender')

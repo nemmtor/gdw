@@ -11,7 +11,7 @@ from konsultant import konsultant
 from mailsender import mailsender
 import smtplib
 from server import server
-from config import ikona, font10b, font12b, mail_regex
+from config import ikona, font10b, font12, font12b, mail_regex
 import re
 
 
@@ -21,6 +21,7 @@ class Window():
         self.title = title
         self.root = tk.Tk()
         self.root.title(self.title)
+        self.root.option_add('*Dialog.msg.font', 'Arial 12')
         self.make_menu()
         self.widgets()
         self.center(self.root)
@@ -36,13 +37,13 @@ class Window():
                                      "Czy napewno chcesz wyłączyć program?"),
                                  font=font10b)
         warning_label.pack()
-        ok_butt = tk.Button(warning_window, text='Tak', width=10, font=font12b,
+        ok_butt = tk.Button(warning_window, text='Tak', width=12, padx=10, font=font12,
                             command=lambda: sys.exit())
-        ok_butt.pack(side=tk.LEFT, padx=(40, 0), pady=(10, 0))
-        cancel_butt = tk.Button(warning_window, text='Anuluj', width=10,
-                                font=font12b,
+        ok_butt.pack(side=tk.LEFT, padx=(40, 5), pady=(10, 0))
+        cancel_butt = tk.Button(warning_window, text='Anuluj', width=12, padx=10,
+                                font=font12,
                                 command=lambda: warning_window.destroy())
-        cancel_butt.pack(side=tk.RIGHT, padx=(0, 40), pady=(10, 0))
+        cancel_butt.pack(side=tk.RIGHT, padx=(5, 40), pady=(10, 0))
         self.center(warning_window, False)
 
     def center(self, window, isroot=True):
@@ -98,13 +99,13 @@ class Window():
                                      "Czy napewno chcesz wrócić do menu?"),
                                  fg='red', font=font10b)
         warning_label.pack()
-        ok_butt = tk.Button(warning_window, text='Tak', width=10, font=font12b,
+        ok_butt = tk.Button(warning_window, text='Tak', width=12, padx=10, font=font12,
                             command=lambda: self.root.destroy())
-        ok_butt.pack(side=tk.LEFT, padx=(40, 0), pady=(10, 0))
-        cancel_butt = tk.Button(warning_window, text='Anuluj', width=10,
-                                font=font12b,
+        ok_butt.pack(side=tk.LEFT, padx=(40, 5), pady=(10, 0))
+        cancel_butt = tk.Button(warning_window, text='Anuluj', width=15,
+                                font=font12,
                                 command=lambda: warning_window.destroy())
-        cancel_butt.pack(side=tk.RIGHT, padx=(0, 40), pady=(10, 0))
+        cancel_butt.pack(side=tk.RIGHT, padx=(5, 40), pady=(10, 0))
         self.center(warning_window, False)
 
     def wyslij_butt(self):
