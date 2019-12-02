@@ -8,9 +8,9 @@ import datetime
 # dla img resizera
 from PIL import Image
 
-version = '1.0.8.0'
-developer_mail = True
-build = False
+version = '1.0.8.1'
+developer_mail = False
+build = True
 
 
 # Ustawienia
@@ -41,7 +41,7 @@ else:
     odbiorcy_sprzedazowy = ['patryk.smucerowicz@gpgoldwin.pl',
                             'kacper.witas@gpgoldwin.pl',
                             'justyna.sujkowska@gpgoldwin.pl',
-                            'oliwia.zachar@gpgoldwin.pl']
+                            'julia.kaczmarczyk@gpgoldwin.pl']
     bcc_rodo = ['informacje@gpgoldwin.pl',
                 'kacper.witas@gpgoldwin.pl']
 
