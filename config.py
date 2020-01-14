@@ -8,7 +8,7 @@ import datetime
 # dla img resizera
 from PIL import Image
 
-version = '1.0.8.2'
+version = '1.0.8.3'
 developer_mail = False
 build = True
 

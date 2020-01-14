@@ -45,12 +45,9 @@ def stworz_stopke():
     stopka += '<br>'
     stopka += '</p>'
     stopka += '''<p style="font-size:9pt; color:#7d7d7d">
-    Wiadomość ta jest poufna i zastrzeżona.
-    Zabronione jest przeglądanie, przekazywanie, rozpowszechnianie lub
-    inne wykorzystywanie tych informacji, jak również podejmowanie działań
-    na ich podstawie przez osoby lub podmioty inne niż zamierzony adresat.
-    <br>Jeżeli otrzymali ją Państwo omyłkowo, prosimy poinformować o tym
-    Nadawcę i usunąć z komputera wiadomość wraz z załącznikami.
+    Administratorem Twoich danych osobowych jest Grupa Prawna Goldwin S.A. z siedzibą w Toruniu, ul. Kościuszki 71/304, 87 – 100 Toruń, KRS 0000586888. Dane przetwarzane są w celu prowadzenia korespondencji, w celu zawarcia i wykonania umowy, jak i w celu ewentualnego dochodzenia roszczeń lub obrony przed nimi. Dane będą udostępniane jedynie podmiotom, świadczącym dla nas usługi księgowe, prawne, hostingowe lub też inne usługi niezbędne do sprawnego działania naszej spółki. Dane przechowywane będą przez okres, w którym posiadają przydatność do celu, w jakim zostały zebrane, nie krócej jednak niż przez okres przedawnienia wzajemnych roszczeń.
+    Pamiętaj, że masz zawsze prawo do dostępu do swoich danych osobowych, sprostowania, usunięcia, przeniesienia ich lub ograniczenia przetwarzania ich, prawo do wniesienia sprzeciwu wobec przetwarzania danych lub wniesienia skargi do organu nadzorczego (PUODO), a w przypadku przetwarzania danych na podstawie zgody –  prawo cofnięcia jej w dowolnym momencie. We wszystkich sprawach związanych z przetwarzaniem danych możesz się z nami kontaktować pod adresem daneosobowe@gpgoldwin.pl.
+    Wiadomość ta jest poufna i zastrzeżona. Zabronione jest przeglądanie, przekazywanie, rozpowszechnianie lub inne wykorzystywanie tych informacji, jak również podejmowanie działań na ich podstawie przez osoby lub podmioty inne niż zamierzony adresat. Jeżeli otrzymali ją Państwo omyłkowo, prosimy poinformować o tym Nadawcę i usunąć z komputera wiadomość wraz z załącznikami.
     </p></body></html>'''
     return(stopka)
 
